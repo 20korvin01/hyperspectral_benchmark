@@ -1,5 +1,7 @@
 # Hyperspectral Benchmark - Visualization
 
+**Live Demo:** [https://20korvin01.github.io/hyperspectral_benchmark/](https://20korvin01.github.io/hyperspectral_benchmark/)
+
 Interaktive Webanwendung zur Visualisierung und Analyse von hyperspektralen Messdaten und Materialproben. Teil einer Masterarbeit zur Entwicklung eines Benchmarks für die Auswertung multi-temporaler hyperspektraler Daten.
 
 ## Über das Projekt
@@ -39,25 +41,13 @@ Diese Anwendung ist Teil eines größeren Benchmarking-Projekts für hyperspektr
 - `img/materials/` - Materialfotos
 - `utils/` - Python-Scripts zur Datenverarbeitung
 
-## Verwendung
-
-1. Lokalen HTTP-Server starten:
-   ```bash
-   python -m http.server
-   # oder: python3 -m http.server
-   ```
-
-2. Browser öffnen: `http://localhost:8000`
-
-3. Material im Sidebar filtern und Karte erforschen
-
 ## Technologie
 
 - **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
 - **Kartendarstellung:** Leaflet
 - **Datenformate:** GeoJSON, ASD (Spektrometer), CSV
 
-## Datenverarbeitung
+## Datenverarbeitung (Noch in Entwicklung)
 
 1. Aufnahme der Rohdaten (Digital Numbers)
 2. Konvertierung zu Radiance

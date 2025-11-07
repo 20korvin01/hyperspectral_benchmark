@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bildkarte</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/map.css" />
+		<link rel="stylesheet" href="css/sidebar.css" />
+		<link rel="stylesheet" href="css/popup.css" />
+	</head>
+	<body>
+		<div class="topbar">
+			<h1>Hyperspectral Benchmark - Visualization</h1>
+		</div>
+
+		<div class="container">
+			<aside id="sidebar">
+				<input type="search" id="filter" placeholder="Filter nach Material..." style="width: 100%;"/>
+				<div id="sort-buttons">
+					<button id="sort-name-asc" title="Name A-Z"><i class="fas fa-sort-alpha-down"></i></button>
+					<button id="sort-name-desc" title="Name Z-A"><i class="fas fa-sort-alpha-up"></i></button>
+				</div>
+				<ul id="list"></ul>
+			</aside>
+
+			<main id="map-container">
+				<div id="map"></div>
+			</main>
+		</div>
+
+		<!-- Fullscreen Modal for images -->
+		<div id="fullscreen-modal" class="modal">
+			<span class="close">&times;</span>
+			<img class="modal-content" id="fullscreen-img" />
+		</div>
+
+		<!-- Spectrum Modal for material details -->
+		<div id="spectrum-modal" class="spectrum-modal">
+			<div class="spectrum-modal-content">
+				<button class="spectrum-modal-close">&times;</button>
+				<div class="spectrum-tabs">
+					<button class="spectrum-tab-button active" data-tab="image">Bild</button>
+					<button class="spectrum-tab-button" data-tab="spectra">Spektren</button>
+					<button class="spectrum-tab-button" data-tab="mean">Gemitteltes Spektrum</button>
+				</div>
+				<div class="spectrum-tab-content">
+					<div id="image-tab" class="spectrum-tab-pane active">
+						<img id="spectrum-modal-img" src="" alt="Material" />
+					</div>
+					<div id="spectra-tab" class="spectrum-tab-pane">
+						<div id="spectra-plot"></div>
+					</div>
+					<div id="mean-tab" class="spectrum-tab-pane">
+						<div id="mean-plot"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+		<script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+		<script src="js/popup.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/sidebar.js"></script>
+		<script src="js/map.js"></script>
+	</body>
+</html>
+

@@ -1,0 +1,51 @@
+/* Reset and Reset Button Styles */
+.leaflet-control-reset,
+.leaflet-control-fullscreen {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0;
+    transition: background-color 0.2s ease;
+}
+
+.leaflet-control-reset:hover,
+.leaflet-control-fullscreen:hover {
+    background-color: #f4f4f4;
+}
+
+.leaflet-control-reset:active,
+.leaflet-control-fullscreen:active {
+    background-color: #e0e0e0;
+}
+
+/* Increase popup width */
+.leaflet-popup-content-wrapper {
+    max-width: 350px;
+}
+
+/* Tooltip Styling */
+.leaflet-tooltip {
+    background-color: rgba(11, 110, 253, 0.95);
+    color: #fff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.leaflet-tooltip-top:before {
+    border-top-color: rgba(11, 110, 253, 0.95);
+}
+
+.leaflet-tooltip-bottom:before {
+    border-bottom-color: rgba(11, 110, 253, 0.95);
+}

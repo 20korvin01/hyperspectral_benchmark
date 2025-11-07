@@ -1,0 +1,185 @@
+/* Style for the popup container */
+.leaflet-popup-content {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    text-align: center;
+    position: relative;
+}
+
+/* Style for popup header with title and button */
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+/* Style for the title */
+.leaflet-popup-content b {
+    font-size: 16px;
+    color: #007BFF;
+    flex: 1;
+    text-align: left;
+}
+
+/* Style for the image */
+.leaflet-popup-content img {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Style for the date */
+.leaflet-popup-content .date {
+    font-size: 12px;
+    color: #555;
+}
+
+/* Spectrum Details Button */
+.spectrum-details-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    position: absolute;
+    right: 0;
+}
+
+.spectrum-details-button:hover {
+    background-color: #0056b3;
+}
+
+/* Spectrum Modal Styles */
+.spectrum-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.spectrum-modal.active {
+    display: flex;
+}
+
+.spectrum-modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.spectrum-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+}
+
+.spectrum-modal-close:hover {
+    background-color: #c82333;
+}
+
+/* Tabs */
+.spectrum-tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    background-color: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+    padding: 10px;
+    gap: 5px;
+}
+
+.spectrum-tab-button {
+    flex: 1;
+    padding: 12px 20px;
+    background-color: #e9ecef;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.2s ease;
+}
+
+.spectrum-tab-button:hover {
+    background-color: #dee2e6;
+}
+
+.spectrum-tab-button.active {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* Tab Content */
+.spectrum-tab-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.spectrum-tab-pane {
+    display: none;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.spectrum-tab-pane.active {
+    display: flex;
+    flex-direction: column;
+}
+
+#spectrum-modal-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: auto;
+}
+
+#spectra-plot,
+#mean-plot {
+    flex: 1;
+    min-height: 500px;
+}

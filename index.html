@@ -6,9 +6,11 @@
 		<title>Bildkarte</title>
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/map.css" />
-		<link rel="stylesheet" href="css/sidebar.css" />
+		<link rel="stylesheet" href="css/materials_menu.css" />
+		<link rel="stylesheet" href="css/dji_menu.css" />
 		<link rel="stylesheet" href="css/popup.css" />
 	</head>
 	<body>
@@ -17,13 +19,22 @@
 		</div>
 
 		<div class="container">
-			<aside id="sidebar">
-				<input type="search" id="filter" placeholder="Filter nach Material..." style="width: 100%;"/>
-				<div id="sort-buttons">
-					<button id="sort-name-asc" title="Name A-Z"><i class="fas fa-sort-alpha-down"></i></button>
-					<button id="sort-name-desc" title="Name Z-A"><i class="fas fa-sort-alpha-up"></i></button>
+		<aside id="dji-menu" class="collapsed">
+			<h2 class="dji-menu-title">DJI Bilder</h2>
+		</aside>			<aside id="materials-menu" class="collapsed">
+				<h2 class="materials-menu-title">Materialien</h2>
+				<div class="materials-filter-section">
+					<label for="materials-filter">Nach Material suchen</label>
+					<input type="search" id="materials-filter" placeholder="z.B. Asphalt, Granit..."/>
 				</div>
-				<ul id="list"></ul>
+				<div class="materials-sort-section">
+					<div id="materials-sort-buttons">
+						<button id="materials-sort-name-asc" title="Name A-Z"><i class="fas fa-sort-alpha-down"></i></button>
+						<button id="materials-sort-name-desc" title="Name Z-A"><i class="fas fa-sort-alpha-up"></i></button>
+					</div>
+					<span id="materials-count"></span>
+				</div>
+				<ul id="materials-list"></ul>
 			</aside>
 
 			<main id="map-container">
@@ -64,7 +75,8 @@
 		<script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
 		<script src="js/popup.js"></script>
 		<script src="js/main.js"></script>
-		<script src="js/sidebar.js"></script>
+		<script src="js/materials_menu.js"></script>
+		<script src="js/dji_menu.js"></script>
 		<script src="js/map.js"></script>
 	</body>
 </html>

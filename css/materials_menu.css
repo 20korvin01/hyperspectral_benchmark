@@ -1,0 +1,233 @@
+/* Materials Menu Container */
+#materials-menu {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    height: 100%;
+    width: 320px;
+    transition: width 0.3s ease, margin-left 0.3s ease;
+    border-right: 1px solid #e6e6e6;
+}
+
+#materials-menu.collapsed {
+    width: 0;
+    border-right: none;
+}
+
+/* Materials Menu Title */
+.materials-menu-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    padding: 12px;
+    margin: 0;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Markers Checkbox Container - Highlighted Section */
+#materials-markers-checkbox-container {
+    background: #f0f7ff;
+    border: 1px solid #b3d9ff;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 8px 12px 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+/* Markers Checkbox */
+#materials-markers-checkbox {
+    margin: 0;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff;
+    flex-shrink: 0;
+}
+
+/* Markers Label */
+#materials-markers-checkbox ~ label {
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    flex: 1;
+}
+
+/* Layer Checkbox Container - Other GeoJSON layers */
+.materials-layer-checkbox-container {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.materials-layer-checkbox-container:hover {
+    background: #efefef;
+    border-color: #999;
+}
+
+/* Layer Checkboxes */
+#materials-spectrometer-checkbox,
+#materials-polygons-checkbox {
+    margin: 0;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    accent-color: #666;
+    flex-shrink: 0;
+}
+
+/* Layer Labels */
+#materials-spectrometer-checkbox ~ label,
+#materials-polygons-checkbox ~ label {
+    cursor: pointer;
+    user-select: none;
+    font-weight: 400;
+    color: #333;
+    margin: 0;
+    flex: 1;
+    font-size: 14px;
+}
+
+/* Filter Container - Sticky positioning */
+.materials-filter-section {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Filter Input Label */
+.materials-filter-section label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Filter Input */
+#materials-menu #materials-filter {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+#materials-menu #materials-filter:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+#materials-menu #materials-filter::placeholder {
+    color: #999;
+}
+
+/* Sort Section - Sticky positioning */
+.materials-sort-section {
+    position: sticky;
+    top: 70px;
+    background: #fff;
+    z-index: 100;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Sort Buttons Container */
+#materials-menu #materials-sort-buttons {
+    display: flex;
+    gap: 6px;
+    flex: 1;
+    padding: 0;
+    margin: 0;
+}
+
+#materials-menu #materials-sort-buttons button {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 10px;
+    cursor: pointer;
+    flex: 1;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    color: #666;
+}
+
+#materials-menu #materials-sort-buttons button:hover {
+    background: #f5f5f5;
+    border-color: #999;
+}
+
+#materials-menu #materials-sort-buttons button.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Material Count Label */
+#materials-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: #007bff;
+    white-space: nowrap;
+    padding: 4px 8px;
+    background: #e7f3ff;
+    border-radius: 4px;
+    margin-left: auto;
+}
+
+/* List Container - takes remaining space */
+#materials-list {
+    flex: 1;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#materials-list li {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #333;
+    font-size: 14px;
+}
+
+#materials-list li:hover {
+    background: #f8f9fa;
+    padding-left: 16px;
+}
+
+#materials-list li .meta {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+#materials-list li.selected {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding-left: 8px;
+}

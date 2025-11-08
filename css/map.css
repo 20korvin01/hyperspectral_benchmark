@@ -1,6 +1,8 @@
-/* Reset and Reset Button Styles */
+/* Reset and Control Button Styles */
 .leaflet-control-reset,
-.leaflet-control-fullscreen {
+.leaflet-control-basemaps,
+.leaflet-control-materials-menu,
+.leaflet-control-dji-menu {
     width: 36px;
     height: 36px;
     font-size: 18px;
@@ -16,12 +18,16 @@
 }
 
 .leaflet-control-reset:hover,
-.leaflet-control-fullscreen:hover {
+.leaflet-control-basemaps:hover,
+.leaflet-control-materials-menu:hover,
+.leaflet-control-dji-menu:hover {
     background-color: #f4f4f4;
 }
 
 .leaflet-control-reset:active,
-.leaflet-control-fullscreen:active {
+.leaflet-control-basemaps:active,
+.leaflet-control-materials-menu:active,
+.leaflet-control-dji-menu:active {
     background-color: #e0e0e0;
 }
 
@@ -48,4 +54,61 @@
 
 .leaflet-tooltip-bottom:before {
     border-bottom-color: rgba(11, 110, 253, 0.95);
+}
+
+/* Basemaps Menu Styles */
+.basemaps-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 180px;
+}
+
+.basemaps-menu.active {
+    display: block;
+}
+
+/* Basemap Option Container Styles */
+.basemap-option-container {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    gap: 10px;
+}
+
+.basemap-option-container:hover {
+    background-color: #f0f0f0;
+}
+
+.basemap-option-container.active {
+    background-color: #e8f4f8;
+}
+
+/* Basemap Checkbox Styles */
+.basemap-checkbox {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+/* Basemap Label Styles */
+.basemap-label {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+    flex: 1;
+}
+
+.basemap-label.active {
+    font-weight: bold;
 }

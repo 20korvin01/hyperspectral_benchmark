@@ -1,0 +1,58 @@
+/* DJI Menu Container */
+#dji-menu {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    height: 100%;
+    width: 320px;
+    transition: width 0.3s ease, margin-left 0.3s ease;
+    border-right: 1px solid #e6e6e6;
+    order: 1;
+    overflow: hidden;
+}
+
+#dji-menu.collapsed {
+    width: 0;
+    border-right: none;
+}
+
+/* DJI Menu Title */
+.dji-menu-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    padding: 12px;
+    margin: 0;
+    border-bottom: 2px solid #28a745;
+}
+
+/* Orthophoto Checkbox Container */
+#dji-orthophoto-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0fff4;
+    border: 1px solid #b3e5b3;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 8px 12px 6px 12px;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.1);
+}
+
+#dji-orthophoto-checkbox {
+    margin: 0;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #28a745;
+    flex-shrink: 0;
+}
+
+#dji-orthophoto-checkbox-container label {
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    flex: 1;
+}

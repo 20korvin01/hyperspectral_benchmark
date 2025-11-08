@@ -7,21 +7,58 @@ body{margin:0;display:flex;flex-direction:column;height:100vh}
 .topbar .subtitle{margin:0.2rem 0 0;font-size:0.85rem;opacity:0.95}
 .container{display:flex;flex:1;min-height:0}
 
-/* Sidebar */
-#sidebar{width:320px;background:#fafafa;border-right:1px solid #e6e6e6;overflow:hidden;padding:0;box-sizing:border-box;display:flex;flex-direction:column}
-#sidebar #filter{width:80%;padding:8px;margin-bottom:8px;border:1px solid #ddd;border-radius:4px}
-#sidebar #sort-buttons{display:flex;gap:4px;margin-bottom:8px}
-#sidebar #sort-buttons button{background:#fff;border:1px solid #ddd;border-radius:4px;padding:6px;cursor:pointer}
-#sidebar #sort-buttons button:hover{background:#f0f0f0}
-#sidebar #sort-buttons button.active{background:#007bff;color:white}
-#list{list-style:none;padding:0;margin:0}
-#list li{padding:8px;border-bottom:1px solid #eee;cursor:pointer}
-#list li:hover{background:#f0f8ff}
-#list li .meta{font-size:0.85rem;color:#444}
+/* Materials Menu */
+#materials-menu{
+    width:320px;
+    background:#fafafa;
+    border-right:1px solid #e6e6e6;
+    overflow:hidden;
+    padding:0;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    transition:width 0.3s ease, margin-left 0.3s ease;
+    order: 2;
+}
+
+#materials-menu.collapsed{
+    width:0;
+    border-right:none;
+}
+
+#materials-list{list-style:none;padding:0;margin:0}
 
 /* Map */
-#map-container{flex:1;display:flex}
+#map-container{
+    flex:1;
+    display:flex;
+    transition:flex 0.3s ease;
+    order: 3;
+    min-width: 0;
+}
 #map{flex:1}
+
+/* DJI Menu */
+#dji-menu{
+    width:320px;
+    background:#fafafa;
+    border-right:1px solid #e6e6e6;
+    overflow:hidden;
+    padding:0;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    transition:width 0.3s ease;
+    order: 1;
+    flex-shrink: 0;
+}
+
+#dji-menu.collapsed{
+    width:0;
+    border-right:none;
+}
+
+#dji-list{list-style:none;padding:0;margin:0}
 
 /* Popup image */
 .popup-image{max-width:280px;max-height:300px;height:auto;display:block;margin:8px auto;border-radius:6px}
@@ -77,9 +114,3 @@ body{margin:0;display:flex;flex-direction:column;height:100vh}
 	text-decoration: none;
 	cursor: pointer;
 }
-
-#list li.selected {
-	background: #fff3cd; /* light yellow */
-	border-left: 4px solid #ffc107;
-}
-

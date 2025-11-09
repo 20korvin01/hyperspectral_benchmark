@@ -1,8 +1,6 @@
 /* Reset and Control Button Styles */
 .leaflet-control-reset,
-.leaflet-control-basemaps,
-.leaflet-control-materials-menu,
-.leaflet-control-dji-menu {
+.leaflet-control-basemaps {
     width: 36px;
     height: 36px;
     font-size: 18px;
@@ -18,17 +16,19 @@
 }
 
 .leaflet-control-reset:hover,
-.leaflet-control-basemaps:hover,
-.leaflet-control-materials-menu:hover,
-.leaflet-control-dji-menu:hover {
+.leaflet-control-basemaps:hover {
     background-color: #f4f4f4;
 }
 
 .leaflet-control-reset:active,
-.leaflet-control-basemaps:active,
-.leaflet-control-materials-menu:active,
-.leaflet-control-dji-menu:active {
+.leaflet-control-basemaps:active {
     background-color: #e0e0e0;
+}
+
+/* Hide old menu toggle buttons */
+.leaflet-control-materials-menu,
+.leaflet-control-dji-menu {
+    display: none;
 }
 
 /* Increase popup width */
@@ -61,13 +61,14 @@
     display: none;
     position: absolute;
     top: 0;
-    left: 40px;
+    right: 100%;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     min-width: 180px;
+    margin-right: 5px;
 }
 
 .basemaps-menu.active {
@@ -112,3 +113,15 @@
 .basemap-label.active {
     font-weight: bold;
 }
+
+/* Position top-right controls */
+.leaflet-top.leaflet-right {
+    top: 10px;
+    right: 10px;
+}
+
+/* Stack controls vertically with gap */
+.leaflet-top.leaflet-right .leaflet-control {
+    margin: 0 0 5px 5px;
+}
+

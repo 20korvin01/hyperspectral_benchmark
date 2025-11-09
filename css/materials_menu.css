@@ -7,6 +7,8 @@
     width: 320px;
     transition: width 0.3s ease, margin-left 0.3s ease;
     border-right: 1px solid #e6e6e6;
+    order: 2;
+    overflow: hidden;
 }
 
 #materials-menu.collapsed {
@@ -19,9 +21,12 @@
     font-size: 16px;
     font-weight: 600;
     color: #333;
-    padding: 12px;
+    padding: 0 12px;
     margin: 0;
     border-bottom: 2px solid #007bff;
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 /* Markers Checkbox Container - Highlighted Section */

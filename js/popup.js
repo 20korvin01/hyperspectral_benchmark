@@ -112,6 +112,9 @@ async function populateSpectrumModal(material) {
     // Get material name from GeoJSON structure
     const materialName = material.material || material.name;
     
+    // Set title in modal header
+    document.getElementById('spectrum-modal-title').textContent = materialName;
+    
     // Set image
     const imageName = materialName + '.jpg';
     const imagePath = `img/materials/${imageName}`;

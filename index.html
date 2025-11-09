@@ -19,9 +19,17 @@
 		</div>
 
 		<div class="container">
-		<aside id="dji-menu" class="collapsed">
-			<h2 class="dji-menu-title">DJI Bilder</h2>
-		</aside>			<aside id="materials-menu" class="collapsed">
+		<nav id="sidebar-nav" class="sidebar-nav">
+			<button id="sidebar-materials-btn" class="sidebar-button" title="Materialien">
+				<i class="bi bi-bricks"></i>
+			</button>
+			<button id="sidebar-dji-btn" class="sidebar-button" title="DJI Bilder">
+				<i class="bi bi-map-fill"></i>
+			</button>
+		</nav>
+
+		<div class="menus-container">
+			<aside id="materials-menu" class="collapsed">
 				<h2 class="materials-menu-title">Materialien</h2>
 				<div class="materials-filter-section">
 					<label for="materials-filter">Nach Material suchen</label>
@@ -36,11 +44,16 @@
 				</div>
 				<ul id="materials-list"></ul>
 			</aside>
-
-			<main id="map-container">
-				<div id="map"></div>
-			</main>
+			
+			<aside id="dji-menu" class="collapsed">
+				<h2 class="dji-menu-title">DJI Bilder</h2>
+			</aside>
 		</div>
+
+		<main id="map-container">
+			<div id="map"></div>
+		</main>
+	</div>
 
 		<!-- Fullscreen Modal for images -->
 		<div id="fullscreen-modal" class="modal">
@@ -51,7 +64,10 @@
 		<!-- Spectrum Modal for material details -->
 		<div id="spectrum-modal" class="spectrum-modal">
 			<div class="spectrum-modal-content">
-				<button class="spectrum-modal-close">&times;</button>
+				<div class="spectrum-modal-header">
+					<h2 class="spectrum-modal-title" id="spectrum-modal-title">Material</h2>
+					<button class="spectrum-modal-close">&times;</button>
+				</div>
 				<div class="spectrum-tabs">
 					<button class="spectrum-tab-button active" data-tab="image">Bild</button>
 					<button class="spectrum-tab-button" data-tab="spectra">Spektren</button>

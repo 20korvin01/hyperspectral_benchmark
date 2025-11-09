@@ -1,7 +1,8 @@
 // Initialize the map
 const map = L.map('map', {
     center: [48.853492979702956, 8.485241719982184],
-    zoom: 18
+    zoom: 18,
+    zoomControl: false
 });
 
 // Define base maps
@@ -52,10 +53,10 @@ const overlays = {};
 materialsLayer.addTo(map);
 let currentBasemap = 'Satellite';
 
-// Add a basemaps selector button (top left)
+// Add a basemaps selector button (top right)
 const basemapsControl = L.Control.extend({
     options: {
-        position: 'topleft'
+        position: 'topright'
     },
     onAdd: function(map) {
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
@@ -164,7 +165,7 @@ map.addControl(new basemapsControl());
 // Add a reset view button with magnifying glass icon
 const resetControl = L.Control.extend({
     options: {
-        position: 'topleft'
+        position: 'topright'
     },
     onAdd: function(map) {
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
@@ -182,91 +183,55 @@ const resetControl = L.Control.extend({
 
 map.addControl(new resetControl());
 
-// Add a materials menu toggle button
-const materialsMenuToggle = L.Control.extend({
-    options: {
-        position: 'topleft'
-    },
-    onAdd: function(map) {
-        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-        const button = L.DomUtil.create('button', 'leaflet-control-materials-menu', container);
-        button.innerHTML = '<i class="bi bi-bricks"></i>';
-        button.title = 'Materials Menu';
+// Set up sidebar button controls
+document.addEventListener('DOMContentLoaded', () => {
+    const djiBtn = document.getElementById('sidebar-dji-btn');
+    const materialsBtn = document.getElementById('sidebar-materials-btn');
+    const djiMenu = document.getElementById('dji-menu');
+    const materialsMenu = document.getElementById('materials-menu');
+
+    djiBtn.addEventListener('click', () => {
+        const isDjiOpen = !djiMenu.classList.contains('collapsed');
         
-        button.addEventListener('click', () => {
-            const materialsMenu = document.getElementById('materials-menu');
-            const djiMenu = document.getElementById('dji-menu');
-            
-            // If materials menu is currently collapsed, open it and close DJI menu
-            if (materialsMenu.classList.contains('collapsed')) {
-                materialsMenu.classList.remove('collapsed');
-                djiMenu.classList.add('collapsed');
-            } else {
-                // If materials menu is open, close it
-                materialsMenu.classList.add('collapsed');
-            }
-            
-            // Toggle icon
-            if (materialsMenu.classList.contains('collapsed')) {
-                button.title = 'Menu öffnen';
-            } else {
-                button.title = 'Menu schließen';
-            }
-            
-            // Trigger map resize to recalculate layout
-            setTimeout(() => {
-                map.invalidateSize();
-            }, 310);
-        });
+        if (isDjiOpen) {
+            // Close DJI menu
+            djiMenu.classList.add('collapsed');
+            djiBtn.classList.remove('active');
+        } else {
+            // Open DJI menu and close materials menu
+            djiMenu.classList.remove('collapsed');
+            materialsMenu.classList.add('collapsed');
+            djiBtn.classList.add('active');
+            materialsBtn.classList.remove('active');
+        }
         
-        return container;
-    }
+        // Trigger map resize to recalculate layout
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 310);
+    });
+
+    materialsBtn.addEventListener('click', () => {
+        const isMaterialsOpen = !materialsMenu.classList.contains('collapsed');
+        
+        if (isMaterialsOpen) {
+            // Close materials menu
+            materialsMenu.classList.add('collapsed');
+            materialsBtn.classList.remove('active');
+        } else {
+            // Open materials menu and close DJI menu
+            materialsMenu.classList.remove('collapsed');
+            djiMenu.classList.add('collapsed');
+            materialsBtn.classList.add('active');
+            djiBtn.classList.remove('active');
+        }
+        
+        // Trigger map resize to recalculate layout
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 310);
+    });
 });
-
-map.addControl(new materialsMenuToggle());
-
-// Add a DJI menu toggle button
-const djiMenuToggle = L.Control.extend({
-    options: {
-        position: 'topleft'
-    },
-    onAdd: function(map) {
-        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-        const button = L.DomUtil.create('button', 'leaflet-control-dji-menu', container);
-        button.innerHTML = '<i class="bi bi-map-fill"></i>';
-        button.title = 'DJI Menu';
-        
-        button.addEventListener('click', () => {
-            const djiMenu = document.getElementById('dji-menu');
-            const materialsMenu = document.getElementById('materials-menu');
-            
-            // If DJI menu is currently collapsed, open it and close Materials menu
-            if (djiMenu.classList.contains('collapsed')) {
-                djiMenu.classList.remove('collapsed');
-                materialsMenu.classList.add('collapsed');
-            } else {
-                // If DJI menu is open, close it
-                djiMenu.classList.add('collapsed');
-            }
-            
-            // Toggle title
-            if (djiMenu.classList.contains('collapsed')) {
-                button.title = 'Menu öffnen';
-            } else {
-                button.title = 'Menu schließen';
-            }
-            
-            // Trigger map resize to recalculate layout
-            setTimeout(() => {
-                map.invalidateSize();
-            }, 310);
-        });
-        
-        return container;
-    }
-});
-
-map.addControl(new djiMenuToggle());
 
 // Function to update markers based on visible materials menu items
 function updateMarkers() {

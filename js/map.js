@@ -38,6 +38,11 @@ const materialsLayer = L.layerGroup();
 // Add the default base map (satellite)
 satellite.addTo(map);
 
+// Log clicked coordinates to console
+map.on('click', function(e) {
+    console.log('Angeklickte Koordinate:', e.latlng.lat, e.latlng.lng);
+});
+
 // Define base maps
 const baseMaps = {
     'Satellite': satellite,

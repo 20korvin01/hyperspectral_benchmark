@@ -11,8 +11,8 @@
 	<link rel="stylesheet" href="css/main.css" />
 	<link rel="stylesheet" href="css/map.css" />
 	<link rel="stylesheet" href="css/materials_menu.css" />
+	<link rel="stylesheet" href="css/materials_popup.css" />
 	<link rel="stylesheet" href="css/dji_menu.css" />
-	<link rel="stylesheet" href="css/popup.css" />
 </head>
 
 <body>
@@ -85,7 +85,7 @@
 						und Bildaauswertung (IOSB).</p>
 				</section>
 				<section>
-					<h3>Funktionen</h3>
+					<h3>Bisherige Funktionen</h3>
 					<ul>
 						<li><strong>Materialien:</strong> Durchsuchen einer Datenbank verschiedener Materialien mit
 							ihren spektralen Eigenschaften</li>
@@ -114,12 +114,14 @@
 				</div>
 			</section>
 			</div>
-		</div>
+	</div>
 	</div> <!-- Spectrum Modal for material details -->
 	<div id="spectrum-modal" class="spectrum-modal">
 		<div class="spectrum-modal-content">
 			<div class="spectrum-modal-header">
+				<button class="spectrum-nav-prev spectrum-nav-button" onclick="navigateToPreviousMaterial()" title="Vorheriges Material"><i class="bi bi-arrow-left-square-fill"></i></button>
 				<h2 class="spectrum-modal-title" id="spectrum-modal-title">Material</h2>
+				<button class="spectrum-nav-next spectrum-nav-button" onclick="navigateToNextMaterial()" title="Nächstes Material"><i class="bi bi-arrow-right-square-fill"></i></button>
 				<button class="spectrum-modal-close">&times;</button>
 			</div>
 			<div class="spectrum-tabs">
@@ -145,6 +147,7 @@
 	<script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
 	<script src="js/info_modal.js"></script>
 	<script src="js/popup.js"></script>
+	<script src="js/materials_popup.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/materials_menu.js"></script>
 	<script src="js/dji_menu.js"></script>

@@ -174,7 +174,7 @@ const resetControl = L.Control.extend({
     onAdd: function(map) {
         const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
         const button = L.DomUtil.create('button', 'leaflet-control-reset', container);
-        button.innerHTML = '<i class="fas fa-search"></i>';
+        button.innerHTML = '<i class="bi bi-aspect-ratio"></i>';
         button.title = 'Zur Ausgangsansicht zurücksetzen';
         
         button.addEventListener('click', () => {

@@ -52,6 +52,12 @@ let currentMaterial = null;
 // Global variable to cache available spectrum files
 let spectraFilesCache = null;
 
+// Global variable to store all materials in alphabetical order
+let allMaterialsCache = [];
+
+// Global variable to track current material index
+let currentMaterialIndex = -1;
+
 // Function to load and cache spectrum files list
 async function loadSpectraFilesList() {
     if (spectraFilesCache !== null) {
@@ -66,6 +72,24 @@ async function loadSpectraFilesList() {
         console.error('Error loading spectra files list:', e);
         return [];
     }
+}
+
+// Function to load and sort all materials alphabetically
+function loadAllMaterials() {
+    if (allMaterialsCache.length > 0) {
+        return allMaterialsCache;
+    }
+    
+    if (typeof materialsData !== 'undefined' && materialsData.features) {
+        allMaterialsCache = materialsData.features
+            .map(f => ({
+                name: f.properties.material || f.properties.name,
+                properties: f.properties
+            }))
+            .sort((a, b) => a.name.localeCompare(b.name));
+    }
+    
+    return allMaterialsCache;
 }
 
 // Function to get spectrum files for a material
@@ -99,12 +123,59 @@ function openSpectrumModal(button) {
     
     currentMaterial = feature.properties;
     
+    // Load all materials and find current index
+    const allMaterials = loadAllMaterials();
+    currentMaterialIndex = allMaterials.findIndex(m => m.name === materialName);
+    
     // Populate modal content
     populateSpectrumModal(feature.properties);
     
     // Show modal
     const modal = document.getElementById('spectrum-modal');
     modal.classList.add('active');
+    
+    // Update navigation buttons
+    updateNavigationButtons();
+}
+
+// Function to navigate to next material
+async function navigateToNextMaterial() {
+    const allMaterials = loadAllMaterials();
+    if (allMaterials.length === 0) return;
+    
+    currentMaterialIndex = (currentMaterialIndex + 1) % allMaterials.length;
+    const nextMaterial = allMaterials[currentMaterialIndex];
+    
+    currentMaterial = nextMaterial.properties;
+    await populateSpectrumModal(nextMaterial.properties);
+    updateNavigationButtons();
+}
+
+// Function to navigate to previous material
+async function navigateToPreviousMaterial() {
+    const allMaterials = loadAllMaterials();
+    if (allMaterials.length === 0) return;
+    
+    currentMaterialIndex = (currentMaterialIndex - 1 + allMaterials.length) % allMaterials.length;
+    const prevMaterial = allMaterials[currentMaterialIndex];
+    
+    currentMaterial = prevMaterial.properties;
+    await populateSpectrumModal(prevMaterial.properties);
+    updateNavigationButtons();
+}
+
+// Function to update navigation button states
+function updateNavigationButtons() {
+    const allMaterials = loadAllMaterials();
+    const prevBtn = document.querySelector('.spectrum-nav-prev');
+    const nextBtn = document.querySelector('.spectrum-nav-next');
+    
+    if (prevBtn) {
+        prevBtn.disabled = allMaterials.length <= 1;
+    }
+    if (nextBtn) {
+        nextBtn.disabled = allMaterials.length <= 1;
+    }
 }
 
 // Function to populate spectrum modal with data
@@ -114,6 +185,13 @@ async function populateSpectrumModal(material) {
     
     // Set title in modal header
     document.getElementById('spectrum-modal-title').textContent = materialName;
+    
+    // Update navigation buttons visibility
+    const allMaterials = loadAllMaterials();
+    const navButtons = document.querySelector('.spectrum-modal-nav-buttons');
+    if (navButtons) {
+        navButtons.style.display = allMaterials.length > 1 ? 'flex' : 'none';
+    }
     
     // Set image
     const imageName = materialName + '.jpg';

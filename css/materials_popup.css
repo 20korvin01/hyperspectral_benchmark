@@ -100,12 +100,14 @@
 /* Modal Header */
 .spectrum-modal-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     padding: 15px 20px;
     border-bottom: 1px solid #ddd;
     background-color: #f8f9fa;
     border-radius: 8px 8px 0 0;
+    gap: 10px;
+    position: relative;
 }
 
 .spectrum-modal-title {
@@ -113,6 +115,10 @@
     font-size: 20px;
     color: #333;
     font-weight: 600;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 }
 
 .spectrum-modal-close {
@@ -130,10 +136,48 @@
     justify-content: center;
     flex-shrink: 0;
     transition: background-color 0.2s ease;
+    position: absolute;
+    right: 15px;
 }
 
 .spectrum-modal-close:hover {
     background-color: #c82333;
+}
+
+/* Navigation buttons */
+.spectrum-nav-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+    min-width: 40px;
+    height: 40px;
+}
+
+.spectrum-nav-button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.spectrum-nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.spectrum-nav-prev {
+    margin-right: 0;
+}
+
+.spectrum-nav-next {
+    margin-left: 10px;
 }
 
 /* Tabs */

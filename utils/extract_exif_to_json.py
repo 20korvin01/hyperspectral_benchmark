@@ -6,7 +6,7 @@ from typing import Any, Dict
 
 # === Pfade anpassen ===
 INPUT_DIR = r"C:\Users\korvi\Documents\Universitaet\Masterarbeit\VisualisierungApp\application\img\materials"
-OUTPUT_PATH = r"C:\Users\korvi\Documents\Universitaet\Masterarbeit\VisualisierungApp\application\data\materials_img_metadata.json"
+OUTPUT_PATH = r"C:\Users\korvi\Documents\Universitaet\Masterarbeit\VisualisierungApp\application\data\materials_img_metadata_raw.json"
 
 
 def dms_to_decimal(dms, ref: str) -> float:

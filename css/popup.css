@@ -88,8 +88,8 @@
 .spectrum-modal-content {
     background-color: white;
     border-radius: 8px;
-    width: 90%;
-    max-width: 1000px;
+    width: 95%;
+    max-width: 2000px;
     height: 90vh;
     display: flex;
     flex-direction: column;

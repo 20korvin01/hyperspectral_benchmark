@@ -10,14 +10,29 @@
     const markersCheckbox = document.createElement('input');
     markersCheckbox.type = 'checkbox';
     markersCheckbox.id = 'materials-markers-checkbox';
-    markersCheckbox.checked = true;
+    markersCheckbox.checked = false;
 
     const markersLabel = document.createElement('label');
     markersLabel.htmlFor = 'materials-markers-checkbox';
-    markersLabel.textContent = 'Materialmarker anzeigen';
+    markersLabel.textContent = 'Materialien';
+
+    // Create info icon
+    const infoIcon = document.createElement('span');
+    infoIcon.className = 'materials-info-icon';
+    infoIcon.innerHTML = '<i class="bi bi-question-circle"></i>';
+
+    // Create info tooltip
+    const infoTooltip = document.createElement('div');
+    infoTooltip.className = 'materials-info-tooltip';
+    infoTooltip.innerHTML = `
+        <strong>Materialien - Spektralmessungen</strong>
+        <p>Markiert die Positionen der hyperspektralen Messungen verschiedener Materialien auf dem Forschungsgelände. Ein Klick auf ein Material in der Liste hebt den entsprechenden Marker hervor und zeigt weitere Informationen an.</p>
+    `;
 
     markersCheckboxContainer.appendChild(markersCheckbox);
     markersCheckboxContainer.appendChild(markersLabel);
+    markersCheckboxContainer.appendChild(infoIcon);
+    markersCheckboxContainer.appendChild(infoTooltip);
 
     // Get the materials menu element to insert the checkbox after the title
     const materialsMenu = document.getElementById('materials-menu');
@@ -47,8 +62,23 @@
     spectrometerLabel.htmlFor = 'materials-spectrometer-checkbox';
     spectrometerLabel.textContent = 'Spektrometer Track';
 
+    // Create info icon
+    const spectrometerInfoIcon = document.createElement('span');
+    spectrometerInfoIcon.className = 'materials-info-icon materials-info-icon-secondary';
+    spectrometerInfoIcon.innerHTML = '<i class="bi bi-question-circle"></i>';
+
+    // Create info tooltip
+    const spectrometerInfoTooltip = document.createElement('div');
+    spectrometerInfoTooltip.className = 'materials-info-tooltip';
+    spectrometerInfoTooltip.innerHTML = `
+        <strong>Spektrometer Track</strong>
+        <p>Zeigt die (ungefähre) Trajektorie der Spektrometermessungen auf dem Gelände. Aufgenommen während der Messungen mit Hilfe der mobilen App 'Locus'. Dient der besseren Zuordnungen der einzelnen ASD-Messungen zu den entsprechenden Materialien auf dem Gelände.</p>
+    `;
+
     spectrometerCheckboxContainer.appendChild(spectrometerCheckbox);
     spectrometerCheckboxContainer.appendChild(spectrometerLabel);
+    spectrometerCheckboxContainer.appendChild(spectrometerInfoIcon);
+    spectrometerCheckboxContainer.appendChild(spectrometerInfoTooltip);
     materialsMenu.insertBefore(spectrometerCheckboxContainer, filterSection);
 
     // Add event listener to toggle spectrometer track visibility
@@ -65,40 +95,6 @@
     // Listen for spectrometer track layer to be loaded
     window.addEventListener('spectrometerTrackLoaded', () => {
         window.spectrometerTrackLayer = window.spectrometerTrackLayer || spectrometerTrackLayer;
-    });
-
-    // Add a checkbox to toggle materials polygons visibility
-    const polygonsCheckboxContainer = document.createElement('div');
-    polygonsCheckboxContainer.id = 'materials-polygons-checkbox-container';
-    polygonsCheckboxContainer.className = 'materials-layer-checkbox-container';
-
-    const polygonsCheckbox = document.createElement('input');
-    polygonsCheckbox.type = 'checkbox';
-    polygonsCheckbox.id = 'materials-polygons-checkbox';
-    polygonsCheckbox.checked = false;
-
-    const polygonsLabel = document.createElement('label');
-    polygonsLabel.htmlFor = 'materials-polygons-checkbox';
-    polygonsLabel.textContent = 'Materialbereich Polygone';
-
-    polygonsCheckboxContainer.appendChild(polygonsCheckbox);
-    polygonsCheckboxContainer.appendChild(polygonsLabel);
-    materialsMenu.insertBefore(polygonsCheckboxContainer, filterSection);
-
-    // Add event listener to toggle materials polygons visibility
-    polygonsCheckbox.addEventListener('change', () => {
-        if (window.materialsPolygonsLayer) {
-            if (polygonsCheckbox.checked) {
-                window.materialsPolygonsLayer.addTo(map);
-            } else {
-                map.removeLayer(window.materialsPolygonsLayer);
-            }
-        }
-    });
-
-    // Listen for materials polygons layer to be loaded
-    window.addEventListener('materialsPolygonsLoaded', () => {
-        window.materialsPolygonsLayer = window.materialsPolygonsLayer || materialsPolygonsLayer;
     });
 
     // Ensure the menu elements are accessible even when collapsed

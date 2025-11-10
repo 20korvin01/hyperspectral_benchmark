@@ -54,8 +54,7 @@ const baseMaps = {
 
 const overlays = {};
 
-// Ensure the materials layer is added to the map by default
-materialsLayer.addTo(map);
+// Do NOT add the materials layer by default - it will be added when the checkbox is checked
 let currentBasemap = 'Satellite';
 
 // Add a basemaps selector button (top right)
@@ -342,7 +341,6 @@ filterEl.addEventListener('input', updateMarkers);
 
 // Initialize layer variables for GeoJSON data
 let spectrometerTrackLayer = null;
-let materialsPolygonsLayer = null;
 
 // Remove GPX integration and add GeoJSON as a line
 fetch('data/geojson/spectrometer_traj.geojson')
@@ -371,53 +369,3 @@ fetch('data/geojson/spectrometer_traj.geojson')
         window.dispatchEvent(new Event('spectrometerTrackLoaded'));
     })
     .catch(error => console.error('Error loading GeoJSON data:', error));
-
-// Load materials polygons GeoJSON
-fetch('data/geojson/materials_polygons.geojson')
-    .then(response => response.json())
-    .then(geojsonData => {
-        materialsPolygonsLayer = L.geoJSON(geojsonData, {
-            style: {
-                color: 'purple',
-                weight: 2,
-                opacity: 0.6,
-                fillOpacity: 0.2
-            },
-            onEachFeature: function(feature, layer) {
-                // Add tooltip for each polygon
-                const properties = feature.properties;
-                let tooltipContent = 'Materialbereich';
-                if (properties && properties.name) {
-                    tooltipContent = properties.name;
-                } else if (properties && Object.keys(properties).length > 0) {
-                    tooltipContent = Object.entries(properties)
-                        .map(([key, value]) => `${key}: ${value}`)
-                        .join('<br>');
-                }
-                layer.bindTooltip(tooltipContent);
-
-                // Change style on hover
-                layer.on('mouseover', () => {
-                    layer.setStyle({
-                        color: 'orange',
-                        weight: 3,
-                        opacity: 0.9,
-                        fillOpacity: 0.4
-                    });
-                });
-
-                layer.on('mouseout', () => {
-                    layer.setStyle({
-                        color: 'purple',
-                        weight: 2,
-                        opacity: 0.6,
-                        fillOpacity: 0.2
-                    });
-                });
-            }
-        });
-
-        // Dispatch custom event to notify materials_menu.js
-        window.dispatchEvent(new Event('materialsPolygonsLoaded'));
-    })
-    .catch(error => console.error('Error loading materials polygons GeoJSON data:', error));

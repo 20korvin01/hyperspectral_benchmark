@@ -1,24 +1,30 @@
 <!doctype html>
 <html lang="de">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Bildkarte</title>
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
-		<link rel="stylesheet" href="css/main.css" />
-		<link rel="stylesheet" href="css/map.css" />
-		<link rel="stylesheet" href="css/materials_menu.css" />
-		<link rel="stylesheet" href="css/dji_menu.css" />
-		<link rel="stylesheet" href="css/popup.css" />
-	</head>
-	<body>
-		<div class="topbar">
-			<h1>Hyperspectral Benchmark - Visualization</h1>
-		</div>
 
-		<div class="container">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Hyperspectral Benchmark - Visualization</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/map.css" />
+	<link rel="stylesheet" href="css/materials_menu.css" />
+	<link rel="stylesheet" href="css/dji_menu.css" />
+	<link rel="stylesheet" href="css/popup.css" />
+</head>
+
+<body>
+	<div class="topbar">
+		<div class="topbar-content">
+			<h1>Hyperspectral Benchmark - Visualization</h1>
+			<button id="info-btn" class="topbar-info-btn" title="Informationen">
+				<i class="bi bi-info-circle"></i>
+			</button>
+		</div>
+	</div>
+	<div class="container">
 		<nav id="sidebar-nav" class="sidebar-nav">
 			<button id="sidebar-materials-btn" class="sidebar-button" title="Materialien">
 				<i class="bi bi-bricks"></i>
@@ -33,18 +39,20 @@
 				<h2 class="materials-menu-title">Materialien</h2>
 				<div class="materials-filter-section">
 					<label for="materials-filter">Nach Material suchen</label>
-					<input type="search" id="materials-filter" placeholder="z.B. Asphalt, Granit..."/>
+					<input type="search" id="materials-filter" placeholder="z.B. Asphalt, Granit..." />
 				</div>
 				<div class="materials-sort-section">
 					<div id="materials-sort-buttons">
-						<button id="materials-sort-name-asc" title="Name A-Z"><i class="fas fa-sort-alpha-down"></i></button>
-						<button id="materials-sort-name-desc" title="Name Z-A"><i class="fas fa-sort-alpha-up"></i></button>
+						<button id="materials-sort-name-asc" title="Name A-Z"><i
+								class="fas fa-sort-alpha-down"></i></button>
+						<button id="materials-sort-name-desc" title="Name Z-A"><i
+								class="fas fa-sort-alpha-up"></i></button>
 					</div>
 					<span id="materials-count"></span>
 				</div>
 				<ul id="materials-list"></ul>
 			</aside>
-			
+
 			<aside id="dji-menu" class="collapsed">
 				<h2 class="dji-menu-title">DJI Bilder</h2>
 			</aside>
@@ -55,45 +63,100 @@
 		</main>
 	</div>
 
-		<!-- Fullscreen Modal for images -->
-		<div id="fullscreen-modal" class="modal">
-			<span class="close">&times;</span>
-			<img class="modal-content" id="fullscreen-img" />
-		</div>
+	<!-- Fullscreen Modal for images -->
+	<div id="fullscreen-modal" class="modal">
+		<span class="close">&times;</span>
+		<img class="modal-content" id="fullscreen-img" />
+	</div>
 
-		<!-- Spectrum Modal for material details -->
-		<div id="spectrum-modal" class="spectrum-modal">
-			<div class="spectrum-modal-content">
-				<div class="spectrum-modal-header">
-					<h2 class="spectrum-modal-title" id="spectrum-modal-title">Material</h2>
-					<button class="spectrum-modal-close">&times;</button>
+	<!-- Info Modal -->
+	<div id="info-modal" class="info-modal">
+		<div class="info-modal-content">
+			<div class="info-modal-header">
+				<h2>Über diese Website</h2>
+				<button class="info-modal-close">&times;</button>
+			</div>
+			<div class="info-modal-body">
+				<section>
+					<h3>Hyperspectral Benchmark - Visualization</h3>
+					<p>Diese Website dient zur Visualisierung und Strukturierung des Projektes zur Entwicklung eines
+						hyperspektralen und multi-temporalen Benchmarks. Sie entsteht im Rahmen der Masterarbeit von
+						B.Sc. Korvin Brecht (KIT) in Zusammenarbeit mit dem Fraunhofer Institut für Optronik, Systemtechnik
+						und Bildaauswertung (IOSB).</p>
+				</section>
+				<section>
+					<h3>Funktionen</h3>
+					<ul>
+						<li><strong>Materialien:</strong> Durchsuchen einer Datenbank verschiedener Materialien mit
+							ihren spektralen Eigenschaften</li>
+						<li><strong>DJI Bilder:</strong> Visualisierung der RGB-Luftbildaufnahmen des Geländes</li>
+					</ul>
+				</section>
+			<section>
+				<h3>Kontakt</h3>
+				<p><strong>Autor:</strong> Korvin Brecht</p>
+				<p><strong>Email:</strong> <a href="mailto:korvin.brecht@student.kit.edu">korvin.brecht@student.kit.edu</a></p>
+				<p>Weitere Informationen und Source Code: <a href="https://github.com/20korvin01/hyperspectral_benchmark" target="_blank">GitHub Repository</a>.</p>
+			</section>
+			<section>
+				<h3>Institutionen</h3>
+				<div class="institutions-container">
+					<div class="institution">
+						<a href="https://www.kit.edu/" target="_blank" title="KIT Website">
+							<img src="img/logos/kit_logo.png" alt="KIT Logo" class="institution-logo" />
+						</a>
+					</div>
+					<div class="institution">
+						<a href="https://www.iosb.fraunhofer.de/" target="_blank" title="Fraunhofer IOSB Website">
+							<img src="img/logos/iosb_logo.png" alt="Fraunhofer IOSB Logo" class="institution-logo" />
+						</a>
+					</div>
 				</div>
-				<div class="spectrum-tabs">
-					<button class="spectrum-tab-button active" data-tab="image">Bild</button>
-					<button class="spectrum-tab-button" data-tab="spectra">Spektren</button>
-					<button class="spectrum-tab-button" data-tab="mean">Gemitteltes Spektrum</button>
+			</section>
+			</div>
+		</div>
+	</div> <!-- Spectrum Modal for material details -->
+	<div id="spectrum-modal" class="spectrum-modal">
+		<div class="spectrum-modal-content">
+			<div class="spectrum-modal-header">
+				<h2 class="spectrum-modal-title" id="spectrum-modal-title">Material</h2>
+				<button class="spectrum-modal-close">&times;</button>
+			</div>
+			<div class="spectrum-tabs">
+				<button class="spectrum-tab-button active" data-tab="image">Bild</button>
+				<button class="spectrum-tab-button" data-tab="spectra">Spektren</button>
+				<button class="spectrum-tab-button" data-tab="mean">Gemitteltes Spektrum</button>
+			</div>
+			<div class="spectrum-tab-content">
+				<div id="image-tab" class="spectrum-tab-pane active">
+					<img id="spectrum-modal-img" src="" alt="Material" />
 				</div>
-				<div class="spectrum-tab-content">
-					<div id="image-tab" class="spectrum-tab-pane active">
-						<img id="spectrum-modal-img" src="" alt="Material" />
-					</div>
-					<div id="spectra-tab" class="spectrum-tab-pane">
-						<div id="spectra-plot"></div>
-					</div>
-					<div id="mean-tab" class="spectrum-tab-pane">
-						<div id="mean-plot"></div>
-					</div>
+				<div id="spectra-tab" class="spectrum-tab-pane">
+					<div id="spectra-plot"></div>
+				</div>
+				<div id="mean-tab" class="spectrum-tab-pane">
+					<div id="mean-plot"></div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-		<script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
-		<script src="js/popup.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/materials_menu.js"></script>
-		<script src="js/dji_menu.js"></script>
-		<script src="js/map.js"></script>
-	</body>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+	<script src="js/info_modal.js"></script>
+	<script src="js/popup.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/materials_menu.js"></script>
+	<script src="js/dji_menu.js"></script>
+	<script src="js/map.js"></script>
+	<footer class="footer">
+		<div class="footer-content">
+			<a href="https://github.com/20korvin01/hyperspectral_benchmark" target="_blank" title="GitHub Repository">
+				<i class="fab fa-github"></i>
+			</a>
+			<p>&copy; 2025 Korvin Brecht</p>
+		</div>
+	</footer>
+</body>
+
 </html>
-

@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/materials_menu.css" />
 	<link rel="stylesheet" href="css/materials_popup.css" />
 	<link rel="stylesheet" href="css/dji_menu.css" />
+	<link rel="stylesheet" href="css/technology_modal.css" />
 </head>
 
 <body>
@@ -25,18 +26,46 @@
 		</div>
 	</div>
 	<div class="container">
-		<nav id="sidebar-nav" class="sidebar-nav">
-			<button id="sidebar-materials-btn" class="sidebar-button" title="Materialien">
-				<i class="bi bi-bricks"></i>
-			</button>
-			<button id="sidebar-dji-btn" class="sidebar-button" title="DJI Bilder">
-				<i class="bi bi-map-fill"></i>
-			</button>
-		</nav>
-
-		<div class="menus-container">
+	<nav id="sidebar-nav" class="sidebar-nav">
+		<button id="sidebar-materials-btn" class="sidebar-button" title="Materialien">
+			<i class="bi bi-bricks"></i>
+		</button>
+		<button id="sidebar-dji-btn" class="sidebar-button" title="DJI Bilder">
+			<i class="bi bi-map-fill"></i>
+		</button>
+		<button id="sidebar-technology-btn" class="sidebar-button sidebar-button-bottom" title="Technologien">
+			<i class="bi bi-info-square-fill"></i>
+		</button>
+	</nav>		<div class="menus-container">
 			<aside id="materials-menu" class="collapsed">
 				<h2 class="materials-menu-title">Materialien</h2>
+				
+				<!-- Materials Layer Checkbox -->
+				<div id="materials-markers-checkbox-container" class="materials-layer-checkbox-container">
+					<input type="checkbox" id="materials-markers-checkbox">
+					<label for="materials-markers-checkbox">Materialien</label>
+					<span class="materials-info-icon">
+						<i class="bi bi-question-circle"></i>
+					</span>
+					<div class="materials-info-tooltip">
+						<strong>Materialien - Spektralmessungen</strong>
+						<p>Markiert die Positionen der hyperspektralen Messungen verschiedener Materialien auf dem Forschungsgelände. Ein Klick auf ein Material in der Liste hebt den entsprechenden Marker hervor und zeigt weitere Informationen an.</p>
+					</div>
+				</div>
+
+				<!-- Spectrometer Track Checkbox -->
+				<div id="materials-spectrometer-checkbox-container" class="materials-layer-checkbox-container">
+					<input type="checkbox" id="materials-spectrometer-checkbox">
+					<label for="materials-spectrometer-checkbox">Spektrometer Track</label>
+					<span class="materials-info-icon materials-info-icon-secondary">
+						<i class="bi bi-question-circle"></i>
+					</span>
+					<div class="materials-info-tooltip">
+						<strong>Spektrometer Track</strong>
+						<p>Zeigt die (ungefähre) Trajektorie der Spektrometermessungen auf dem Gelände. Aufgenommen während der Messungen mit Hilfe der mobilen App 'Locus'. Dient der besseren Zuordnungen der einzelnen ASD-Messungen zu den entsprechenden Materialien auf dem Gelände.</p>
+					</div>
+				</div>
+
 				<div class="materials-filter-section">
 					<label for="materials-filter">Nach Material suchen</label>
 					<input type="search" id="materials-filter" placeholder="z.B. Asphalt, Granit..." />
@@ -55,6 +84,38 @@
 
 			<aside id="dji-menu" class="collapsed">
 				<h2 class="dji-menu-title">DJI Bilder</h2>
+
+				<!-- Orthophoto Checkbox -->
+				<div id="dji-orthophoto-checkbox-container" class="dji-layer-checkbox-container">
+					<input type="checkbox" id="dji-orthophoto-checkbox">
+					<label for="dji-orthophoto-checkbox">Orthophoto</label>
+					<span class="dji-info-icon">
+						<i class="bi bi-question-circle"></i>
+					</span>
+					<div class="dji-info-tooltip">
+						<strong>Orthophoto - DJI Luftbild</strong>
+						<p>Georeferenziertes RGB-Luftbild des Forschungsgeländes, aufgenommen mit einer DJI-Drohne. Das Orthophoto zeigt eine verzerrungsfreie, maßstabsgerechte Darstellung des Geländes aus der Vogelperspektive. Lediglich die Randbereiche des Orthophotos sind möglicherweise verzerrt, da dort nur wenige (Schräg/Oblique)Aufnahmen vorhanden sind.</p>
+					</div>
+				</div>
+
+				<!-- DJI Image Points Checkbox -->
+				<div id="dji-points-checkbox-container" class="dji-layer-checkbox-container">
+					<input type="checkbox" id="dji-points-checkbox">
+					<label for="dji-points-checkbox">Einzelbildaufnahmen</label>
+					<span class="dji-info-icon">
+						<i class="bi bi-question-circle"></i>
+					</span>
+					<div class="dji-info-tooltip">
+						<strong>DJI Einzelbildaufnahmen</strong>
+						<p>Zeigt die Positionen aller Kameraverschlüsse während der DJI-Drohnenflüge an. Jeder Punkt markiert den Ort, an dem ein Bild aufgenommen wurde. Die Punkte zeigen detaillierte Metadaten beim Anklicken.</p>
+						<strong style="display: block; margin-top: 8px;">Farbkodierung nach Zeit:</strong>
+						<div class="dji-info-gradient"></div>
+						<div class="dji-info-labels">
+							<span>Früh</span>
+							<span>Spät</span>
+						</div>
+					</div>
+				</div>
 			</aside>
 		</div>
 
@@ -67,6 +128,19 @@
 	<div id="fullscreen-modal" class="modal">
 		<span class="close">&times;</span>
 		<img class="modal-content" id="fullscreen-img" />
+	</div>
+
+	<!-- Technology Modal -->
+	<div id="technology-modal" class="info-modal">
+		<div class="info-modal-content">
+			<div class="info-modal-header">
+				<h2>Technologien</h2>
+				<button class="info-modal-close">&times;</button>
+			</div>
+			<div class="info-modal-body">
+				<!-- Inhalte zum Einfügen -->
+			</div>
+		</div>
 	</div>
 
 	<!-- Info Modal -->
@@ -146,7 +220,7 @@
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 	<script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
 	<script src="js/info_modal.js"></script>
-	<script src="js/popup.js"></script>
+	<script src="js/technology_modal.js"></script>
 	<script src="js/materials_popup.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/materials_menu.js"></script>

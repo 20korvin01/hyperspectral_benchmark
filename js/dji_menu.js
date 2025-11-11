@@ -1,38 +1,7 @@
 (function () {
-    // Create a checkbox to toggle orthophoto visibility
-    const orthophotoCheckboxContainer = document.createElement('div');
-    orthophotoCheckboxContainer.id = 'dji-orthophoto-checkbox-container';
-
-    const orthophotoCheckbox = document.createElement('input');
-    orthophotoCheckbox.type = 'checkbox';
-    orthophotoCheckbox.id = 'dji-orthophoto-checkbox';
-    orthophotoCheckbox.checked = false;
-
-    const orthophotoLabel = document.createElement('label');
-    orthophotoLabel.htmlFor = 'dji-orthophoto-checkbox';
-    orthophotoLabel.textContent = 'Orthophoto';
-
-    // Create info icon
-    const infoIcon = document.createElement('span');
-    infoIcon.className = 'dji-info-icon';
-    infoIcon.innerHTML = '<i class="bi bi-question-circle"></i>';
-
-    // Create info tooltip
-    const infoTooltip = document.createElement('div');
-    infoTooltip.className = 'dji-info-tooltip';
-    infoTooltip.innerHTML = `
-        <strong>Orthophoto - DJI Luftbild</strong>
-        <p>Georeferenziertes RGB-Luftbild des Forschungsgeländes, aufgenommen mit einer DJI-Drohne. Das Orthophoto zeigt eine verzerrungsfreie, maßstabsgerechte Darstellung des Geländes aus der Vogelperspektive. Lediglich die Randbereiche des Orthophotos sind möglicherweise verzerrt, da dort nur wenige (Schräg/Oblique)Aufnahmen vorhanden sind.</p>
-    `;
-
-    orthophotoCheckboxContainer.appendChild(orthophotoCheckbox);
-    orthophotoCheckboxContainer.appendChild(orthophotoLabel);
-    orthophotoCheckboxContainer.appendChild(infoIcon);
-    orthophotoCheckboxContainer.appendChild(infoTooltip);
-
-    // Get the dji menu element to insert the checkbox after the title
-    const djiMenu = document.getElementById('dji-menu');
-    djiMenu.appendChild(orthophotoCheckboxContainer);
+    // Get existing checkbox elements from HTML
+    const orthophotoCheckbox = document.getElementById('dji-orthophoto-checkbox');
+    const djiPointsCheckbox = document.getElementById('dji-points-checkbox');
 
     // Create the orthophoto layer using XYZ tiles
     const orthophotoLayer = L.tileLayer('img/ortho_tiles/{z}/{x}/{y}.png', {
@@ -46,53 +15,15 @@
     });
 
     // Add event listener to toggle orthophoto visibility
-    orthophotoCheckbox.addEventListener('change', () => {
-        if (orthophotoCheckbox.checked) {
-            orthophotoLayer.addTo(map);
-        } else {
-            map.removeLayer(orthophotoLayer);
-        }
-    });
-
-    // Create a checkbox to toggle DJI image metadata points
-    const djiPointsCheckboxContainer = document.createElement('div');
-    djiPointsCheckboxContainer.id = 'dji-points-checkbox-container';
-
-    const djiPointsCheckbox = document.createElement('input');
-    djiPointsCheckbox.type = 'checkbox';
-    djiPointsCheckbox.id = 'dji-points-checkbox';
-    djiPointsCheckbox.checked = false;
-
-    const djiPointsLabel = document.createElement('label');
-    djiPointsLabel.htmlFor = 'dji-points-checkbox';
-    djiPointsLabel.textContent = 'DJI Bildpositionen';
-
-    // Create info icon
-    const pointsInfoIcon = document.createElement('span');
-    pointsInfoIcon.className = 'dji-info-icon';
-    pointsInfoIcon.innerHTML = '<i class="bi bi-question-circle"></i>';
-
-    // Create info tooltip
-    const pointsInfoTooltip = document.createElement('div');
-    pointsInfoTooltip.className = 'dji-info-tooltip';
-    pointsInfoTooltip.innerHTML = `
-        <strong>DJI Bildpositionen</strong>
-        <p>Zeigt die Positionen aller Kameraverschlüsse während der DJI-Drohnenflüge an. Jeder Punkt markiert den Ort, an dem ein Bild aufgenommen wurde. Die Punkte zeigen detaillierte Metadaten beim Anklicken.</p>
-        <strong style="display: block; margin-top: 8px;">Farbkodierung nach Zeit:</strong>
-        <div class="dji-info-gradient"></div>
-        <div class="dji-info-labels">
-            <span>Früh</span>
-            <span>Spät</span>
-        </div>
-    `;
-
-    djiPointsCheckboxContainer.appendChild(djiPointsCheckbox);
-    djiPointsCheckboxContainer.appendChild(djiPointsLabel);
-    djiPointsCheckboxContainer.appendChild(pointsInfoIcon);
-    djiPointsCheckboxContainer.appendChild(pointsInfoTooltip);
-
-    // Get the dji menu element to insert the checkbox
-    djiMenu.appendChild(djiPointsCheckboxContainer);
+    if (orthophotoCheckbox) {
+        orthophotoCheckbox.addEventListener('change', () => {
+            if (orthophotoCheckbox.checked) {
+                orthophotoLayer.addTo(map);
+            } else {
+                map.removeLayer(orthophotoLayer);
+            }
+        });
+    }
 
     // Create a layer group for DJI image metadata points
     let djiPointsLayer = L.layerGroup();
@@ -310,13 +241,15 @@
     }
 
     // Add event listener to toggle DJI points visibility
-    djiPointsCheckbox.addEventListener('change', () => {
-        if (djiPointsCheckbox.checked) {
-            djiPointsLayer.addTo(map);
-        } else {
-            map.removeLayer(djiPointsLayer);
-        }
-    });
+    if (djiPointsCheckbox) {
+        djiPointsCheckbox.addEventListener('change', () => {
+            if (djiPointsCheckbox.checked) {
+                djiPointsLayer.addTo(map);
+            } else {
+                map.removeLayer(djiPointsLayer);
+            }
+        });
+    }
 
     // Ensure the menu elements are accessible even when collapsed
     const djiMenuEl = document.getElementById('dji-menu');

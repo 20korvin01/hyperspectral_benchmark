@@ -3,94 +3,33 @@
     const filterEl = document.getElementById('materials-filter');
     let currentSort = 'name-asc';
 
-    // Add a checkbox to toggle material markers visibility
-    const markersCheckboxContainer = document.createElement('div');
-    markersCheckboxContainer.id = 'materials-markers-checkbox-container';
-
-    const markersCheckbox = document.createElement('input');
-    markersCheckbox.type = 'checkbox';
-    markersCheckbox.id = 'materials-markers-checkbox';
-    markersCheckbox.checked = false;
-
-    const markersLabel = document.createElement('label');
-    markersLabel.htmlFor = 'materials-markers-checkbox';
-    markersLabel.textContent = 'Materialien';
-
-    // Create info icon
-    const infoIcon = document.createElement('span');
-    infoIcon.className = 'materials-info-icon';
-    infoIcon.innerHTML = '<i class="bi bi-question-circle"></i>';
-
-    // Create info tooltip
-    const infoTooltip = document.createElement('div');
-    infoTooltip.className = 'materials-info-tooltip';
-    infoTooltip.innerHTML = `
-        <strong>Materialien - Spektralmessungen</strong>
-        <p>Markiert die Positionen der hyperspektralen Messungen verschiedener Materialien auf dem Forschungsgelände. Ein Klick auf ein Material in der Liste hebt den entsprechenden Marker hervor und zeigt weitere Informationen an.</p>
-    `;
-
-    markersCheckboxContainer.appendChild(markersCheckbox);
-    markersCheckboxContainer.appendChild(markersLabel);
-    markersCheckboxContainer.appendChild(infoIcon);
-    markersCheckboxContainer.appendChild(infoTooltip);
-
-    // Get the materials menu element to insert the checkbox after the title
-    const materialsMenu = document.getElementById('materials-menu');
-    const filterSection = document.querySelector('.materials-filter-section');
-    materialsMenu.insertBefore(markersCheckboxContainer, filterSection);
+    // Get existing checkbox elements from HTML
+    const markersCheckbox = document.getElementById('materials-markers-checkbox');
+    const spectrometerCheckbox = document.getElementById('materials-spectrometer-checkbox');
 
     // Add event listener to toggle markers visibility
-    markersCheckbox.addEventListener('change', () => {
-        if (markersCheckbox.checked) {
-            materialsLayer.addTo(map);
-        } else {
-            map.removeLayer(materialsLayer);
-        }
-    });
-
-    // Add a checkbox to toggle spectrometer track visibility
-    const spectrometerCheckboxContainer = document.createElement('div');
-    spectrometerCheckboxContainer.id = 'materials-spectrometer-checkbox-container';
-    spectrometerCheckboxContainer.className = 'materials-layer-checkbox-container';
-
-    const spectrometerCheckbox = document.createElement('input');
-    spectrometerCheckbox.type = 'checkbox';
-    spectrometerCheckbox.id = 'materials-spectrometer-checkbox';
-    spectrometerCheckbox.checked = false;
-
-    const spectrometerLabel = document.createElement('label');
-    spectrometerLabel.htmlFor = 'materials-spectrometer-checkbox';
-    spectrometerLabel.textContent = 'Spektrometer Track';
-
-    // Create info icon
-    const spectrometerInfoIcon = document.createElement('span');
-    spectrometerInfoIcon.className = 'materials-info-icon materials-info-icon-secondary';
-    spectrometerInfoIcon.innerHTML = '<i class="bi bi-question-circle"></i>';
-
-    // Create info tooltip
-    const spectrometerInfoTooltip = document.createElement('div');
-    spectrometerInfoTooltip.className = 'materials-info-tooltip';
-    spectrometerInfoTooltip.innerHTML = `
-        <strong>Spektrometer Track</strong>
-        <p>Zeigt die (ungefähre) Trajektorie der Spektrometermessungen auf dem Gelände. Aufgenommen während der Messungen mit Hilfe der mobilen App 'Locus'. Dient der besseren Zuordnungen der einzelnen ASD-Messungen zu den entsprechenden Materialien auf dem Gelände.</p>
-    `;
-
-    spectrometerCheckboxContainer.appendChild(spectrometerCheckbox);
-    spectrometerCheckboxContainer.appendChild(spectrometerLabel);
-    spectrometerCheckboxContainer.appendChild(spectrometerInfoIcon);
-    spectrometerCheckboxContainer.appendChild(spectrometerInfoTooltip);
-    materialsMenu.insertBefore(spectrometerCheckboxContainer, filterSection);
+    if (markersCheckbox) {
+        markersCheckbox.addEventListener('change', () => {
+            if (markersCheckbox.checked) {
+                materialsLayer.addTo(map);
+            } else {
+                map.removeLayer(materialsLayer);
+            }
+        });
+    }
 
     // Add event listener to toggle spectrometer track visibility
-    spectrometerCheckbox.addEventListener('change', () => {
-        if (window.spectrometerTrackLayer) {
-            if (spectrometerCheckbox.checked) {
-                window.spectrometerTrackLayer.addTo(map);
-            } else {
-                map.removeLayer(window.spectrometerTrackLayer);
+    if (spectrometerCheckbox) {
+        spectrometerCheckbox.addEventListener('change', () => {
+            if (window.spectrometerTrackLayer) {
+                if (spectrometerCheckbox.checked) {
+                    window.spectrometerTrackLayer.addTo(map);
+                } else {
+                    map.removeLayer(window.spectrometerTrackLayer);
+                }
             }
-        }
-    });
+        });
+    }
 
     // Listen for spectrometer track layer to be loaded
     window.addEventListener('spectrometerTrackLoaded', () => {

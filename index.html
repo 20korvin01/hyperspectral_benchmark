@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/materials_menu.css" />
 	<link rel="stylesheet" href="css/materials_popup.css" />
 	<link rel="stylesheet" href="css/dji_menu.css" />
+	<link rel="stylesheet" href="css/modals.css" />
 	<link rel="stylesheet" href="css/technology_modal.css" />
 </head>
 
@@ -26,20 +27,21 @@
 		</div>
 	</div>
 	<div class="container">
-	<nav id="sidebar-nav" class="sidebar-nav">
-		<button id="sidebar-materials-btn" class="sidebar-button" title="Materialien">
-			<i class="bi bi-bricks"></i>
-		</button>
-		<button id="sidebar-dji-btn" class="sidebar-button" title="DJI Bilder">
-			<i class="bi bi-map-fill"></i>
-		</button>
-		<button id="sidebar-technology-btn" class="sidebar-button sidebar-button-bottom" title="Technologien">
-			<i class="bi bi-info-square-fill"></i>
-		</button>
-	</nav>		<div class="menus-container">
+		<nav id="sidebar-nav" class="sidebar-nav">
+			<button id="sidebar-materials-btn" class="sidebar-button" title="Materialien">
+				<i class="bi bi-bricks"></i>
+			</button>
+			<button id="sidebar-dji-btn" class="sidebar-button" title="DJI Bilder">
+				<i class="bi bi-map-fill"></i>
+			</button>
+			<button id="sidebar-technology-btn" class="sidebar-button sidebar-button-bottom" title="Technologien">
+				<i class="bi bi-info-square-fill"></i>
+			</button>
+		</nav>
+		<div class="menus-container">
 			<aside id="materials-menu" class="collapsed">
 				<h2 class="materials-menu-title">Materialien</h2>
-				
+
 				<!-- Materials Layer Checkbox -->
 				<div id="materials-markers-checkbox-container" class="materials-layer-checkbox-container">
 					<input type="checkbox" id="materials-markers-checkbox">
@@ -49,7 +51,9 @@
 					</span>
 					<div class="materials-info-tooltip">
 						<strong>Materialien - Spektralmessungen</strong>
-						<p>Markiert die Positionen der hyperspektralen Messungen verschiedener Materialien auf dem Forschungsgelände. Ein Klick auf ein Material in der Liste hebt den entsprechenden Marker hervor und zeigt weitere Informationen an.</p>
+						<p>Markiert die Positionen der hyperspektralen Messungen verschiedener Materialien auf dem
+							Forschungsgelände. Ein Klick auf ein Material in der Liste hebt den entsprechenden Marker
+							hervor und zeigt weitere Informationen an.</p>
 					</div>
 				</div>
 
@@ -62,7 +66,9 @@
 					</span>
 					<div class="materials-info-tooltip">
 						<strong>Spektrometer Track</strong>
-						<p>Zeigt die (ungefähre) Trajektorie der Spektrometermessungen auf dem Gelände. Aufgenommen während der Messungen mit Hilfe der mobilen App 'Locus'. Dient der besseren Zuordnungen der einzelnen ASD-Messungen zu den entsprechenden Materialien auf dem Gelände.</p>
+						<p>Zeigt die (ungefähre) Trajektorie der Spektrometermessungen auf dem Gelände. Aufgenommen
+							während der Messungen mit Hilfe der mobilen App 'Locus'. Dient der besseren Zuordnungen der
+							einzelnen ASD-Messungen zu den entsprechenden Materialien auf dem Gelände.</p>
 					</div>
 				</div>
 
@@ -94,7 +100,10 @@
 					</span>
 					<div class="dji-info-tooltip">
 						<strong>Orthophoto - DJI Luftbild</strong>
-						<p>Georeferenziertes RGB-Luftbild des Forschungsgeländes, aufgenommen mit einer DJI-Drohne. Das Orthophoto zeigt eine verzerrungsfreie, maßstabsgerechte Darstellung des Geländes aus der Vogelperspektive. Lediglich die Randbereiche des Orthophotos sind möglicherweise verzerrt, da dort nur wenige (Schräg/Oblique)Aufnahmen vorhanden sind.</p>
+						<p>Georeferenziertes RGB-Luftbild des Forschungsgeländes, aufgenommen mit einer DJI-Drohne. Das
+							Orthophoto zeigt eine verzerrungsfreie, maßstabsgerechte Darstellung des Geländes aus der
+							Vogelperspektive. Lediglich die Randbereiche des Orthophotos sind möglicherweise verzerrt,
+							da dort nur wenige (Schräg/Oblique)Aufnahmen vorhanden sind.</p>
 					</div>
 				</div>
 
@@ -107,7 +116,9 @@
 					</span>
 					<div class="dji-info-tooltip">
 						<strong>DJI Einzelbildaufnahmen</strong>
-						<p>Zeigt die Positionen aller Kameraverschlüsse während der DJI-Drohnenflüge an. Jeder Punkt markiert den Ort, an dem ein Bild aufgenommen wurde. Die Punkte zeigen detaillierte Metadaten beim Anklicken.</p>
+						<p>Zeigt die Positionen aller Kameraverschlüsse während der DJI-Drohnenflüge an. Jeder Punkt
+							markiert den Ort, an dem ein Bild aufgenommen wurde. Die Punkte zeigen detaillierte
+							Metadaten beim Anklicken.</p>
 						<strong style="display: block; margin-top: 8px;">Farbkodierung nach Zeit:</strong>
 						<div class="dji-info-gradient"></div>
 						<div class="dji-info-labels">
@@ -155,7 +166,8 @@
 					<h3>Hyperspectral Benchmark - Visualization</h3>
 					<p>Diese Website dient zur Visualisierung und Strukturierung des Projektes zur Entwicklung eines
 						hyperspektralen und multi-temporalen Benchmarks. Sie entsteht im Rahmen der Masterarbeit von
-						B.Sc. Korvin Brecht (KIT) in Zusammenarbeit mit dem Fraunhofer Institut für Optronik, Systemtechnik
+						B.Sc. Korvin Brecht (KIT) in Zusammenarbeit mit dem Fraunhofer Institut für Optronik,
+						Systemtechnik
 						und Bildaauswertung (IOSB).</p>
 				</section>
 				<section>
@@ -166,36 +178,42 @@
 						<li><strong>DJI Bilder:</strong> Visualisierung der RGB-Luftbildaufnahmen des Geländes</li>
 					</ul>
 				</section>
-			<section>
-				<h3>Kontakt</h3>
-				<p><strong>Autor:</strong> Korvin Brecht</p>
-				<p><strong>Email:</strong> <a href="mailto:korvin.brecht@student.kit.edu">korvin.brecht@student.kit.edu</a></p>
-				<p>Weitere Informationen und Source Code: <a href="https://github.com/20korvin01/hyperspectral_benchmark" target="_blank">GitHub Repository</a>.</p>
-			</section>
-			<section>
-				<h3>Institutionen</h3>
-				<div class="institutions-container">
-					<div class="institution">
-						<a href="https://www.kit.edu/" target="_blank" title="KIT Website">
-							<img src="img/logos/kit_logo.png" alt="KIT Logo" class="institution-logo" />
-						</a>
+				<section>
+					<h3>Kontakt</h3>
+					<p><strong>Autor:</strong> Korvin Brecht</p>
+					<p><strong>Email:</strong> <a
+							href="mailto:korvin.brecht@student.kit.edu">korvin.brecht@student.kit.edu</a></p>
+					<p>Weitere Informationen und Source Code: <a
+							href="https://github.com/20korvin01/hyperspectral_benchmark" target="_blank">GitHub
+							Repository</a>.</p>
+				</section>
+				<section>
+					<h3>Institutionen</h3>
+					<div class="institutions-container">
+						<div class="institution">
+							<a href="https://www.kit.edu/" target="_blank" title="KIT Website">
+								<img src="img/logos/kit_logo.png" alt="KIT Logo" class="institution-logo" />
+							</a>
+						</div>
+						<div class="institution">
+							<a href="https://www.iosb.fraunhofer.de/" target="_blank" title="Fraunhofer IOSB Website">
+								<img src="img/logos/iosb_logo.png" alt="Fraunhofer IOSB Logo"
+									class="institution-logo" />
+							</a>
+						</div>
 					</div>
-					<div class="institution">
-						<a href="https://www.iosb.fraunhofer.de/" target="_blank" title="Fraunhofer IOSB Website">
-							<img src="img/logos/iosb_logo.png" alt="Fraunhofer IOSB Logo" class="institution-logo" />
-						</a>
-					</div>
-				</div>
-			</section>
+				</section>
 			</div>
-	</div>
+		</div>
 	</div> <!-- Spectrum Modal for material details -->
 	<div id="spectrum-modal" class="spectrum-modal">
 		<div class="spectrum-modal-content">
 			<div class="spectrum-modal-header">
-				<button class="spectrum-nav-prev spectrum-nav-button" onclick="navigateToPreviousMaterial()" title="Vorheriges Material"><i class="bi bi-arrow-left-square-fill"></i></button>
+				<button class="spectrum-nav-prev spectrum-nav-button" onclick="navigateToPreviousMaterial()"
+					title="Vorheriges Material"><i class="bi bi-arrow-left-square-fill"></i></button>
 				<h2 class="spectrum-modal-title" id="spectrum-modal-title">Material</h2>
-				<button class="spectrum-nav-next spectrum-nav-button" onclick="navigateToNextMaterial()" title="Nächstes Material"><i class="bi bi-arrow-right-square-fill"></i></button>
+				<button class="spectrum-nav-next spectrum-nav-button" onclick="navigateToNextMaterial()"
+					title="Nächstes Material"><i class="bi bi-arrow-right-square-fill"></i></button>
 				<button class="spectrum-modal-close">&times;</button>
 			</div>
 			<div class="spectrum-tabs">

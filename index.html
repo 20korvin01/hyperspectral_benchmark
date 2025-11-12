@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/materials_menu.css" />
 	<link rel="stylesheet" href="css/materials_popup.css" />
 	<link rel="stylesheet" href="css/dji_menu.css" />
+	<link rel="stylesheet" href="css/hyspex_menu.css" />
 	<link rel="stylesheet" href="css/modals.css" />
 	<link rel="stylesheet" href="css/technology_modal.css" />
 </head>
@@ -31,16 +32,22 @@
 			<button id="sidebar-materials-btn" class="sidebar-button" title="Materialien">
 				<i class="bi bi-bricks"></i>
 			</button>
-			<button id="sidebar-dji-btn" class="sidebar-button" title="DJI Bilder">
-				<i class="bi bi-map-fill"></i>
+			<button id="sidebar-dji-btn" class="sidebar-button" title="DJI-Flug">
+				<i class="bi bi-camera"></i>
+			</button>
+			<button id="sidebar-hyspex-btn" class="sidebar-button" title="Hyperspektralflug">
+				<i class="bi bi-soundwave"></i>
 			</button>
 			<button id="sidebar-technology-btn" class="sidebar-button sidebar-button-bottom" title="Technologien">
-				<i class="bi bi-info-square-fill"></i>
+				<i class="bi bi-tools"></i>
 			</button>
 		</nav>
 		<div class="menus-container">
 			<aside id="materials-menu" class="collapsed">
-				<h2 class="materials-menu-title">Materialien</h2>
+				<div class="menu-header">
+					<h2 class="materials-menu-title">Materialien</h2>
+					<button class="menu-close-btn" id="materials-menu-close" title="Menü schließen">&times;</button>
+				</div>
 
 				<!-- Materials Layer Checkbox -->
 				<div id="materials-markers-checkbox-container" class="materials-layer-checkbox-container">
@@ -89,7 +96,10 @@
 			</aside>
 
 			<aside id="dji-menu" class="collapsed">
-				<h2 class="dji-menu-title">DJI Bilder</h2>
+				<div class="menu-header">
+					<h2 class="dji-menu-title">DJI-Flug-Daten</h2>
+					<button class="menu-close-btn" id="dji-menu-close" title="Menü schließen">&times;</button>
+				</div>
 
 				<!-- Orthophoto Checkbox -->
 				<div id="dji-orthophoto-checkbox-container" class="dji-layer-checkbox-container">
@@ -128,6 +138,26 @@
 					</div>
 				</div>
 			</aside>
+
+			<aside id="hyspex-menu" class="collapsed">
+				<div class="menu-header">
+					<h2 class="hyspex-menu-title">Hyperspektralflug-Daten</h2>
+					<button class="menu-close-btn" id="hyspex-menu-close" title="Menü schließen">&times;</button>
+				</div>
+
+				<!-- HySpex Trajectory Checkbox -->
+				<div id="hyspex-trajectory-checkbox-container" class="hyspex-layer-checkbox-container">
+					<input type="checkbox" id="hyspex-trajectory-checkbox">
+					<label for="hyspex-trajectory-checkbox">Flugbahn</label>
+					<span class="hyspex-info-icon">
+						<i class="bi bi-question-circle"></i>
+					</span>
+					<div class="hyspex-info-tooltip">
+						<strong>HySpex Flugbahn</strong>
+						<p>Zeigt die Flugbahn der HySpex-Missionen auf dem Forschungsgelände. Es wurde nur jeder 100. Punkt dargestellt, um die Datenmenge zu reduzieren.</p>
+					</div>
+				</div>
+			</aside>
 		</div>
 
 		<main id="map-container">
@@ -145,7 +175,7 @@
 	<div id="technology-modal" class="info-modal">
 		<div class="info-modal-content">
 			<div class="info-modal-header">
-				<h2>Technologien</h2>
+				<h2>Eingesetzte Technologien</h2>
 				<button class="info-modal-close">&times;</button>
 			</div>
 			<div class="info-modal-body">
@@ -243,6 +273,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/materials_menu.js"></script>
 	<script src="js/dji_menu.js"></script>
+	<script src="js/hyspex_menu.js"></script>
 	<script src="js/map.js"></script>
 	<footer class="footer">
 		<div class="footer-content">

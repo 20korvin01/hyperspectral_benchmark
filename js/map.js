@@ -39,9 +39,9 @@ const materialsLayer = L.layerGroup();
 satellite.addTo(map);
 
 // Log clicked coordinates to console
-map.on('click', function(e) {
-    console.log('Angeklickte Koordinate:', e.latlng.lat, e.latlng.lng);
-});
+// map.on('click', function(e) {
+//     console.log('Angeklickte Koordinate:', e.latlng.lat, e.latlng.lng);
+// });
 
 // Define base maps
 const baseMaps = {
@@ -191,8 +191,32 @@ map.addControl(new resetControl());
 document.addEventListener('DOMContentLoaded', () => {
     const djiBtn = document.getElementById('sidebar-dji-btn');
     const materialsBtn = document.getElementById('sidebar-materials-btn');
+    const hyspexBtn = document.getElementById('sidebar-hyspex-btn');
     const djiMenu = document.getElementById('dji-menu');
     const materialsMenu = document.getElementById('materials-menu');
+    const hyspexMenu = document.getElementById('hyspex-menu');
+    
+    // Close buttons
+    const materialsCloseBtn = document.getElementById('materials-menu-close');
+    const djiCloseBtn = document.getElementById('dji-menu-close');
+    const hyspexCloseBtn = document.getElementById('hyspex-menu-close');
+
+    // Helper function to close all menus
+    function closeAllMenus() {
+        djiMenu.classList.add('collapsed');
+        materialsMenu.classList.add('collapsed');
+        hyspexMenu.classList.add('collapsed');
+        djiBtn.classList.remove('active');
+        materialsBtn.classList.remove('active');
+        hyspexBtn.classList.remove('active');
+    }
+
+    // Helper function to trigger map resize
+    function resizeMap() {
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 310);
+    }
 
     djiBtn.addEventListener('click', () => {
         const isDjiOpen = !djiMenu.classList.contains('collapsed');
@@ -202,17 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
             djiMenu.classList.add('collapsed');
             djiBtn.classList.remove('active');
         } else {
-            // Open DJI menu and close materials menu
+            // Close all menus first
+            closeAllMenus();
+            // Open DJI menu
             djiMenu.classList.remove('collapsed');
-            materialsMenu.classList.add('collapsed');
             djiBtn.classList.add('active');
-            materialsBtn.classList.remove('active');
         }
         
-        // Trigger map resize to recalculate layout
-        setTimeout(() => {
-            map.invalidateSize();
-        }, 310);
+        resizeMap();
     });
 
     materialsBtn.addEventListener('click', () => {
@@ -223,149 +244,56 @@ document.addEventListener('DOMContentLoaded', () => {
             materialsMenu.classList.add('collapsed');
             materialsBtn.classList.remove('active');
         } else {
-            // Open materials menu and close DJI menu
+            // Close all menus first
+            closeAllMenus();
+            // Open materials menu
             materialsMenu.classList.remove('collapsed');
-            djiMenu.classList.add('collapsed');
             materialsBtn.classList.add('active');
-            djiBtn.classList.remove('active');
         }
         
-        // Trigger map resize to recalculate layout
-        setTimeout(() => {
-            map.invalidateSize();
-        }, 310);
+        resizeMap();
     });
-});
 
-// Function to update markers based on visible materials menu items
-function updateMarkers() {
-    materialsLayer.clearLayers(); // Clear existing markers
-
-    const visibleItems = Array.from(document.querySelectorAll('#materials-list li'))
-        .filter(item => item.style.display !== 'none');
-
-    visibleItems.forEach(item => {
-        const materialName = item.getAttribute('data-name');
-        const feature = materialsData.features.find(f => f.properties.material === materialName);
-
-        if (feature && feature.geometry && feature.geometry.coordinates) {
-            const [lng, lat] = feature.geometry.coordinates; // GeoJSON uses [longitude, latitude]
-
-            // Add a blue circle marker for each visible material
-            const marker = L.circleMarker([lat, lng], {
-                color: 'blue',
-                radius: 5
-            }).addTo(materialsLayer).bindPopup(createPopup(feature.properties));
-
-            // Add a tooltip to show the material name on hover
-            marker.bindTooltip(feature.properties.material, {
-                permanent: false,
-                direction: 'top'
-            });
-
-            // Change color on hover
-            marker.on('mouseover', () => {
-                marker.setStyle({
-                    color: 'orange',
-                    radius: 7
-                });
-            });
-
-            marker.on('mouseout', () => {
-                // Only reset if not in a popup
-                if (!marker.isPopupOpen()) {
-                    marker.setStyle({
-                        color: 'blue',
-                        radius: 5
-                    });
-                }
-            });
-
-            // Highlight marker on click
-            marker.on('click', () => {
-                marker.setStyle({
-                    color: 'red',
-                    radius: 8
-                });
-            });
-
-            // Reset marker style when popup closes
-            marker.on('popupclose', () => {
-                marker.setStyle({
-                    color: 'blue',
-                    radius: 5
-                });
-            });
-        }
-    });
-}
-
-let materialsData = [];
-
-// Wait for materials_menu.js to load and populate the list, then initialize map markers
-document.addEventListener('DOMContentLoaded', () => {
-    const listEl = document.getElementById('materials-list');
-    
-    // Small delay to ensure materials_menu.js has finished loading
-    setTimeout(() => {
-        // Get materials data from materials menu items (already loaded by materials_menu.js)
-        const materialsItems = listEl.querySelectorAll('li');
+    hyspexBtn.addEventListener('click', () => {
+        const isHyspexOpen = !hyspexMenu.classList.contains('collapsed');
         
-        if (materialsItems.length > 0) {
-            // Fetch materials GeoJSON data once more to populate materialsData for the map
-            fetch('data/geojson/materials_img_metadata.geojson')
-                .then(response => response.json())
-                .then(data => {
-                    materialsData = data;
-                    updateMarkers(); // Initialize markers after materials menu is ready
-                })
-                .catch(error => console.error('Error loading materials GeoJSON data:', error));
+        if (isHyspexOpen) {
+            // Close HySpex menu
+            hyspexMenu.classList.add('collapsed');
+            hyspexBtn.classList.remove('active');
         } else {
-            // If materials menu items are empty, try again after a delay
-            setTimeout(() => {
-                fetch('data/geojson/materials_img_metadata.geojson')
-                    .then(response => response.json())
-                    .then(data => {
-                        materialsData = data;
-                        updateMarkers();
-                    })
-                    .catch(error => console.error('Error loading materials GeoJSON data:', error));
-            }, 500);
+            // Close all menus first
+            closeAllMenus();
+            // Open HySpex menu
+            hyspexMenu.classList.remove('collapsed');
+            hyspexBtn.classList.add('active');
         }
-    }, 100);
-});
-
-// Update markers whenever the materials menu filter changes
-const filterEl = document.getElementById('materials-filter');
-filterEl.addEventListener('input', updateMarkers);
-
-// Initialize layer variables for GeoJSON data
-let spectrometerTrackLayer = null;
-
-// Remove GPX integration and add GeoJSON as a line
-fetch('data/geojson/spectrometer_traj.geojson')
-    .then(response => response.json())
-    .then(geojsonData => {
-        spectrometerTrackLayer = L.geoJSON(geojsonData, {
-            style: {
-                color: 'green',
-                weight: 4,
-                opacity: 0.7
-            },
-            onEachFeature: function(feature, layer) {
-                // Add tooltip for the track
-                const properties = feature.properties;
-                let tooltipContent = 'Spectrometermessungen Track';
-                if (properties && Object.keys(properties).length > 0) {
-                    tooltipContent = Object.entries(properties)
-                        .map(([key, value]) => `${key}: ${value}`)
-                        .join('<br>');
-                }
-                layer.bindTooltip(tooltipContent);
-            }
+        
+        resizeMap();
+    });
+    
+    // Close button event listeners
+    if (materialsCloseBtn) {
+        materialsCloseBtn.addEventListener('click', () => {
+            materialsMenu.classList.add('collapsed');
+            materialsBtn.classList.remove('active');
+            resizeMap();
         });
-
-        // Dispatch custom event to notify materials_menu.js
-        window.dispatchEvent(new Event('spectrometerTrackLoaded'));
-    })
-    .catch(error => console.error('Error loading GeoJSON data:', error));
+    }
+    
+    if (djiCloseBtn) {
+        djiCloseBtn.addEventListener('click', () => {
+            djiMenu.classList.add('collapsed');
+            djiBtn.classList.remove('active');
+            resizeMap();
+        });
+    }
+    
+    if (hyspexCloseBtn) {
+        hyspexCloseBtn.addEventListener('click', () => {
+            hyspexMenu.classList.add('collapsed');
+            hyspexBtn.classList.remove('active');
+            resizeMap();
+        });
+    }
+});

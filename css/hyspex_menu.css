@@ -1,0 +1,111 @@
+/* HySpex Menu Container */
+#hyspex-menu {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    height: 100%;
+    width: 320px;
+    transition: width 0.3s ease, margin-left 0.3s ease;
+    border-right: 1px solid #e6e6e6;
+    order: 1;
+    overflow: hidden;
+}
+
+#hyspex-menu.collapsed {
+    width: 0;
+    border-right: none;
+}
+
+/* HySpex Menu Title */
+.hyspex-menu-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    flex: 1;
+}
+
+/* HySpex Trajectory Checkbox Container */
+#hyspex-trajectory-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff8f0;
+    border: 1px solid #ffb366;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 8px 12px 6px 12px;
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
+}
+
+#hyspex-trajectory-checkbox {
+    margin: 0;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #ff9900;
+    flex-shrink: 0;
+}
+
+#hyspex-trajectory-checkbox-container label {
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    flex: 1;
+}
+
+/* HySpex Info Icon */
+.hyspex-info-icon {
+    color: #ff9800;
+    font-size: 16px;
+    cursor: help;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+}
+
+.hyspex-info-icon:hover {
+    color: #e68900;
+}
+
+/* HySpex Info Tooltip */
+.hyspex-info-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(100, 100, 100, 0.9);
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+    width: 250px;
+    z-index: 1000;
+    margin-top: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hyspex-info-tooltip strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.hyspex-info-tooltip p {
+    margin: 0;
+    text-align: left;
+}
+
+.hyspex-info-icon:hover + .hyspex-info-tooltip {
+    display: block;
+}
+
+#hyspex-trajectory-checkbox-container {
+    position: relative;
+}

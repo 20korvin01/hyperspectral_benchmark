@@ -7,6 +7,74 @@
     const markersCheckbox = document.getElementById('materials-markers-checkbox');
     const spectrometerCheckbox = document.getElementById('materials-spectrometer-checkbox');
 
+    // Function to update markers based on visible materials menu items
+    function updateMarkers() {
+        materialsLayer.clearLayers(); // Clear existing markers
+
+        // Use the globally available materialsData
+        if (!window.materialsData || !window.materialsData.features) {
+            return; // Data not yet loaded
+        }
+
+        const visibleItems = Array.from(listEl.querySelectorAll('li'))
+            .filter(item => item.style.display !== 'none');
+
+        visibleItems.forEach(item => {
+            const materialName = item.getAttribute('data-name');
+            const feature = window.materialsData.features.find(f => f.properties.material === materialName);
+
+            if (feature && feature.geometry && feature.geometry.coordinates) {
+                const [lng, lat] = feature.geometry.coordinates; // GeoJSON uses [longitude, latitude]
+
+                // Add a blue circle marker for each visible material
+                const marker = L.circleMarker([lat, lng], {
+                    color: 'blue',
+                    radius: 5
+                }).addTo(materialsLayer).bindPopup(createPopup(feature.properties));
+
+                // Add a tooltip to show the material name on hover
+                marker.bindTooltip(feature.properties.material, {
+                    permanent: false,
+                    direction: 'top'
+                });
+
+                // Change color on hover
+                marker.on('mouseover', () => {
+                    marker.setStyle({
+                        color: 'orange',
+                        radius: 7
+                    });
+                });
+
+                marker.on('mouseout', () => {
+                    // Only reset if not in a popup
+                    if (!marker.isPopupOpen()) {
+                        marker.setStyle({
+                            color: 'blue',
+                            radius: 5
+                        });
+                    }
+                });
+
+                // Highlight marker on click
+                marker.on('click', () => {
+                    marker.setStyle({
+                        color: 'red',
+                        radius: 8
+                    });
+                });
+
+                // Reset marker style when popup closes
+                marker.on('popupclose', () => {
+                    marker.setStyle({
+                        color: 'blue',
+                        radius: 5
+                    });
+                });
+            }
+        });
+    }
+
     // Add event listener to toggle markers visibility
     if (markersCheckbox) {
         markersCheckbox.addEventListener('change', () => {
@@ -35,6 +103,35 @@
     window.addEventListener('spectrometerTrackLoaded', () => {
         window.spectrometerTrackLayer = window.spectrometerTrackLayer || spectrometerTrackLayer;
     });
+
+    // Load Spectrometer Track GeoJSON
+    let spectrometerTrackLayer = null;
+    fetch('data/geojson/spectrometer_traj.geojson')
+        .then(response => response.json())
+        .then(geojsonData => {
+            spectrometerTrackLayer = L.geoJSON(geojsonData, {
+                style: {
+                    color: 'green',
+                    weight: 4,
+                    opacity: 0.7
+                },
+                onEachFeature: function(feature, layer) {
+                    // Add tooltip for the track
+                    const properties = feature.properties;
+                    let tooltipContent = 'Spectrometermessungen Track';
+                    if (properties && Object.keys(properties).length > 0) {
+                        tooltipContent = Object.entries(properties)
+                            .map(([key, value]) => `${key}: ${value}`)
+                            .join('<br>');
+                    }
+                    layer.bindTooltip(tooltipContent);
+                }
+            });
+
+            // Dispatch custom event to notify that track is loaded
+            window.dispatchEvent(new Event('spectrometerTrackLoaded'));
+        })
+        .catch(error => console.error('Error loading spectrometer track GeoJSON data:', error));
 
     // Ensure the menu elements are accessible even when collapsed
     const materialsMenuEl = document.getElementById('materials-menu');
@@ -71,6 +168,7 @@
             }
         });
         updateMaterialCount();
+        updateMarkers(); // Update markers when filter changes
     });
 
     const sortButtons = {
@@ -102,10 +200,17 @@
     // Clear the materials list before populating it
     listEl.innerHTML = '';
 
-    // Load materials into the materials menu
+    // Load materials into the materials menu and populate materialsData for map markers
+    let materialsData = {};
     fetch('data/geojson/materials_img_metadata.geojson')
         .then(response => response.json())
         .then(data => {
+            // Store the complete GeoJSON data for use in map marker creation
+            materialsData = data;
+            
+            // Make materialsData globally accessible for map.js
+            window.materialsData = data;
+
             // Extract features from GeoJSON and get properties
             const items = data.features.map(feature => feature.properties);
 
@@ -163,6 +268,10 @@
 
             sortList();
             updateMaterialCount();
+            updateMarkers(); // Initialize markers after materials data is loaded
+            
+            // Notify that materials data is loaded
+            window.dispatchEvent(new Event('materialsDataLoaded'));
         })
         .catch(err => console.error('Fehler beim Laden der Materialdaten:', err));
 

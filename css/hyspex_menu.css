@@ -25,29 +25,44 @@
     flex: 1;
 }
 
-/* HySpex Trajectory Checkbox Container */
-#hyspex-trajectory-checkbox-container {
+/* HySpex Trajectory Checkbox Containers */
+.hyspex-layer-checkbox-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #fff8f0;
-    border: 1px solid #ffb366;
     border-radius: 6px;
     padding: 12px;
     margin: 8px 12px 6px 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* HySpex RealTime Trajectory Container */
+#hyspex-trajectory-realtime-checkbox-container {
+    background: #fff8f0;
+    border: 1px solid #ffb366;
     box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
 }
 
-#hyspex-trajectory-checkbox {
+/* HySpex Post-Processed Trajectory Container */
+#hyspex-trajectory-postprocessed-checkbox-container {
+    background: #fff8f0;
+    border: 1px solid #ffb366;
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
+}
+
+/* HySpex Checkboxes */
+#hyspex-trajectory-realtime-checkbox,
+#hyspex-trajectory-postprocessed-checkbox {
     margin: 0;
     cursor: pointer;
     width: 18px;
     height: 18px;
-    accent-color: #ff9900;
     flex-shrink: 0;
+    accent-color: #ff9900;
 }
 
-#hyspex-trajectory-checkbox-container label {
+/* HySpex Checkbox Labels */
+.hyspex-layer-checkbox-container label {
     cursor: pointer;
     user-select: none;
     font-weight: 500;
@@ -56,7 +71,7 @@
     flex: 1;
 }
 
-/* HySpex Info Icon */
+/* HySpex Info Icons */
 .hyspex-info-icon {
     color: #ff9800;
     font-size: 16px;
@@ -106,6 +121,8 @@
     display: block;
 }
 
-#hyspex-trajectory-checkbox-container {
+/* HySpex Trajectory Containers - Positioning */
+#hyspex-trajectory-realtime-checkbox-container,
+#hyspex-trajectory-postprocessed-checkbox-container {
     position: relative;
 }

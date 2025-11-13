@@ -145,16 +145,36 @@
 					<button class="menu-close-btn" id="hyspex-menu-close" title="Menü schließen">&times;</button>
 				</div>
 
-				<!-- HySpex Trajectory Checkbox -->
-				<div id="hyspex-trajectory-checkbox-container" class="hyspex-layer-checkbox-container">
-					<input type="checkbox" id="hyspex-trajectory-checkbox">
-					<label for="hyspex-trajectory-checkbox">Flugbahn</label>
+				<!-- HySpex Trajectory RealTime Checkbox -->
+				<div id="hyspex-trajectory-realtime-checkbox-container" class="hyspex-layer-checkbox-container">
+					<input type="checkbox" id="hyspex-trajectory-realtime-checkbox">
+					<label for="hyspex-trajectory-realtime-checkbox">Flugbahn | RealTime</label>
 					<span class="hyspex-info-icon">
 						<i class="bi bi-question-circle"></i>
 					</span>
 					<div class="hyspex-info-tooltip">
-						<strong>HySpex Flugbahn</strong>
-						<p>Zeigt die Flugbahn der HySpex-Missionen auf dem Forschungsgelände. Es wurde nur jeder 100. Punkt dargestellt, um die Datenmenge zu reduzieren.</p>
+						<strong>HySpex Flugbahn | RealTime</strong>
+						<p>Zeigt die RealTime (unprozessierte) Flugbahn der HySpex-Missionen auf dem Forschungsgelände.
+							Es wurde nur jeder 100. Punkt dargestellt, um die Datenmenge zu reduzieren.</p>
+					</div>
+				</div>
+
+				<!-- HySpex Trajectory Post-Processed Checkbox -->
+				<div id="hyspex-trajectory-postprocessed-checkbox-container" class="hyspex-layer-checkbox-container">
+					<input type="checkbox" id="hyspex-trajectory-postprocessed-checkbox">
+					<label for="hyspex-trajectory-postprocessed-checkbox">Flugbahn | Post-Processed</label>
+					<span class="hyspex-info-icon">
+						<i class="bi bi-question-circle"></i>
+					</span>
+					<div class="hyspex-info-tooltip">
+						<strong>HySpex Flugbahn | Post-Processed</strong>
+						<p>Zeigt die post-prozessierte (verarbeitete) Flugbahn der HySpex-Missionen auf dem
+							Forschungsgelände.
+							Durch das Ausfallen der Basisstation während des Drohnenfluges, ist die Prozessierung
+							lediglich auf die Fusion von GNSS und IMU Daten beschränkt. Es werden keine Korrekturdaten
+							durch RTK oder DGPS verwendet. Außerdem ist die Trajektorie kürzer, da sich nur auf den
+							tatsächlichen Flugzeitraum beschränkt wurde. Es wurde nur jeder 100. Punkt dargestellt, um
+							die Datenmenge zu reduzieren.</p>
 					</div>
 				</div>
 			</aside>

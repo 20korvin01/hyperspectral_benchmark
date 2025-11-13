@@ -111,9 +111,9 @@
         .then(geojsonData => {
             spectrometerTrackLayer = L.geoJSON(geojsonData, {
                 style: {
-                    color: 'green',
-                    weight: 4,
-                    opacity: 0.7
+                    color: 'white',
+                    weight: 2,
+                    opacity: 1
                 },
                 onEachFeature: function(feature, layer) {
                     // Add tooltip for the track

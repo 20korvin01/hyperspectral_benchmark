@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'HySpex Mjolnir VS-620',
             images: [
                 'img/technologies/hyspex_mjolnir_vs-620_mounted.jpg',
-                'img/technologies/hyspex_mjolnir_vs-620.png'
+                'img/technologies/hyspex_mjolnir_vs-620.jpg'
             ],
             description: 'Die HySpex Mjolnir VS-620 ist ein hyperspektrales Dual-Sensor-System (VNIR + SWIR) für wissenschaftliche Fernerkundung. Sie deckt den Bereich von 400–2500 nm ab und liefert spektral wie räumlich perfekt korregistrierte Datensätze für präzise Materialanalysen und UAV-basierte Anwendungen.',
             documentUrl: 'https://www.hyspex.com/media/qj1ppye0/mjolnir-vs-620-data-sheet.pdf',
@@ -32,10 +32,34 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         {
+            name: 'DJI Mavic 3M',
+            images: [
+                'img/technologies/dji_mavic_3m.jpg',
+                'img/technologies/dji_mavic_3m_draft.jpg'
+            ],
+            description: 'Die DJI Mavic 3M ist eine kompakte Enterprise-Drohne mit integrierter Multispektralkamera für Präzisionslandwirtschaft und Fernerkundung. Sie kombiniert eine hochauflösende RGB-Kamera (20 MP, 4/3 CMOS) mit einer Multispektralkamera (5 MP, 4 Spektralkanäle: G/R/RE/NIR) und bietet optionale RTK-Genauigkeit für zentimetergenaue Positionierung.',
+            documentUrl: 'https://dl.djicdn.com/downloads/DJI_Mavic_3_Enterprise/20230531/DJI_Mavic_3M_UM_de_v1.2.pdf',
+            documentLabel: 'User Manual (PDF)',
+            specs: [
+                { label: 'Eigengewicht', value: '951 g (mit RTK-Modul)' },
+                { label: 'Max. Flugzeit', value: '43 Minuten (bei Windstille)' },
+                { label: 'Max. Schwebezeit', value: '37 Minuten (bei Windstille)' },
+                { label: 'Höchstgeschwindigkeit', value: '15 m/s (Normalmodus), 21 m/s (Sportmodus Vorwärts)' },
+                { label: 'Max. Starthöhe', value: '6.000 m über NHN' },
+                { label: 'RGB-Kamera', value: '4/3 CMOS, 20 MP, 24 mm Äquivalent' },
+                { label: 'Multispektralkamera', value: '5 MP, 4 Kanäle (G/R/RE/NIR)' },
+                { label: 'Spektrale Bänder', value: 'Grün 560±16 nm, Rot 650±16 nm, Red Edge 730±16 nm, NIR 860±26 nm' },
+                { label: 'GNSS', value: 'GPS + Galileo + BeiDou + GLONASS (mit RTK-Modul)' },
+                { label: 'RTK-Positionsgenauigkeit', value: 'Horizontal: 1 cm + 1 ppm; Vertikal: 1,5 cm + 1 ppm' },
+                { label: 'Videoübertragung', value: 'DJI O3 Enterprise, bis 15 km (FCC)' },
+                { label: 'Betriebstemperatur', value: '-10 °C bis 40 °C' }
+            ]
+        },
+        {
             name: 'DJI D-RTK 2 Mobile Station',
             images: [
-                'img/technologies/dji_drtk2.png',
-                'img/technologies/dji_drtk2_draft.png'
+                'img/technologies/dji_drtk2.jpg',
+                'img/technologies/dji_drtk2_draft.jpg'
             ],
             description: 'Die DJI D-RTK 2 ist eine hochpräzise GNSS-Basisstation für DJI-Drohnen. Sie unterstützt GPS, GLONASS, Galileo und BeiDou und liefert zentimetergenaue RTK-Korrektionen in Echtzeit. Die Station ist wetterfest, robust und für präzise Vermessungs-, Mapping- und Landwirtschaftsanwendungen konzipiert.',
             documentUrl: 'https://dl.djicdn.com/downloads/d-rtk-2/20230621/D-RTK_2_Mobile_Station_User_Guide_v2.6_multi_.pdf',

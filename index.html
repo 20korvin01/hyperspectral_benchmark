@@ -177,6 +177,54 @@
 							die Datenmenge zu reduzieren.</p>
 					</div>
 				</div>
+
+				<!-- HySpex Spectral Data - Collapsible Container -->
+				<div class="hyspex-spectral-container">
+					<button class="hyspex-spectral-toggle-header" id="hyspex-spectral-group-toggle">
+						<i class="bi bi-chevron-down hyspex-spectral-toggle-icon"></i>
+						<span>Spektraldaten - Export</span>
+						<span class="hyspex-info-icon hyspex-spectral-info-icon">
+							<i class="bi bi-question-circle"></i>
+						</span>
+						<div class="hyspex-info-tooltip">
+							<strong>HySpex Spektraldaten</strong>
+							<p>Zeigt die Flugbahnen der VNIR (Visible and Near-Infrared) und SWIR (Shortwave Infrared) Hyperspektraldaten. Die Daten sind in "All" (gesamte Trajektorie) und "Event" (Positionen der HySpex-Aufnahmen) unterteilt.</p>
+						</div>
+					</button>
+					<div class="hyspex-spectral-grid-container" id="hyspex-spectral-group-content">
+						<!-- VNIR Group -->
+						<div class="hyspex-spectral-group">
+							<div class="hyspex-group-label">VNIR</div>
+							<!-- HySpex VNIR All Checkbox -->
+							<div id="hyspex-trajectory-vnir-all-checkbox-container" class="hyspex-layer-checkbox-container">
+								<input type="checkbox" id="hyspex-trajectory-vnir-all-checkbox">
+								<label for="hyspex-trajectory-vnir-all-checkbox">All</label>
+							</div>
+
+							<!-- HySpex VNIR Event Checkbox -->
+							<div id="hyspex-trajectory-vnir-event-checkbox-container" class="hyspex-layer-checkbox-container">
+								<input type="checkbox" id="hyspex-trajectory-vnir-event-checkbox">
+								<label for="hyspex-trajectory-vnir-event-checkbox">Event</label>
+							</div>
+						</div>
+
+						<!-- SWIR Group -->
+						<div class="hyspex-spectral-group">
+							<div class="hyspex-group-label">SWIR</div>
+							<!-- HySpex SWIR All Checkbox -->
+							<div id="hyspex-trajectory-swir-all-checkbox-container" class="hyspex-layer-checkbox-container">
+								<input type="checkbox" id="hyspex-trajectory-swir-all-checkbox">
+								<label for="hyspex-trajectory-swir-all-checkbox">All</label>
+							</div>
+
+							<!-- HySpex SWIR Event Checkbox -->
+							<div id="hyspex-trajectory-swir-event-checkbox-container" class="hyspex-layer-checkbox-container">
+								<input type="checkbox" id="hyspex-trajectory-swir-event-checkbox">
+								<label for="hyspex-trajectory-swir-event-checkbox">Event</label>
+							</div>
+						</div>
+					</div>
+				</div>
 			</aside>
 		</div>
 

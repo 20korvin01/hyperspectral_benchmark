@@ -14662,7 +14662,7 @@
       },
       "properties": {
         "name": "Flight trajectory",
-        "description": "Flugbahn der HySpex Mission"
+        "description": "Unprozessierte Flugbahn der HySpex Mission - Fehlende Basisstation"
       }
     }
   ]

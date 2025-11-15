@@ -124,7 +124,7 @@
                             .map(([key, value]) => `${key}: ${value}`)
                             .join('<br>');
                     }
-                    layer.bindTooltip(tooltipContent);
+                    layer.bindTooltip(tooltipContent, { sticky: true });
                 }
             });
 

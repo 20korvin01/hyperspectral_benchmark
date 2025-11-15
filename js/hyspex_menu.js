@@ -62,7 +62,7 @@
                             .map(([key, value]) => `${key}: ${value}`)
                             .join('<br>');
                     }
-                    layer.bindTooltip(tooltipContent);
+                    layer.bindTooltip(tooltipContent, { sticky: true });
                 }
             });
 
@@ -90,7 +90,7 @@
                             .map(([key, value]) => `${key}: ${value}`)
                             .join('<br>');
                     }
-                    layer.bindTooltip(tooltipContent);
+                    layer.bindTooltip(tooltipContent, { sticky: true });
                 }
             });
 
@@ -117,7 +117,7 @@
                             .map(([key, value]) => `${key}: ${value}`)
                             .join('<br>');
                     }
-                    layer.bindTooltip(tooltipContent);
+                    layer.bindTooltip(tooltipContent, { sticky: true });
                 }
             });
             window.dispatchEvent(new Event('hyspexTrajectoryVnirAllLoaded'));
@@ -146,7 +146,7 @@
                             .map(([key, value]) => `${key}: ${value}`)
                             .join('<br>');
                     }
-                    layer.bindTooltip(tooltipContent);
+                    layer.bindTooltip(tooltipContent, { sticky: true });
                 }
             });
             window.dispatchEvent(new Event('hyspexTrajectoryVnirEventLoaded'));
@@ -171,7 +171,7 @@
                             .map(([key, value]) => `${key}: ${value}`)
                             .join('<br>');
                     }
-                    layer.bindTooltip(tooltipContent);
+                    layer.bindTooltip(tooltipContent, { sticky: true });
                 }
             });
             window.dispatchEvent(new Event('hyspexTrajectorySwirAllLoaded'));
@@ -200,7 +200,7 @@
                             .map(([key, value]) => `${key}: ${value}`)
                             .join('<br>');
                     }
-                    layer.bindTooltip(tooltipContent);
+                    layer.bindTooltip(tooltipContent, { sticky: true });
                 }
             });
             window.dispatchEvent(new Event('hyspexTrajectorySwirEventLoaded'));

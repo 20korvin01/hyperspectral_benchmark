@@ -16,6 +16,15 @@
     border-right: none;
 }
 
+#dji-menu .dji-data-date-badge {
+    transition: opacity 0.3s ease;
+}
+
+#dji-menu.collapsed .dji-data-date-badge {
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* DJI Menu Title */
 .dji-menu-title {
     font-size: 16px;
@@ -25,35 +34,116 @@
     flex: 1;
 }
 
-/* Orthophoto Checkbox Container */
-#dji-orthophoto-checkbox-container {
+/* DJI Data Badge */
+.dji-data-date-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #757575 0%, #9e9e9e 100%);
+    color: white;
+    padding: 12px;
+    margin: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(117, 117, 117, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: auto;
+    flex: none;
+}
+
+.dji-data-date-badge:hover {
+    box-shadow: 0 4px 10px rgba(117, 117, 117, 0.4);
+    transform: translateY(-1px);
+}
+
+.dji-data-date-badge i {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.dji-badge-chevron {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    font-size: 16px;
+}
+
+.dji-badge-chevron.rotated {
+    transform: rotate(180deg);
+}
+
+/* DJI Data Container Wrapper */
+.dji-data-wrapper {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 0 12px 12px 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.dji-data-wrapper.expanded {
+    border: 2px solid #757575;
+    background: linear-gradient(135deg, rgba(117, 117, 117, 0.08), rgba(158, 158, 158, 0.05));
+    box-shadow: 0 0 15px rgba(117, 117, 117, 0.2);
+    overflow: visible;
+}
+
+/* DJI Checkbox Containers - Collapsible */
+.dji-layer-checkbox-container {
     display: flex;
     align-items: center;
     gap: 10px;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 6px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 1000px;
+    overflow: visible;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+}
+
+.dji-layer-checkbox-container.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+/* Container wrapper for highlight frame */
+#dji-orthophoto-checkbox-container,
+#dji-points-checkbox-container {
     background: #f0fff4;
     border: 1px solid #b3e5b3;
     border-radius: 6px;
     padding: 12px;
-    margin: 8px 12px 6px 12px;
+    margin: 6px 0;
     box-shadow: 0 2px 4px rgba(40, 167, 69, 0.1);
 }
 
-#dji-orthophoto-checkbox {
-    margin: 0;
-    cursor: pointer;
-    width: 18px;
-    height: 18px;
-    accent-color: #28a745;
-    flex-shrink: 0;
-}
-
-#dji-orthophoto-checkbox-container label {
+#dji-orthophoto-checkbox-container label,
+#dji-points-checkbox-container label {
     cursor: pointer;
     user-select: none;
     font-weight: 500;
     color: #333;
     margin: 0;
     flex: 1;
+}
+
+#dji-orthophoto-checkbox,
+#dji-points-checkbox {
+    margin: 0;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #28a745;
+    flex-shrink: 0;
 }
 
 /* DJI Info Icon */
@@ -73,22 +163,31 @@
     color: #1e7e34;
 }
 
+/* Hide info icon when container is collapsed */
+.dji-layer-checkbox-container.collapsed .dji-info-icon {
+    display: none;
+    cursor: default;
+    pointer-events: none;
+}
+
 /* DJI Info Tooltip */
 .dji-info-tooltip {
     display: none;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background: rgba(100, 100, 100, 0.9);
     color: white;
     padding: 12px;
     border-radius: 6px;
     font-size: 13px;
     line-height: 1.5;
-    width: 250px;
+    width: 220px;
     z-index: 1000;
     margin-top: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    white-space: normal;
 }
 
 .dji-info-tooltip strong {
@@ -106,41 +205,7 @@
     display: block;
 }
 
-#dji-orthophoto-checkbox-container {
-    position: relative;
-}
-
-/* DJI Points Checkbox Container */
-#dji-points-checkbox-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #f0fff4;
-    border: 1px solid #b3e5b3;
-    border-radius: 6px;
-    padding: 12px;
-    margin: 6px 12px 8px 12px;
-    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.1);
-}
-
-#dji-points-checkbox {
-    margin: 0;
-    cursor: pointer;
-    width: 18px;
-    height: 18px;
-    accent-color: #28a745;
-    flex-shrink: 0;
-}
-
-#dji-points-checkbox-container label {
-    cursor: pointer;
-    user-select: none;
-    font-weight: 500;
-    color: #333;
-    margin: 0;
-    flex: 1;
-}
-
+#dji-orthophoto-checkbox-container,
 #dji-points-checkbox-container {
     position: relative;
 }
@@ -172,11 +237,10 @@
 /* Enhanced DJI Image Popup */
 .dji-image-popup-content {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     color: #333;
-    line-height: 1.4;
+    line-height: 1.3;
     width: 100%;
-    max-width: 550px;
     box-sizing: border-box;
 }
 
@@ -194,15 +258,25 @@
     white-space: normal;
 }
 
+/* Grid layout for sections */
+.dji-image-popup-content .popup-sections-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
 .dji-image-popup-content .popup-section {
-    margin: 10px 0;
-    padding: 8px 0;
-    border-bottom: 1px solid #e0e0e0;
+    margin: 0;
+    padding: 6px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background: #fafafa;
     box-sizing: border-box;
 }
 
 .dji-image-popup-content .popup-section:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid #e0e0e0;
     margin-bottom: 0;
 }
 
@@ -215,13 +289,14 @@
     margin-bottom: 6px;
     padding-bottom: 4px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
 .dji-image-popup-content .popup-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0;
-    table-layout: fixed;
+    margin: 0 auto;
+    table-layout: auto;
     box-sizing: border-box;
 }
 
@@ -234,8 +309,8 @@
 }
 
 .dji-image-popup-content .popup-table td {
-    padding: 5px 2px;
-    word-break: break-word;
+    padding: 3px 2px;
+    word-break: normal;
     overflow-wrap: break-word;
     box-sizing: border-box;
 }
@@ -243,8 +318,10 @@
 .dji-image-popup-content .popup-table .label {
     font-weight: 600;
     color: #555;
-    width: 40%;
-    padding-right: 4px;
+    width: 45%;
+    padding-right: 8px;
+    word-break: break-word;
+    text-align: left;
 }
 
 .dji-image-popup-content .popup-table .value {
@@ -252,8 +329,10 @@
     font-family: 'Monaco', 'Courier New', monospace;
     font-size: 11px;
     font-weight: 500;
-    width: 60%;
-    word-break: break-all;
+    width: 50%;
+    word-break: normal;
+    text-align: left;
+    padding-left: 8px;
 }
 
 /* Leaflet popup override */
@@ -262,14 +341,14 @@
     padding: 12px;
     width: 100% !important;
     box-sizing: border-box;
-    max-width: 550px;
+    max-width: 2000px !important;
 }
 
 .dji-image-popup .leaflet-popup-content-wrapper {
     border-radius: 6px;
     box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
     width: auto !important;
-    max-width: 550px;
+    max-width: 2000px !important;
 }
 
 /* DJI Info Tooltip Color Gradient for Time Coding */
@@ -292,4 +371,88 @@
     font-size: 12px;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 6px;
+}
+
+/* DJI Image Modal Styles */
+.dji-image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.dji-image-modal.active {
+    display: flex;
+}
+
+.dji-image-modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: auto;
+    max-width: 450px;
+    min-width: 350px;
+    height: auto;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Modal Header */
+.dji-image-modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f9fa;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+}
+
+.dji-image-modal-title {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+}
+
+.dji-image-modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    position: absolute;
+    right: 15px;
+}
+
+.dji-image-modal-close:hover {
+    color: #222;
+    background: #e9ecef;
+}
+
+/* Modal Body */
+.dji-image-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }

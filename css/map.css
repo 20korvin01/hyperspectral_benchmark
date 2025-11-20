@@ -31,10 +31,7 @@
     display: none;
 }
 
-/* Increase popup width */
-.leaflet-popup-content-wrapper {
-    max-width: 350px;
-}
+/* Increase popup width - removed global override to allow specific popup widths */
 
 /* Tooltip Styling */
 .leaflet-tooltip {

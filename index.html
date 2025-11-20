@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="css/hyspex_menu.css" />
 	<link rel="stylesheet" href="css/modals.css" />
 	<link rel="stylesheet" href="css/technology_modal.css" />
+	<link rel="stylesheet" href="css/weather_modal.css" />
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 		<div class="topbar-content">
 			<h1>Hyperspectral Benchmark - Visualization</h1>
 			<button id="info-btn" class="topbar-info-btn" title="Informationen">
-				<i class="bi bi-info-circle"></i>
+				<i class="bi bi-info-square-fill"></i>
 			</button>
 		</div>
 	</div>
@@ -38,7 +39,10 @@
 			<button id="sidebar-hyspex-btn" class="sidebar-button" title="Hyperspektralflug">
 				<i class="bi bi-soundwave"></i>
 			</button>
-			<button id="sidebar-technology-btn" class="sidebar-button sidebar-button-bottom" title="Technologien">
+			<button id="sidebar-weather-btn" class="sidebar-button sidebar-button-bottom" title="Wetter">
+				<i class="bi bi-cloud-sun"></i>
+			</button>
+			<button id="sidebar-technology-btn" class="sidebar-button" title="Technologien">
 				<i class="bi bi-tools"></i>
 			</button>
 		</nav>
@@ -101,39 +105,49 @@
 					<button class="menu-close-btn" id="dji-menu-close" title="Menü schließen">&times;</button>
 				</div>
 
-				<!-- Orthophoto Checkbox -->
-				<div id="dji-orthophoto-checkbox-container" class="dji-layer-checkbox-container">
-					<input type="checkbox" id="dji-orthophoto-checkbox">
-					<label for="dji-orthophoto-checkbox">Orthophoto</label>
-					<span class="dji-info-icon">
-						<i class="bi bi-question-circle"></i>
-					</span>
-					<div class="dji-info-tooltip">
-						<strong>Orthophoto - DJI Luftbild</strong>
-						<p>Georeferenziertes RGB-Luftbild des Forschungsgeländes, aufgenommen mit einer DJI-Drohne. Das
-							Orthophoto zeigt eine verzerrungsfreie, maßstabsgerechte Darstellung des Geländes aus der
-							Vogelperspektive. Lediglich die Randbereiche des Orthophotos sind möglicherweise verzerrt,
-							da dort nur wenige (Schräg/Oblique)Aufnahmen vorhanden sind.</p>
-					</div>
-				</div>
+				<!-- Data Date Badge - Collapsible -->
+				<button class="dji-data-date-badge" id="dji-data-toggle-btn" title="DJI-Daten anzeigen/verbergen">
+					<i class="bi bi-calendar-event"></i>
+					<span>Daten vom 5.11.2025</span>
+					<i class="bi bi-chevron-down dji-badge-chevron"></i>
+				</button>
 
-				<!-- DJI Image Points Checkbox -->
-				<div id="dji-points-checkbox-container" class="dji-layer-checkbox-container">
-					<input type="checkbox" id="dji-points-checkbox">
-					<label for="dji-points-checkbox">Einzelbildaufnahmen</label>
-					<span class="dji-info-icon">
-						<i class="bi bi-question-circle"></i>
-					</span>
-					<div class="dji-info-tooltip">
-						<strong>DJI Einzelbildaufnahmen</strong>
-						<p>Zeigt die Positionen aller Kameraverschlüsse während der DJI-Drohnenflüge an. Jeder Punkt
-							markiert den Ort, an dem ein Bild aufgenommen wurde. Die Punkte zeigen detaillierte
-							Metadaten beim Anklicken.</p>
-						<strong style="display: block; margin-top: 8px;">Farbkodierung nach Zeit:</strong>
-						<div class="dji-info-gradient"></div>
-						<div class="dji-info-labels">
-							<span>Früh</span>
-							<span>Spät</span>
+				<!-- DJI Data Container -->
+				<div class="dji-data-wrapper" id="dji-data-wrapper">
+					<!-- Orthophoto Checkbox -->
+					<div id="dji-orthophoto-checkbox-container" class="dji-layer-checkbox-container">
+						<input type="checkbox" id="dji-orthophoto-checkbox">
+						<label for="dji-orthophoto-checkbox">Orthophoto</label>
+						<span class="dji-info-icon">
+							<i class="bi bi-question-circle"></i>
+						</span>
+						<div class="dji-info-tooltip">
+							<strong>Orthophoto - DJI Luftbild</strong>
+							<p>Georeferenziertes RGB-Luftbild des Forschungsgeländes, aufgenommen mit einer DJI-Drohne. Das
+								Orthophoto zeigt eine verzerrungsfreie, maßstabsgerechte Darstellung des Geländes aus der
+								Vogelperspektive. Lediglich die Randbereiche des Orthophotos sind möglicherweise verzerrt,
+								da dort nur wenige (Schräg/Oblique)Aufnahmen vorhanden sind.</p>
+						</div>
+					</div>
+
+					<!-- DJI Image Points Checkbox -->
+					<div id="dji-points-checkbox-container" class="dji-layer-checkbox-container">
+						<input type="checkbox" id="dji-points-checkbox">
+						<label for="dji-points-checkbox">Einzelbildaufnahmen</label>
+						<span class="dji-info-icon">
+							<i class="bi bi-question-circle"></i>
+						</span>
+						<div class="dji-info-tooltip">
+							<strong>DJI Einzelbildaufnahmen</strong>
+							<p>Zeigt die Positionen aller Kameraverschlüsse während der DJI-Drohnenflüge an. Jeder Punkt
+								markiert den Ort, an dem ein Bild aufgenommen wurde. Die Punkte zeigen detaillierte
+								Metadaten beim Anklicken.</p>
+							<strong style="display: block; margin-top: 8px;">Farbkodierung nach Zeit:</strong>
+							<div class="dji-info-gradient"></div>
+							<div class="dji-info-labels">
+								<span>Früh</span>
+								<span>Spät</span>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -145,82 +159,91 @@
 					<button class="menu-close-btn" id="hyspex-menu-close" title="Menü schließen">&times;</button>
 				</div>
 
-				<!-- HySpex Trajectory RealTime Checkbox -->
-				<div id="hyspex-trajectory-realtime-checkbox-container" class="hyspex-layer-checkbox-container">
-					<input type="checkbox" id="hyspex-trajectory-realtime-checkbox">
-					<label for="hyspex-trajectory-realtime-checkbox">Flugbahn | RealTime</label>
-					<span class="hyspex-info-icon">
-						<i class="bi bi-question-circle"></i>
-					</span>
-					<div class="hyspex-info-tooltip">
-						<strong>HySpex Flugbahn | RealTime</strong>
-						<p>Zeigt die RealTime (unprozessierte) Flugbahn der HySpex-Missionen auf dem Forschungsgelände.
-							Es wurde nur jeder 100. Punkt dargestellt, um die Datenmenge zu reduzieren.</p>
-					</div>
-				</div>
+				<!-- Data Date Badge - Collapsible -->
+				<button class="hyspex-data-date-badge" id="hyspex-data-toggle-btn" title="HySpex-Daten anzeigen/verbergen">
+					<i class="bi bi-calendar-event"></i>
+					<span>Daten vom 5.11.2025</span>
+					<i class="bi bi-chevron-down hyspex-badge-chevron"></i>
+				</button>
 
-				<!-- HySpex Trajectory Post-Processed Checkbox -->
-				<div id="hyspex-trajectory-postprocessed-checkbox-container" class="hyspex-layer-checkbox-container">
-					<input type="checkbox" id="hyspex-trajectory-postprocessed-checkbox">
-					<label for="hyspex-trajectory-postprocessed-checkbox">Flugbahn | Post-Processed</label>
-					<span class="hyspex-info-icon">
-						<i class="bi bi-question-circle"></i>
-					</span>
-					<div class="hyspex-info-tooltip">
-						<strong>HySpex Flugbahn | Post-Processed</strong>
-						<p>Zeigt die post-prozessierte (verarbeitete) Flugbahn der HySpex-Missionen auf dem
-							Forschungsgelände.
-							Durch das Ausfallen der Basisstation während des Drohnenfluges, ist die Prozessierung
-							lediglich auf die Fusion von GNSS und IMU Daten beschränkt. Es werden keine Korrekturdaten
-							durch RTK oder DGPS verwendet. Außerdem ist die Trajektorie kürzer, da sich nur auf den
-							tatsächlichen Flugzeitraum beschränkt wurde. Es wurde nur jeder 100. Punkt dargestellt, um
-							die Datenmenge zu reduzieren.</p>
-					</div>
-				</div>
-
-				<!-- HySpex Spectral Data - Collapsible Container -->
-				<div class="hyspex-spectral-container">
-					<button class="hyspex-spectral-toggle-header" id="hyspex-spectral-group-toggle">
-						<i class="bi bi-chevron-down hyspex-spectral-toggle-icon"></i>
-						<span>Spektraldaten - Export</span>
-						<span class="hyspex-info-icon hyspex-spectral-info-icon">
+				<!-- HySpex Data Container -->
+				<div class="hyspex-data-wrapper" id="hyspex-data-wrapper">
+					<!-- HySpex Trajectory RealTime Checkbox -->
+					<div id="hyspex-trajectory-realtime-checkbox-container" class="hyspex-layer-checkbox-container">
+						<input type="checkbox" id="hyspex-trajectory-realtime-checkbox">
+						<label for="hyspex-trajectory-realtime-checkbox">Flugbahn | RealTime</label>
+						<span class="hyspex-info-icon">
 							<i class="bi bi-question-circle"></i>
 						</span>
 						<div class="hyspex-info-tooltip">
-							<strong>HySpex Spektraldaten</strong>
-							<p>Zeigt die Flugbahnen der VNIR (Visible and Near-Infrared) und SWIR (Shortwave Infrared) Hyperspektraldaten. Die Daten sind in "All" (gesamte Trajektorie) und "Event" (Positionen der HySpex-Aufnahmen) unterteilt.</p>
+							<strong>HySpex Flugbahn | RealTime</strong>
+							<p>Zeigt die RealTime (unprozessierte) Flugbahn der HySpex-Missionen auf dem Forschungsgelände.
+								Es wird nur jeder 100. Punkt dargestellt, um die Datenmenge zu reduzieren.</p>
 						</div>
-					</button>
-					<div class="hyspex-spectral-grid-container" id="hyspex-spectral-group-content">
-						<!-- VNIR Group -->
-						<div class="hyspex-spectral-group">
-							<div class="hyspex-group-label">VNIR</div>
-							<!-- HySpex VNIR All Checkbox -->
-							<div id="hyspex-trajectory-vnir-all-checkbox-container" class="hyspex-layer-checkbox-container">
-								<input type="checkbox" id="hyspex-trajectory-vnir-all-checkbox">
-								<label for="hyspex-trajectory-vnir-all-checkbox">All</label>
-							</div>
+					</div>
 
-							<!-- HySpex VNIR Event Checkbox -->
-							<div id="hyspex-trajectory-vnir-event-checkbox-container" class="hyspex-layer-checkbox-container">
-								<input type="checkbox" id="hyspex-trajectory-vnir-event-checkbox">
-								<label for="hyspex-trajectory-vnir-event-checkbox">Event</label>
-							</div>
+					<!-- HySpex Trajectory Post-Processed Checkbox -->
+					<div id="hyspex-trajectory-postprocessed-checkbox-container" class="hyspex-layer-checkbox-container">
+						<input type="checkbox" id="hyspex-trajectory-postprocessed-checkbox">
+						<label for="hyspex-trajectory-postprocessed-checkbox">Flugbahn | Post-Processed</label>
+						<span class="hyspex-info-icon">
+							<i class="bi bi-question-circle"></i>
+						</span>
+						<div class="hyspex-info-tooltip">
+							<strong>HySpex Flugbahn | Post-Processed</strong>
+							<p>Zeigt die post-prozessierte (verarbeitete) Flugbahn der HySpex-Missionen auf dem
+								Forschungsgelände.
+								Durch das Ausfallen der Basisstation während des Drohnenfluges, ist die Prozessierung
+								lediglich auf die Fusion von GNSS und IMU Daten beschränkt. Es werden keine Korrekturdaten
+								durch RTK oder DGPS verwendet. Die Trajektorie wurde auf den
+								tatsächlichen Flugzeitraum gekürzt.</p>
 						</div>
+					</div>
 
-						<!-- SWIR Group -->
-						<div class="hyspex-spectral-group">
-							<div class="hyspex-group-label">SWIR</div>
-							<!-- HySpex SWIR All Checkbox -->
-							<div id="hyspex-trajectory-swir-all-checkbox-container" class="hyspex-layer-checkbox-container">
-								<input type="checkbox" id="hyspex-trajectory-swir-all-checkbox">
-								<label for="hyspex-trajectory-swir-all-checkbox">All</label>
+					<!-- HySpex Spectral Data - Collapsible Container -->
+					<div class="hyspex-spectral-container">
+						<button class="hyspex-spectral-toggle-header" id="hyspex-spectral-group-toggle">
+							<i class="bi bi-chevron-down hyspex-spectral-toggle-icon"></i>
+							<span>Spektraldaten - Export</span>
+							<span class="hyspex-info-icon hyspex-spectral-info-icon">
+								<i class="bi bi-question-circle"></i>
+							</span>
+							<div class="hyspex-info-tooltip">
+								<strong>HySpex Spektraldaten</strong>
+								<p>Zeigt die Flugbahnen der VNIR (Visible and Near-Infrared) und SWIR (Shortwave Infrared) Hyperspektraldaten. Die Daten sind in "All" (gesamte Trajektorie) und "Event" (Positionen der HySpex-Aufnahmen) unterteilt.</p>
+							</div>
+						</button>
+						<div class="hyspex-spectral-grid-container" id="hyspex-spectral-group-content">
+							<!-- VNIR Group -->
+							<div class="hyspex-spectral-group">
+								<div class="hyspex-group-label">VNIR</div>
+								<!-- HySpex VNIR All Checkbox -->
+								<div id="hyspex-trajectory-vnir-all-checkbox-container" class="hyspex-layer-checkbox-container">
+									<input type="checkbox" id="hyspex-trajectory-vnir-all-checkbox">
+									<label for="hyspex-trajectory-vnir-all-checkbox">All</label>
+								</div>
+
+								<!-- HySpex VNIR Event Checkbox -->
+								<div id="hyspex-trajectory-vnir-event-checkbox-container" class="hyspex-layer-checkbox-container">
+									<input type="checkbox" id="hyspex-trajectory-vnir-event-checkbox">
+									<label for="hyspex-trajectory-vnir-event-checkbox">Event</label>
+								</div>
 							</div>
 
-							<!-- HySpex SWIR Event Checkbox -->
-							<div id="hyspex-trajectory-swir-event-checkbox-container" class="hyspex-layer-checkbox-container">
-								<input type="checkbox" id="hyspex-trajectory-swir-event-checkbox">
-								<label for="hyspex-trajectory-swir-event-checkbox">Event</label>
+							<!-- SWIR Group -->
+							<div class="hyspex-spectral-group">
+								<div class="hyspex-group-label">SWIR</div>
+								<!-- HySpex SWIR All Checkbox -->
+								<div id="hyspex-trajectory-swir-all-checkbox-container" class="hyspex-layer-checkbox-container">
+									<input type="checkbox" id="hyspex-trajectory-swir-all-checkbox">
+									<label for="hyspex-trajectory-swir-all-checkbox">All</label>
+								</div>
+
+								<!-- HySpex SWIR Event Checkbox -->
+								<div id="hyspex-trajectory-swir-event-checkbox-container" class="hyspex-layer-checkbox-container">
+									<input type="checkbox" id="hyspex-trajectory-swir-event-checkbox">
+									<label for="hyspex-trajectory-swir-event-checkbox">Event</label>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -237,6 +260,22 @@
 	<div id="fullscreen-modal" class="modal">
 		<span class="close">&times;</span>
 		<img class="modal-content" id="fullscreen-img" />
+	</div>
+
+	<!-- Weather Modal -->
+	<div id="weather-modal" class="info-modal">
+		<div class="info-modal-content">
+			<div class="info-modal-header">
+				<h2>Wetter</h2>
+				<button class="info-modal-close">&times;</button>
+			</div>
+			<div class="weather-tabs" id="weather-tabs">
+				<!-- Tabs werden dynamisch generiert -->
+			</div>
+			<div class="info-modal-body" id="weather-modal-body">
+				<!-- Tab-Inhalte werden dynamisch generiert -->
+			</div>
+		</div>
 	</div>
 
 	<!-- Technology Modal -->
@@ -333,10 +372,25 @@
 		</div>
 	</div>
 
+	<!-- DJI Image Modal -->
+	<div id="dji-image-modal" class="dji-image-modal">
+		<div class="dji-image-modal-content">
+			<div class="dji-image-modal-header">
+				<h2 class="dji-image-modal-title" id="dji-image-modal-title">DJI Bild Details</h2>
+				<button class="dji-image-modal-close">&times;</button>
+			</div>
+			<div class="dji-image-modal-body" id="dji-image-modal-body">
+				<!-- Content will be populated dynamically -->
+			</div>
+		</div>
+	</div>
+
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 	<script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
 	<script src="js/info_modal.js"></script>
 	<script src="js/technology_modal.js"></script>
+	<script src="js/weather_modal.js"></script>
+	<script src="js/weather_modal.js"></script>
 	<script src="js/materials_popup.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/materials_menu.js"></script>

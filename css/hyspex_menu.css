@@ -16,6 +16,15 @@
     border-right: none;
 }
 
+#hyspex-menu .hyspex-data-date-badge {
+    transition: opacity 0.3s ease;
+}
+
+#hyspex-menu.collapsed .hyspex-data-date-badge {
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* HySpex Menu Title */
 .hyspex-menu-title {
     font-size: 16px;
@@ -25,6 +34,64 @@
     flex: 1;
 }
 
+/* HySpex Data Badge */
+.hyspex-data-date-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #757575 0%, #9e9e9e 100%);
+    color: white;
+    padding: 12px;
+    margin: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(117, 117, 117, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: auto;
+    flex: none;
+}
+
+.hyspex-data-date-badge:hover {
+    box-shadow: 0 4px 10px rgba(117, 117, 117, 0.4);
+    transform: translateY(-1px);
+}
+
+.hyspex-data-date-badge i {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.hyspex-badge-chevron {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    font-size: 16px;
+}
+
+.hyspex-badge-chevron.rotated {
+    transform: rotate(180deg);
+}
+
+/* HySpex Data Container Wrapper */
+.hyspex-data-wrapper {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 0 12px 12px 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.hyspex-data-wrapper.expanded {
+    border: 2px solid #757575;
+    background: linear-gradient(135deg, rgba(117, 117, 117, 0.08), rgba(158, 158, 158, 0.05));
+    box-shadow: 0 0 15px rgba(117, 117, 117, 0.2);
+    overflow: visible;
+}
+
 /* HySpex Trajectory Checkbox Containers */
 .hyspex-layer-checkbox-container {
     display: flex;
@@ -32,8 +99,20 @@
     gap: 10px;
     border-radius: 6px;
     padding: 12px;
-    margin: 6px 12px;
+    margin: 6px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 1000px;
+    overflow: visible;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+    opacity: 1;
+}
+
+.hyspex-layer-checkbox-container.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
 }
 
 /* First trajectory item gets extra top margin */
@@ -126,21 +205,31 @@
     color: #e68900;
 }
 
+/* Hide info icon when container is collapsed */
+.hyspex-layer-checkbox-container.collapsed .hyspex-info-icon {
+    display: none;
+    cursor: default;
+    pointer-events: none;
+}
+
 /* HySpex Info Tooltip */
 .hyspex-info-tooltip {
     display: none;
     position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     background: rgba(100, 100, 100, 0.9);
     color: white;
     padding: 12px;
     border-radius: 6px;
     font-size: 13px;
     line-height: 1.5;
-    width: 250px;
+    width: 220px;
     z-index: 10000;
+    margin-top: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    white-space: normal;
 }
 
 .hyspex-info-tooltip strong {
@@ -157,7 +246,8 @@
     font-weight: 500;
 }
 
-.hyspex-info-icon:hover + .hyspex-info-tooltip {
+.hyspex-info-icon:hover + .hyspex-info-tooltip,
+.hyspex-info-tooltip:hover {
     display: block;
 }
 
@@ -176,13 +266,23 @@
 
 /* HySpex Spectral Container - Single Collapsible */
 .hyspex-spectral-container {
-    margin: 6px 12px;
+    margin: 6px 0;
     border-radius: 6px;
     background: #fff8f0;
     overflow: visible;
     box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
     position: relative;
     z-index: 10;
+    max-height: 1000px;
+    opacity: 1;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+}
+
+.hyspex-spectral-container.collapsed {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    pointer-events: none;
 }
 
 /* HySpex Spectral Toggle Header */
@@ -208,6 +308,11 @@
     background: #fff2e6;
 }
 
+.hyspex-spectral-toggle-header.collapsed {
+    border-radius: 6px;
+    border-bottom: 1px solid #ffb366;
+}
+
 /* HySpex Spectral Info Icon - Positioned at right */
 .hyspex-spectral-info-icon {
     position: absolute;
@@ -217,6 +322,12 @@
     margin: 0 !important;
 }
 
+/* Hide info icon when spectral container is collapsed */
+.hyspex-spectral-container.collapsed .hyspex-spectral-info-icon {
+    display: none;
+    pointer-events: none;
+}
+
 /* HySpex Spectral Toggle Icon */
 .hyspex-spectral-toggle-icon {
     display: inline-block;
@@ -224,8 +335,8 @@
     font-size: 18px;
 }
 
-/* HySpex Spectral Container Collapsed */
-.hyspex-spectral-container.collapsed .hyspex-spectral-toggle-icon {
+/* HySpex Spectral Toggle Icon Collapsed */
+.hyspex-spectral-toggle-icon.collapsed {
     transform: rotate(-90deg);
 }
 
@@ -236,7 +347,7 @@
     gap: 6px;
     padding: 8px;
     max-height: 500px;
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid #ffb366;
     border-top: none;
     border-radius: 0 0 6px 6px;
@@ -246,8 +357,9 @@
 
 .hyspex-spectral-grid-container.collapsed {
     max-height: 0;
-    padding: 0 8px;
+    padding: 0;
     overflow: hidden;
+    border: none;
 }
 
 /* HySpex Spectral Group - Compact */

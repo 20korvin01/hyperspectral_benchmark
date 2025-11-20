@@ -1,4 +1,41 @@
 (function () {
+    // Toggle HySpex data containers visibility
+    let isHySpexDataExpanded = false; // Default collapsed state
+    const hyspexToggleBtn = document.getElementById('hyspex-data-toggle-btn');
+    
+    if (hyspexToggleBtn) {
+        hyspexToggleBtn.addEventListener('click', function() {
+            isHySpexDataExpanded = !isHySpexDataExpanded;
+            const containers = document.querySelectorAll('#hyspex-data-wrapper > div');
+            const wrapper = document.getElementById('hyspex-data-wrapper');
+            const chevron = hyspexToggleBtn.querySelector('.hyspex-badge-chevron');
+            
+            containers.forEach(container => {
+                if (container.classList.contains('hyspex-layer-checkbox-container') || 
+                    container.classList.contains('hyspex-spectral-container')) {
+                    container.classList.toggle('collapsed', !isHySpexDataExpanded);
+                }
+            });
+            
+            if (wrapper) {
+                wrapper.classList.toggle('expanded', isHySpexDataExpanded);
+            }
+            
+            if (chevron) {
+                chevron.classList.toggle('rotated', isHySpexDataExpanded);
+            }
+        });
+        
+        // Initialize with collapsed state
+        const containers = document.querySelectorAll('#hyspex-data-wrapper > div');
+        containers.forEach(container => {
+            if (container.classList.contains('hyspex-layer-checkbox-container') || 
+                container.classList.contains('hyspex-spectral-container')) {
+                container.classList.add('collapsed');
+            }
+        });
+    }
+
     // Initialize group toggle state (stored in localStorage for persistence)
     const spectralGroupState = localStorage.getItem('hyspex-spectral-expanded') !== 'false';
 
@@ -10,8 +47,11 @@
     function initializeGroupState() {
         if (!spectralGroupState && spectralGroupContent) {
             spectralGroupContent.classList.add('collapsed');
-            const spectralContainer = spectralGroupContent.parentElement;
-            if (spectralContainer) spectralContainer.classList.add('collapsed');
+            // Update icon state
+            const icon = document.querySelector('#hyspex-spectral-group-toggle .hyspex-spectral-toggle-icon');
+            if (icon) icon.classList.add('collapsed');
+            // Update header state
+            if (spectralGroupToggle) spectralGroupToggle.classList.add('collapsed');
         }
     }
 
@@ -20,8 +60,12 @@
         spectralGroupToggle.addEventListener('click', () => {
             if (spectralGroupContent) {
                 spectralGroupContent.classList.toggle('collapsed');
-                const spectralContainer = spectralGroupContent.parentElement;
-                if (spectralContainer) spectralContainer.classList.toggle('collapsed');
+                spectralGroupToggle.classList.toggle('collapsed');
+                
+                // Toggle icon state
+                const icon = spectralGroupToggle.querySelector('.hyspex-spectral-toggle-icon');
+                if (icon) icon.classList.toggle('collapsed');
+
                 localStorage.setItem('hyspex-spectral-expanded', !spectralGroupContent.classList.contains('collapsed'));
             }
         });

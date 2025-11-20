@@ -31,7 +31,7 @@ function createPopup(material) {
     let popupContent = `
         <div class="popup-header">
             <b>${materialName}</b>
-            <button class="spectrum-details-button" onclick="openSpectrumModal(this)" title="Spektren anzeigen">📊</button>
+            <button class="spectrum-details-button" onclick="openSpectrumModal(this)" title="Spektren anzeigen"><i class="bi bi-file-bar-graph-fill"></i></button>
         </div>
         <img src="${imagePath}" alt="${materialName}" style="max-width: 100%; height: auto;"><br>
         <span class="date">Aufgenommen am ${formatDateTime(dateTime)} Uhr</span>`;
@@ -262,7 +262,7 @@ async function loadAndPlotSpectra(materialName) {
         
         if (traces.length > 0) {
             const layout = {
-                title: `Alle Spektren für ${materialName}`,
+                title: `Alle Spektren`,
                 xaxis: { title: 'Wellenlänge (nm)' },
                 yaxis: { title: 'Reflektanz' },
                 hovermode: 'x unified',
@@ -379,7 +379,7 @@ async function loadAndPlotMeanSpectra(materialName) {
         }
         
         const layout = {
-            title: `Gemitteltes Spektrum mit Standardabweichung für ${materialName}`,
+            title: `Gemitteltes Spektrum mit Standardabweichung`,
             xaxis: { title: 'Wellenlänge (nm)' },
             yaxis: { title: 'Reflektanz' },
             hovermode: 'x unified',

@@ -2,6 +2,40 @@
     // Get existing checkbox elements from HTML
     const orthophotoCheckbox = document.getElementById('dji-orthophoto-checkbox');
     const djiPointsCheckbox = document.getElementById('dji-points-checkbox');
+    const djiToggleBtn = document.getElementById('dji-data-toggle-btn');
+
+    // Global variable to store current DJI image data
+    let currentDjiImage = null;
+
+    // Toggle DJI data containers visibility
+    let isDjiDataExpanded = false; // Default collapsed state
+    
+    if (djiToggleBtn) {
+        djiToggleBtn.addEventListener('click', function() {
+            isDjiDataExpanded = !isDjiDataExpanded;
+            const containers = document.querySelectorAll('.dji-layer-checkbox-container');
+            const wrapper = document.getElementById('dji-data-wrapper');
+            const chevron = djiToggleBtn.querySelector('.dji-badge-chevron');
+            
+            containers.forEach(container => {
+                container.classList.toggle('collapsed', !isDjiDataExpanded);
+            });
+            
+            if (wrapper) {
+                wrapper.classList.toggle('expanded', isDjiDataExpanded);
+            }
+            
+            if (chevron) {
+                chevron.classList.toggle('rotated', isDjiDataExpanded);
+            }
+        });
+        
+        // Initialize with collapsed state
+        const containers = document.querySelectorAll('.dji-layer-checkbox-container');
+        containers.forEach(container => {
+            container.classList.add('collapsed');
+        });
+    }
 
     // Create the orthophoto layer using XYZ tiles
     const orthophotoLayer = L.tileLayer('img/ortho_tiles/{z}/{x}/{y}.png', {
@@ -118,11 +152,9 @@
                         fillOpacity: 0.7
                     };
                     
-                    // Create formatted popup with image metadata
-                    const popupContent = createImagePopup(props);
-                    marker.bindPopup(popupContent, {
-                        maxWidth: 6000,
-                        className: 'dji-image-popup'
+                    // Add click event to open modal
+                    marker.on('click', function() {
+                        openDjiImageModal(props);
                     });
                     
                     // Add tooltip for filename
@@ -143,13 +175,6 @@
                     });
                     
                     marker.on('mouseout', function() {
-                        if (!this.isPopupOpen()) {
-                            this.setStyle(this.originalStyle);
-                        }
-                    });
-                    
-                    // Reset style when popup closes
-                    marker.on('popupclose', function() {
                         this.setStyle(this.originalStyle);
                     });
                     
@@ -159,6 +184,22 @@
         })
         .catch(error => console.error('Error loading DJI image metadata:', error));
     
+    // Function to open DJI image modal
+    function openDjiImageModal(props) {
+        currentDjiImage = props;
+        
+        // Set title
+        document.getElementById('dji-image-modal-title').textContent = props.filename || 'DJI Bild Details';
+        
+        // Populate body with the popup content
+        const modalBody = document.getElementById('dji-image-modal-body');
+        modalBody.innerHTML = createImagePopup(props);
+        
+        // Show modal
+        const modal = document.getElementById('dji-image-modal');
+        modal.classList.add('active');
+    }
+
     // Function to create formatted popup content
     function createImagePopup(props) {
         const formatValue = (value, unit = '') => {
@@ -169,72 +210,71 @@
 
         return `
             <div class="dji-image-popup-content">
-                <div class="popup-header">
-                    <span class="filename">${props.filename || 'Unknown'}</span>
-                </div>
-                <div class="popup-section">
-                    <div class="section-title">Kamera</div>
-                    <table class="popup-table">
-                        <tr>
-                            <td class="label">Modell:</td>
-                            <td class="value">${props.camera_model || 'N/A'}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Band:</td>
-                            <td class="value">${props.band_name || 'N/A'}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="popup-section">
-                    <div class="section-title">Belichtungsparameter</div>
-                    <table class="popup-table">
-                        <tr>
-                            <td class="label">Blende:</td>
-                            <td class="value">f/${formatValue(props.fnumber)}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">ISO:</td>
-                            <td class="value">${formatValue(props.iso_speed)}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Belichtungszeit:</td>
-                            <td class="value">${formatValue(props.exposure_time)} s</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="popup-section">
-                    <div class="section-title">Höhe & Orientierung</div>
-                    <table class="popup-table">
-                        <tr>
-                            <td class="label">Höhe:</td>
-                            <td class="value">${formatValue(props.altitude)} m</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Gier (Yaw):</td>
-                            <td class="value">${formatValue(props.yaw)}°</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Neigung (Pitch):</td>
-                            <td class="value">${formatValue(props.pitch)}°</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Rolle (Roll):</td>
-                            <td class="value">${formatValue(props.roll)}°</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="popup-section">
-                    <div class="section-title">GPS & Genauigkeit</div>
-                    <table class="popup-table">
-                        <tr>
-                            <td class="label">XY Std.abw.:</td>
-                            <td class="value">${formatValue(props.gps_xy_stddev, ' m')}</td>
-                        </tr>
-                        <tr>
-                            <td class="label">Z Std.abw.:</td>
-                            <td class="value">${formatValue(props.gps_z_stddev, ' m')}</td>
-                        </tr>
-                    </table>
+                <div class="popup-sections-grid">
+                    <div class="popup-section">
+                        <div class="section-title">Kamera</div>
+                        <table class="popup-table">
+                            <tr>
+                                <td class="label">Modell:</td>
+                                <td class="value">${props.camera_model || 'N/A'}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Band:</td>
+                                <td class="value">${props.band_name || 'N/A'}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="popup-section">
+                        <div class="section-title">Lage- & Höhengenauigkeit</div>
+                        <table class="popup-table">
+                            <tr>
+                                <td class="label">XY Std.abw.:</td>
+                                <td class="value">${formatValue(props.gps_xy_stddev, ' m')}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Z Std.abw.:</td>
+                                <td class="value">${formatValue(props.gps_z_stddev, ' m')}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="popup-section">
+                        <div class="section-title">Höhe & Orientierung</div>
+                        <table class="popup-table">
+                            <tr>
+                                <td class="label">Höhe:</td>
+                                <td class="value">${formatValue(props.altitude)} m</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Gier:</td>
+                                <td class="value">${formatValue(props.yaw)}°</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Neigung:</td>
+                                <td class="value">${formatValue(props.pitch)}°</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Rolle:</td>
+                                <td class="value">${formatValue(props.roll)}°</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="popup-section">
+                        <div class="section-title">Belichtungsparameter</div>
+                        <table class="popup-table">
+                            <tr>
+                                <td class="label">Blende:</td>
+                                <td class="value">f/${formatValue(props.fnumber)}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">ISO:</td>
+                                <td class="value">${formatValue(props.iso_speed)}</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Belichtungs-<br>zeit:</td>
+                                <td class="value">${formatValue(props.exposure_time)} s</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         `;
@@ -256,5 +296,24 @@
     if (!djiMenuEl) {
         console.error('DJI menu element not found');
     }
+
+    // Initialize modal close button
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('dji-image-modal');
+        const closeButton = document.querySelector('.dji-image-modal-close');
+        
+        if (closeButton) {
+            closeButton.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+        }
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    });
 
 })();

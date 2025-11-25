@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: 'HySpex Mjolnir VS-620',
             images: [
                 'img/technologies/hyspex_mjolnir_vs-620_mounted.jpg',
-                'img/technologies/hyspex_mjolnir_vs-620.jpg'
+                'img/technologies/hyspex_mjolnir_vs-620.png'
             ],
             description: 'Die HySpex Mjolnir VS-620 ist ein hyperspektrales Dual-Sensor-System (VNIR + SWIR) für wissenschaftliche Fernerkundung. Sie deckt den Bereich von 400–2500 nm ab und liefert spektral wie räumlich perfekt korregistrierte Datensätze für präzise Materialanalysen und UAV-basierte Anwendungen.',
             documentUrl: 'https://www.hyspex.com/media/qj1ppye0/mjolnir-vs-620-data-sheet.pdf',
@@ -23,10 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { label: 'FOV (Sichtfeld)', value: '20°' },
                 { label: 'F-Nummer', value: 'f/1.8 (VNIR), f/1.9 (SWIR)' },
                 { label: 'Pixel FOV', value: '0.55 × 0.55 mrad' },
-                { label: 'Dynamikbereich', value: 'bis 26 000 (LG), 10 000 (HG)' },
-                { label: 'Signal-Rausch-Verhältnis', value: '> 430 (LG), > 2000 (HG)' },
                 { label: 'Max. Bildrate', value: '250 fps (VNIR) / 125 fps (SWIR)' },
-                { label: 'Leistungsaufnahme', value: '≈ 50 W (inkl. DAQ & IMU)' },
                 { label: 'Abmessungen', value: '374 × 202 × 178 mm' },
                 { label: 'Gewicht', value: '≈ 6 kg' }
             ]
@@ -34,8 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'DJI Mavic 3M',
             images: [
-                'img/technologies/dji_mavic_3m.jpg',
-                'img/technologies/dji_mavic_3m_draft.jpg'
+                'img/technologies/dji_mavic_3m.jpg'
             ],
             description: 'Die DJI Mavic 3M ist eine kompakte Enterprise-Drohne mit integrierter Multispektralkamera für Präzisionslandwirtschaft und Fernerkundung. Sie kombiniert eine hochauflösende RGB-Kamera (20 MP, 4/3 CMOS) mit einer Multispektralkamera (5 MP, 4 Spektralkanäle: G/R/RE/NIR) und bietet optionale RTK-Genauigkeit für zentimetergenaue Positionierung.',
             documentUrl: 'https://dl.djicdn.com/downloads/DJI_Mavic_3_Enterprise/20230531/DJI_Mavic_3M_UM_de_v1.2.pdf',
@@ -58,8 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: 'DJI D-RTK 2 Mobile Station',
             images: [
-                'img/technologies/dji_drtk2.jpg',
-                'img/technologies/dji_drtk2_draft.jpg'
+                'img/technologies/dji_drtk2.jpg'
             ],
             description: 'Die DJI D-RTK 2 ist eine hochpräzise GNSS-Basisstation für DJI-Drohnen. Sie unterstützt GPS, GLONASS, Galileo und BeiDou und liefert zentimetergenaue RTK-Korrektionen in Echtzeit. Die Station ist wetterfest, robust und für präzise Vermessungs-, Mapping- und Landwirtschaftsanwendungen konzipiert.',
             documentUrl: 'https://dl.djicdn.com/downloads/d-rtk-2/20230621/D-RTK_2_Mobile_Station_User_Guide_v2.6_multi_.pdf',
@@ -77,13 +72,69 @@ document.addEventListener('DOMContentLoaded', function() {
                 { label: 'Abmessungen', value: '168 × 168 × 1800 mm' },
                 { label: 'Gewicht', value: 'ca. 1,05 kg' }
             ]
+        },
+        {
+            name: 'ASD FieldSpec 4 Hi-Res Spectroradiometer',
+            images: [
+                'img/technologies/asd_spectroradiometer.png'
+            ],
+            description: 'Das ASD FieldSpec 4 Hi-Res ist ein tragbares Spektroradiometer mit überlegener Empfindlichkeit für Feldmessungen unter natürlichem Licht. Mit hoher spektraler Auflösung und permanenter Faser-Optik-Verbindung ist es ideal für Bodenwahrheitsmessungen, hyperspektrale Fernerkundung und präzise Materialcharakterisierung auch unter schwierigen Beleuchtungsbedingungen.',
+            documentUrl: 'https://www.malvernpanalytical.com/en/assets/asd%20fieldspec%204%20brochure%20-%20sciaps_tcm50-61709.pdf',
+            documentLabel: 'Product Brochure (PDF)',
+            specs: [
+                { label: 'Spektralbereich', value: '350 – 2500 nm' },
+                { label: 'Spektrale Auflösung', value: '3 nm @ 700 nm, 8 nm @ 1400/2100 nm' },
+                { label: 'Wellenlängengenauigkeit', value: '±0,5 nm' },
+                { label: 'Faseroptik-Kabel', value: 'Werkseitig installiert, permanent verbunden' },
+                { label: 'Messgeometrie', value: '45° / normal (ASD-Geometrie)' },
+                { label: 'Batteriebetrieb', value: 'ca. 4–5 Stunden' },
+                { label: 'Betriebstemperatur', value: '0 °C bis 50 °C' },
+                { label: 'Gewicht', value: 'ca. 5,5 kg (mit Spektrometer und Zubehör)' },
+                { label: 'Schnittstellen', value: 'USB, Ethernet, SD-Kartenschlitz' }
+            ]
+        },
+        {
+            name: 'Trimble SPS585 GNSS System',
+            images: [
+                'img/technologies/trimble_gnss_sps_585.png'
+            ],
+            description: 'Das Trimble SPS585 ist ein hochpräzises GNSS/GPS-System für präzise Positionierung und Vermessung. Es bietet zentimetergenaue Genauigkeit durch Echtzeit-Kinematik (RTK) und integrierte Korrekturverbindungen. Das System ist ideal für genaue Positionierungsmessungen, Drohnen-Navigation und Vermessungsanwendungen unter schwierigen Bedingungen.',
+            documentUrl: 'https://allterra-dno.de/wp-content/uploads/2017/09/SPS585_DS-A4_020117_LR.pdf',
+            documentLabel: 'Data Sheet (PDF)',
+            specs: [
+                { label: 'Positioniergenauigkeit', value: '±2 cm + 1 ppm horizontal, ±3 cm + 1 ppm vertikal' },
+                { label: 'Satellitensysteme', value: 'GPS L1/L2, GLONASS, Galileo, BeiDou' },
+                { label: 'Gewicht', value: 'ca. 1,8 kg (mit Modem und Zubehör)' },
+                { label: 'Initialisierungszeit', value: 'typisch < 1 Minute' },
+                { label: 'Betriebstemperatur', value: '-40 °C bis 65 °C' },
+                { label: 'Aktualisierungsrate', value: 'bis 20 Hz' }
+            ]
         }
     ];
 
     // Build modal content
     function buildModalContent() {
         let html = '<div class="technology-modal-body">';
-        technologies.forEach(tech => {
+        technologies.forEach((tech, index) => {
+            const isHySpex = tech.name === 'HySpex Mjolnir VS-620';
+            const specsHtml = tech.specs ? `
+                <div class="technology-specs ${isHySpex ? '' : 'collapsible'}">
+                    ${!isHySpex ? `
+                        <button class="technology-specs-title" data-tech-index="${index}">
+                            <i class="bi bi-chevron-down technology-specs-toggle"></i>
+                            <span>Spezifikationen</span>
+                        </button>
+                    ` : `
+                        <div class="technology-specs-title">Spezifikationen</div>
+                    `}
+                    <ul class="technology-specs-list ${isHySpex ? '' : 'collapsed'}">
+                        ${tech.specs.map(spec => `
+                            <li><strong>${spec.label}:</strong> ${spec.value}</li>
+                        `).join('')}
+                    </ul>
+                </div>
+            ` : '';
+            
             html += `
                 <div class="technology-section">
                     <div class="technology-images">
@@ -101,16 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             ` : ''}
                         </div>
                         <p>${tech.description}</p>
-                        ${tech.specs ? `
-                            <div class="technology-specs">
-                                <div class="technology-specs-title">Spezifikationen</div>
-                                <ul class="technology-specs-list">
-                                    ${tech.specs.map(spec => `
-                                        <li><strong>${spec.label}:</strong> ${spec.value}</li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-                        ` : ''}
+                        ${specsHtml}
                     </div>
                 </div>
             `;
@@ -121,6 +163,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set modal content
     modalBody.innerHTML = buildModalContent();
+
+    // Add event listeners for collapsible specs
+    document.querySelectorAll('.technology-specs-title[data-tech-index]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const specsList = this.nextElementSibling;
+            specsList.classList.toggle('collapsed');
+            const icon = this.querySelector('.technology-specs-toggle');
+            icon.style.transform = specsList.classList.contains('collapsed') ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+    });
 
     // Open modal
     if (technologyBtn) {

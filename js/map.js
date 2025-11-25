@@ -17,11 +17,6 @@ const streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     attribution: '© OpenStreetMap contributors'
 });
 
-const terrain = L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
-    maxZoom: 20,
-    attribution: '© OpenStreetMap contributors, © CyclOSM'
-});
-
 const dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 20,
     attribution: '© CartoDB contributors'
@@ -47,7 +42,6 @@ satellite.addTo(map);
 const baseMaps = {
     'Satellite': satellite,
     'Streets': streets,
-    'Terrain': terrain,
     'Dark': dark,
     'Light': light
 };

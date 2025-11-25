@@ -1,6 +1,8 @@
 (function () {
     // Get existing checkbox elements from HTML
     const orthophotoCheckbox = document.getElementById('dji-orthophoto-checkbox');
+    const dsmCheckbox = document.getElementById('dji-dsm-checkbox');
+    const dtmCheckbox = document.getElementById('dji-dtm-checkbox');
     const djiPointsCheckbox = document.getElementById('dji-points-checkbox');
     const djiToggleBtn = document.getElementById('dji-data-toggle-btn');
 
@@ -55,6 +57,48 @@
                 orthophotoLayer.addTo(map);
             } else {
                 map.removeLayer(orthophotoLayer);
+            }
+        });
+    }
+
+    // Create the DSM layer using XYZ tiles
+    const dsmLayer = L.tileLayer('img/dsm_tiles/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        minZoom: 15,
+        tms: false,
+        attribution: 'DJI DSM',
+        zoomOffset: 0,
+        maxNativeZoom: 20
+    });
+
+    // Add event listener to toggle DSM visibility
+    if (dsmCheckbox) {
+        dsmCheckbox.addEventListener('change', () => {
+            if (dsmCheckbox.checked) {
+                dsmLayer.addTo(map);
+            } else {
+                map.removeLayer(dsmLayer);
+            }
+        });
+    }
+
+    // Create the DTM layer using XYZ tiles
+    const dtmLayer = L.tileLayer('img/dtm_tiles/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        minZoom: 15,
+        tms: false,
+        attribution: 'DJI DTM',
+        zoomOffset: 0,
+        maxNativeZoom: 20
+    });
+
+    // Add event listener to toggle DTM visibility
+    if (dtmCheckbox) {
+        dtmCheckbox.addEventListener('change', () => {
+            if (dtmCheckbox.checked) {
+                dtmLayer.addTo(map);
+            } else {
+                map.removeLayer(dtmLayer);
             }
         });
     }

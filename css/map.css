@@ -140,6 +140,70 @@
 	font-size: 0.85rem;
 }
 
+/* Distance Label Styling */
+.distance-label {
+    z-index: 500;
+}
+
+.distance-label-box {
+    background: rgba(52, 152, 219, 0.95);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Area Label Styling */
+.area-label {
+    z-index: 600;
+    pointer-events: none;
+}
+
+.area-label-box {
+    background: rgba(52, 152, 219, 0.95);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    min-width: 220px;
+    line-height: 1.4;
+}
+
+/* Measurement Shape Styling */
+.leaflet-draw-polyline,
+.leaflet-draw-polygon,
+.leaflet-draw-rectangle {
+    color: #3498db;
+}
+
+.leaflet-draw-layer {
+    stroke: #3498db;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill-opacity: 0.15;
+}
+
+.leaflet-draw-layer:hover {
+    stroke: #2980b9;
+    stroke-width: 4;
+}
+
+/* SVG Hatch Pattern for Polygons */
+svg defs {
+    display: none;
+}
+
 /* Map Container */
 #map-container{
     flex:1;

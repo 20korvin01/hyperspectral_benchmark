@@ -23,7 +23,7 @@ function formatDateTime(dateTime) {
 function createPopup(material) {
     // Support both old JSON format (material.name) and new GeoJSON format (material.material)
     const materialName = material.material || material.name;
-    const dateTime = material['EXIF DateTimeOriginal'];
+    const dateTime = material['Image DateTime'] || material['EXIF DateTimeOriginal'];
     const note = material.note || '';
     const imageName = materialName + '.jpg';
     const imagePath = `img/materials/${imageName}`;

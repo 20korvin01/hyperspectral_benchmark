@@ -117,6 +117,8 @@
 
 /* Container wrapper for highlight frame */
 #dji-orthophoto-checkbox-container,
+#dji-dsm-checkbox-container,
+#dji-dtm-checkbox-container,
 #dji-points-checkbox-container {
     background: #f0fff4;
     border: 1px solid #b3e5b3;
@@ -127,6 +129,8 @@
 }
 
 #dji-orthophoto-checkbox-container label,
+#dji-dsm-checkbox-container label,
+#dji-dtm-checkbox-container label,
 #dji-points-checkbox-container label {
     cursor: pointer;
     user-select: none;
@@ -137,6 +141,8 @@
 }
 
 #dji-orthophoto-checkbox,
+#dji-dsm-checkbox,
+#dji-dtm-checkbox,
 #dji-points-checkbox {
     margin: 0;
     cursor: pointer;
@@ -206,6 +212,8 @@
 }
 
 #dji-orthophoto-checkbox-container,
+#dji-dsm-checkbox-container,
+#dji-dtm-checkbox-container,
 #dji-points-checkbox-container {
     position: relative;
 }

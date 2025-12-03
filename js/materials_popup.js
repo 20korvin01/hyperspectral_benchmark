@@ -224,7 +224,7 @@ async function loadAndPlotSpectra(materialName) {
             const filename = matchingFiles[i];
             
             try {
-                const response = await fetch(`data/spectra_ascii/${filename}`);
+                const response = await fetch(`data/reference_spectra/spectra_ascii/${filename}`);
                 
                 if (!response.ok) {
                     console.warn(`Could not load ${filename}`);
@@ -284,7 +284,7 @@ async function loadAndPlotMeanSpectra(materialName) {
     try {
         // Load mean spectrum - use .asd extension
         const meanFilename = `${materialName}_mean.asd`;
-        const meanResponse = await fetch(`data/mean_spectra_ascii/${meanFilename}`);
+        const meanResponse = await fetch(`data/reference_spectra/mean_spectra_ascii/${meanFilename}`);
         
         if (!meanResponse.ok) {
             console.warn(`Could not load mean spectrum for ${materialName}`);
@@ -313,7 +313,7 @@ async function loadAndPlotMeanSpectra(materialName) {
             const filename = matchingFiles[i];
             
             try {
-                const response = await fetch(`data/spectra_ascii/${filename}`);
+                const response = await fetch(`data/reference_spectra/spectra_ascii/${filename}`);
                 if (response.ok) {
                     const data = await response.text();
                     const lines = data.trim().split('\n').slice(1);

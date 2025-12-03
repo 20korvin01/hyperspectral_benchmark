@@ -88,7 +88,7 @@
     let hyspexTrajectorySwirEventLayer = null;
 
     // Load HySpex trajectory RealTime GeoJSON
-    fetch('data/geojson/hyspex_trajectory_realtime100.geojson')
+    fetch('data/geojson/20251105/hyspex_trajectory_realtime100.geojson')
         .then(response => response.json())
         .then(geojsonData => {
             hyspexTrajectoryRealtimeLayer = L.geoJSON(geojsonData, {
@@ -116,7 +116,7 @@
         .catch(error => console.error('Error loading HySpex RealTime trajectory GeoJSON data:', error));
 
     // Load HySpex trajectory Post-Processed GeoJSON
-    fetch('data/geojson/hyspex_trajectory_post_processed100.geojson')
+    fetch('data/geojson/20251105/hyspex_trajectory_post_processed100.geojson')
         .then(response => response.json())
         .then(geojsonData => {
             hyspexTrajectoryPostprocessedLayer = L.geoJSON(geojsonData, {
@@ -144,7 +144,7 @@
         .catch(error => console.error('Error loading HySpex Post-Processed trajectory GeoJSON data:', error));
 
     // Load HySpex trajectory VNIR All GeoJSON
-    fetch('data/geojson/VNIR_all_downsampled100.geojson')
+    fetch('data/geojson/20251105/VNIR_all_downsampled100.geojson')
         .then(response => response.json())
         .then(geojsonData => {
             hyspexTrajectoryVnirAllLayer = L.geoJSON(geojsonData, {
@@ -169,7 +169,7 @@
         .catch(error => console.error('Error loading HySpex VNIR All trajectory GeoJSON data:', error));
 
     // Load HySpex trajectory VNIR Event GeoJSON (Points)
-    fetch('data/geojson/VNIR_event_points.geojson')
+    fetch('data/geojson/20251105/VNIR_event_points.geojson')
         .then(response => response.json())
         .then(geojsonData => {
             hyspexTrajectoryVnirEventLayer = L.geoJSON(geojsonData, {
@@ -198,7 +198,7 @@
         .catch(error => console.error('Error loading HySpex VNIR Event points GeoJSON data:', error));
 
     // Load HySpex trajectory SWIR All GeoJSON
-    fetch('data/geojson/SWIR_all_downsampled100.geojson')
+    fetch('data/geojson/20251105/SWIR_all_downsampled100.geojson')
         .then(response => response.json())
         .then(geojsonData => {
             hyspexTrajectorySwirAllLayer = L.geoJSON(geojsonData, {
@@ -223,7 +223,7 @@
         .catch(error => console.error('Error loading HySpex SWIR All trajectory GeoJSON data:', error));
 
     // Load HySpex trajectory SWIR Event GeoJSON (Points)
-    fetch('data/geojson/SWIR_event_points.geojson')
+    fetch('data/geojson/20251105/SWIR_event_points.geojson')
         .then(response => response.json())
         .then(geojsonData => {
             hyspexTrajectorySwirEventLayer = L.geoJSON(geojsonData, {

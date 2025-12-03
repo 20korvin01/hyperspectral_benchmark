@@ -40,7 +40,7 @@
     }
 
     // Create the orthophoto layer using XYZ tiles
-    const orthophotoLayer = L.tileLayer('img/ortho_tiles/{z}/{x}/{y}.png', {
+    const orthophotoLayer = L.tileLayer('img/ortho_tiles/20251105/{z}/{x}/{y}.png', {
         maxZoom: 20,
         minZoom: 16,
         tms: false,
@@ -62,7 +62,7 @@
     }
 
     // Create the DSM layer using XYZ tiles
-    const dsmLayer = L.tileLayer('img/dsm_tiles/{z}/{x}/{y}.png', {
+    const dsmLayer = L.tileLayer('img/dsm_tiles/20251105/{z}/{x}/{y}.png', {
         maxZoom: 20,
         minZoom: 15,
         tms: false,
@@ -83,7 +83,7 @@
     }
 
     // Create the DTM layer using XYZ tiles
-    const dtmLayer = L.tileLayer('img/dtm_tiles/{z}/{x}/{y}.png', {
+    const dtmLayer = L.tileLayer('img/dtm_tiles/20251105/{z}/{x}/{y}.png', {
         maxZoom: 20,
         minZoom: 15,
         tms: false,
@@ -160,7 +160,7 @@
     
     // Load and parse DJI image metadata GeoJSON
     let djiPointsData = null;
-    fetch('data/geojson/dji_imgs_metadata.geojson')
+    fetch('data/geojson/20251105/dji_imgs_metadata.geojson')
         .then(response => response.json())
         .then(data => {
             djiPointsData = data;

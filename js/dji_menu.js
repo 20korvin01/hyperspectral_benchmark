@@ -2,20 +2,26 @@
     // Get existing checkbox elements from HTML
     const orthophotoCheckbox = document.getElementById('dji-orthophoto-checkbox');
     const dsmCheckbox = document.getElementById('dji-dsm-checkbox');
-    const dtmCheckbox = document.getElementById('dji-dtm-checkbox');
     const djiPointsCheckbox = document.getElementById('dji-points-checkbox');
     const djiToggleBtn = document.getElementById('dji-data-toggle-btn');
+
+    // Get secondary checkbox elements (20251203)
+    const orthophotoCheckbox2 = document.getElementById('dji-orthophoto-checkbox-2');
+    const dsmCheckbox2 = document.getElementById('dji-dsm-checkbox-2');
+    const djiPointsCheckbox2 = document.getElementById('dji-points-checkbox-2');
+    const djiToggleBtn2 = document.getElementById('dji-data-toggle-btn-2');
 
     // Global variable to store current DJI image data
     let currentDjiImage = null;
 
     // Toggle DJI data containers visibility
     let isDjiDataExpanded = false; // Default collapsed state
+    let isDjiDataExpanded2 = false; // Default collapsed state for secondary
     
     if (djiToggleBtn) {
         djiToggleBtn.addEventListener('click', function() {
             isDjiDataExpanded = !isDjiDataExpanded;
-            const containers = document.querySelectorAll('.dji-layer-checkbox-container');
+            const containers = document.querySelectorAll('#dji-orthophoto-checkbox-container, #dji-dsm-checkbox-container, #dji-points-checkbox-container');
             const wrapper = document.getElementById('dji-data-wrapper');
             const chevron = djiToggleBtn.querySelector('.dji-badge-chevron');
             
@@ -33,8 +39,36 @@
         });
         
         // Initialize with collapsed state
-        const containers = document.querySelectorAll('.dji-layer-checkbox-container');
+        const containers = document.querySelectorAll('#dji-orthophoto-checkbox-container, #dji-dsm-checkbox-container, #dji-points-checkbox-container');
         containers.forEach(container => {
+            container.classList.add('collapsed');
+        });
+    }
+
+    // Toggle DJI data containers visibility for secondary (20251203)
+    if (djiToggleBtn2) {
+        djiToggleBtn2.addEventListener('click', function() {
+            isDjiDataExpanded2 = !isDjiDataExpanded2;
+            const containers2 = document.querySelectorAll('#dji-orthophoto-checkbox-container-2, #dji-dsm-checkbox-container-2, #dji-points-checkbox-container-2');
+            const wrapper2 = document.getElementById('dji-data-wrapper-2');
+            const chevron2 = djiToggleBtn2.querySelector('.dji-badge-chevron-2');
+            
+            containers2.forEach(container => {
+                container.classList.toggle('collapsed', !isDjiDataExpanded2);
+            });
+            
+            if (wrapper2) {
+                wrapper2.classList.toggle('expanded', isDjiDataExpanded2);
+            }
+            
+            if (chevron2) {
+                chevron2.classList.toggle('rotated', isDjiDataExpanded2);
+            }
+        });
+        
+        // Initialize with collapsed state
+        const containers2 = document.querySelectorAll('#dji-orthophoto-checkbox-container-2, #dji-dsm-checkbox-container-2, #dji-points-checkbox-container-2');
+        containers2.forEach(container => {
             container.classList.add('collapsed');
         });
     }
@@ -78,27 +112,6 @@
                 dsmLayer.addTo(map);
             } else {
                 map.removeLayer(dsmLayer);
-            }
-        });
-    }
-
-    // Create the DTM layer using XYZ tiles
-    const dtmLayer = L.tileLayer('img/dtm_tiles/20251105/{z}/{x}/{y}.png', {
-        maxZoom: 20,
-        minZoom: 15,
-        tms: false,
-        attribution: 'DJI DTM',
-        zoomOffset: 0,
-        maxNativeZoom: 20
-    });
-
-    // Add event listener to toggle DTM visibility
-    if (dtmCheckbox) {
-        dtmCheckbox.addEventListener('change', () => {
-            if (dtmCheckbox.checked) {
-                dtmLayer.addTo(map);
-            } else {
-                map.removeLayer(dtmLayer);
             }
         });
     }
@@ -228,6 +241,132 @@
         })
         .catch(error => console.error('Error loading DJI image metadata:', error));
     
+    // Create the orthophoto layer 2 using XYZ tiles (20251203)
+    const orthophotoLayer2 = L.tileLayer('img/ortho_tiles/20251203/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        minZoom: 16,
+        tms: false,
+        attribution: 'DJI Orthophoto',
+        zoomOffset: 0,
+        maxNativeZoom: 20
+    });
+
+    // Add event listener to toggle orthophoto visibility (20251203)
+    if (orthophotoCheckbox2) {
+        orthophotoCheckbox2.addEventListener('change', () => {
+            if (orthophotoCheckbox2.checked) {
+                orthophotoLayer2.addTo(map);
+            } else {
+                map.removeLayer(orthophotoLayer2);
+            }
+        });
+    }
+
+    // Create the DSM layer 2 using XYZ tiles (20251203)
+    const dsmLayer2 = L.tileLayer('img/dsm_tiles/20251203/{z}/{x}/{y}.png', {
+        maxZoom: 20,
+        minZoom: 15,
+        tms: false,
+        attribution: 'DJI DSM',
+        zoomOffset: 0,
+        maxNativeZoom: 20
+    });
+
+    // Add event listener to toggle DSM visibility (20251203)
+    if (dsmCheckbox2) {
+        dsmCheckbox2.addEventListener('change', () => {
+            if (dsmCheckbox2.checked) {
+                dsmLayer2.addTo(map);
+            } else {
+                map.removeLayer(dsmLayer2);
+            }
+        });
+    }
+
+    // Create a layer group for DJI image metadata points (20251203)
+    let djiPointsLayer2 = L.layerGroup();
+    
+    // Load and parse DJI image metadata GeoJSON (20251203)
+    let djiPointsData2 = null;
+    fetch('data/geojson/20251203/dji_imgs_metadata.geojson')
+        .then(response => response.json())
+        .then(data => {
+            djiPointsData2 = data;
+            
+            // Extract all UTC times for normalization
+            const allTimes = data.features
+                .map(f => f.properties.utc_time)
+                .filter(t => t !== null && t !== undefined);
+            
+            // Add GeoJSON layer with styling
+            L.geoJSON(data, {
+                pointToLayer: function(feature, latlng) {
+                    const props = feature.properties;
+                    const colors = getColorByTime(props.utc_time, allTimes);
+                    
+                    // Create circle markers for each image point
+                    const marker = L.circleMarker(latlng, {
+                        radius: 4,
+                        fillColor: colors.fill,
+                        color: colors.stroke,
+                        weight: 1.5,
+                        opacity: 0.9,
+                        fillOpacity: 0.7
+                    });
+                    
+                    // Store original style for reset
+                    marker.originalStyle = {
+                        radius: 4,
+                        fillColor: colors.fill,
+                        color: colors.stroke,
+                        weight: 1.5,
+                        opacity: 0.9,
+                        fillOpacity: 0.7
+                    };
+                    
+                    // Add click event to open modal
+                    marker.on('click', function() {
+                        openDjiImageModal(props);
+                    });
+                    
+                    // Add tooltip for filename
+                    marker.bindTooltip(props.filename || 'Image Point', {
+                        permanent: false,
+                        direction: 'top'
+                    });
+                    
+                    // Add hover effects
+                    marker.on('mouseover', function() {
+                        this.setStyle({
+                            radius: 7,
+                            weight: 2.5,
+                            opacity: 1,
+                            fillOpacity: 0.85
+                        });
+                        this.bringToFront();
+                    });
+                    
+                    marker.on('mouseout', function() {
+                        this.setStyle(this.originalStyle);
+                    });
+                    
+                    return marker;
+                }
+            }).addTo(djiPointsLayer2);
+        })
+        .catch(error => console.error('Error loading DJI image metadata (20251203):', error));
+    
+    // Add event listener to toggle DJI points visibility (20251203)
+    if (djiPointsCheckbox2) {
+        djiPointsCheckbox2.addEventListener('change', () => {
+            if (djiPointsCheckbox2.checked) {
+                djiPointsLayer2.addTo(map);
+            } else {
+                map.removeLayer(djiPointsLayer2);
+            }
+        });
+    }
+    
     // Function to open DJI image modal
     function openDjiImageModal(props) {
         currentDjiImage = props;
@@ -252,8 +391,26 @@
             return value + unit;
         };
 
+        // Format date and time
+        let dateTimeStr = 'N/A';
+        if (props.utc_time) {
+            const date = new Date(props.utc_time);
+            // Subtract 1 hour for CET timezone
+            date.setHours(date.getHours() - 1);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+            dateTimeStr = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+        }
+
         return `
             <div class="dji-image-popup-content">
+                <div class="datetime-header">
+                    ${dateTimeStr}
+                </div>
                 <div class="popup-sections-grid">
                     <div class="popup-section">
                         <div class="section-title">Kamera</div>

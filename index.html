@@ -204,14 +204,14 @@
 					<button class="menu-close-btn" id="hyspex-menu-close" title="Menü schließen">&times;</button>
 				</div>
 
-				<!-- Data Date Badge - Collapsible -->
+				<!-- Data Date Badge - Collapsible (5.11.2025) -->
 				<button class="hyspex-data-date-badge" id="hyspex-data-toggle-btn" title="HySpex-Daten anzeigen/verbergen">
 					<i class="bi bi-calendar-event"></i>
 					<span>Daten vom 5.11.2025</span>
 					<i class="bi bi-chevron-down hyspex-badge-chevron"></i>
 				</button>
 
-				<!-- HySpex Data Container -->
+				<!-- HySpex Data Container (5.11.2025) -->
 				<div class="hyspex-data-wrapper" id="hyspex-data-wrapper">
 					<!-- HySpex Trajectory RealTime Checkbox -->
 					<div id="hyspex-trajectory-realtime-checkbox-container" class="hyspex-layer-checkbox-container">
@@ -230,18 +230,15 @@
 					<!-- HySpex Trajectory Post-Processed Checkbox -->
 					<div id="hyspex-trajectory-postprocessed-checkbox-container" class="hyspex-layer-checkbox-container">
 						<input type="checkbox" id="hyspex-trajectory-postprocessed-checkbox">
-						<label for="hyspex-trajectory-postprocessed-checkbox">Flugbahn | Post-Processed</label>
+						<label for="hyspex-trajectory-postprocessed-checkbox">Flugbahn | Post-Proc.</label>
 						<span class="hyspex-info-icon">
 							<i class="bi bi-question-circle"></i>
 						</span>
 						<div class="hyspex-info-tooltip">
 							<strong>HySpex Flugbahn | Post-Processed</strong>
-							<p>Zeigt die post-prozessierte (verarbeitete) Flugbahn der HySpex-Missionen auf dem
-								Forschungsgelände.
-								Durch das Ausfallen der Basisstation während des Drohnenfluges, ist die Prozessierung
-								lediglich auf die Fusion von GNSS und IMU Daten beschränkt. Es werden keine Korrekturdaten
-								durch RTK oder DGPS verwendet. Die Trajektorie wurde auf den
-								tatsächlichen Flugzeitraum gekürzt.</p>
+							<p>Zeigt die prozessierte Flugbahn der HySpex-Missionen auf dem
+								Forschungsgelände. Durch das Ausfallen der Basisstation während des Drohnenfluges, ist die Prozessierung
+								lediglich auf die Fusion von GNSS und IMU Daten beschränkt.</p>
 						</div>
 					</div>
 
@@ -288,6 +285,64 @@
 								<div id="hyspex-trajectory-swir-event-checkbox-container" class="hyspex-layer-checkbox-container">
 									<input type="checkbox" id="hyspex-trajectory-swir-event-checkbox">
 									<label for="hyspex-trajectory-swir-event-checkbox">Event</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Data Date Badge - Collapsible (3.12.2025) -->
+				<button class="hyspex-data-date-badge hyspex-data-date-badge-secondary" id="hyspex-data-toggle-btn-2" title="HySpex-Daten anzeigen/verbergen">
+					<i class="bi bi-calendar-event"></i>
+					<span>Daten vom 3.12.2025</span>
+					<i class="bi bi-chevron-down hyspex-badge-chevron-2"></i>
+				</button>
+
+				<!-- HySpex Data Container (3.12.2025) -->
+				<div class="hyspex-data-wrapper" id="hyspex-data-wrapper-2">
+					<!-- HySpex Spectral Data - Collapsible Container (3.12.2025) -->
+					<div class="hyspex-spectral-container">
+						<button class="hyspex-spectral-toggle-header" id="hyspex-spectral-group-toggle-2">
+							<i class="bi bi-chevron-down hyspex-spectral-toggle-icon"></i>
+							<span>Spektraldaten - Export</span>
+							<span class="hyspex-info-icon hyspex-spectral-info-icon">
+								<i class="bi bi-question-circle"></i>
+							</span>
+							<div class="hyspex-info-tooltip">
+								<strong>HySpex Spektraldaten</strong>
+								<p>Zeigt die Flugbahnen der VNIR (Visible and Near-Infrared) und SWIR (Shortwave Infrared) Hyperspektraldaten. Die Daten sind in "All" (gesamte Trajektorie) und "Event" (Positionen der HySpex-Aufnahmen) unterteilt.</p>
+							</div>
+						</button>
+						<div class="hyspex-spectral-grid-container" id="hyspex-spectral-group-content-2">
+							<!-- VNIR Group -->
+							<div class="hyspex-spectral-group">
+								<div class="hyspex-group-label">VNIR</div>
+								<!-- HySpex VNIR All Checkbox -->
+								<div id="hyspex-trajectory-vnir-all-checkbox-container-2" class="hyspex-layer-checkbox-container">
+									<input type="checkbox" id="hyspex-trajectory-vnir-all-checkbox-2">
+									<label for="hyspex-trajectory-vnir-all-checkbox-2">All</label>
+								</div>
+
+								<!-- HySpex VNIR Event Checkbox -->
+								<div id="hyspex-trajectory-vnir-event-checkbox-container-2" class="hyspex-layer-checkbox-container">
+									<input type="checkbox" id="hyspex-trajectory-vnir-event-checkbox-2">
+									<label for="hyspex-trajectory-vnir-event-checkbox-2">Event</label>
+								</div>
+							</div>
+
+							<!-- SWIR Group -->
+							<div class="hyspex-spectral-group">
+								<div class="hyspex-group-label">SWIR</div>
+								<!-- HySpex SWIR All Checkbox -->
+								<div id="hyspex-trajectory-swir-all-checkbox-container-2" class="hyspex-layer-checkbox-container">
+									<input type="checkbox" id="hyspex-trajectory-swir-all-checkbox-2">
+									<label for="hyspex-trajectory-swir-all-checkbox-2">All</label>
+								</div>
+
+								<!-- HySpex SWIR Event Checkbox -->
+								<div id="hyspex-trajectory-swir-event-checkbox-container-2" class="hyspex-layer-checkbox-container">
+									<input type="checkbox" id="hyspex-trajectory-swir-event-checkbox-2">
+									<label for="hyspex-trajectory-swir-event-checkbox-2">Event</label>
 								</div>
 							</div>
 						</div>

@@ -1,59 +1,59 @@
-material;note
-Kies_grob;Name selbst gewählt
-Muschelkalkstein_45-125mm;
-Jurasplitt_11-22mm;
-Juraschotter_63-120mm;
-Juraschotter_22-45mm;
-Lava_16-56mm;Name selbst gewählt, rechter Lavahaufen vordere Boxen
-Graureferenz;
-HumusHaufenVonLinks1;
-HumusHaufenVonLinks2;
-Lava_56-120mm;
-Quarzsand;Name selbst gewählt
-Kies_sehrfein;Name selbst gewählt
-Mischgut;Spektren anschauen
-Splitt_2-8mm;
-Rheinsand_0-2mm;
-Rheinkies;Name selbst gewählt
-Granit_Bruchfindlinge_Grosse_Krotzen;
-Lava_8-16mm;Weißreferenz im Schatten
-Lava_3-8mm;Weißreferenz im Schatten
-Lava_0-3mm;Weißreferenz im Schatten
-Ziegelsplitt_0-16mm;
-SchwarzesZeug_Mischung;Name selbst gewählt
-Erdmischung;Name selbst gewählt
-Vegetationssubstrat;
-Lavasand_grob;Name selbst gewählt
-SchwarzesMulch;Name selbst gewählt
-Lavasand_fein;Name selbst gewählt
-Baumsubstrat_A;
-ZiegelsplittMischung;Name selbst gewählt
-Oberbodengemisch;
-Kies_fein;Name selbst gewählt
-GranitSplitt_11-16mm;
-Granitschotter_16-32mm;
-GranitGabionen_56-80mm;
-TrennblöckeBeton1;
-TrennblöckeBeton2;
-HumusHaufenVonLinks3;
-HumusHaufenVonLinks4;
-HumusHaufenVonLinks5;
-HumusHaufenVonLinks6;
-HumusHaufenVonLinks7;
-RindenMulchLangerHaufenRechts;Name selbst gewählt
-ZiegelSplittErdgemisch1;Name selbst gewählt
-ZiegelSplitt2;Name selbst gewählt
-SedimentErde;Name selbst gewählt
-ZiegelSplittErdgemisch2;Name selbst gewählt
-AsphaltTrockenVerschmutzung1;
-Splitt_namenlos1;Name selbst gewählt
-Splitt_namenlos2;Name selbst gewählt, Weißreferenz im Schatten
-BasaltGabionen_56-120mm;Weißreferenz im Schatten
-BasaltSplitt_1-3mm;Weißreferenz im Schatten
-Erdgemisch;Name selbst gewählt, Weißreferenz im Schatten
-AsphaltNassPfuetzen;
-AsphaltTrockenVerschmutzung2;
-SandsteinBlock;
-RindenmulchTonsand;Name selbst gewählt
-Rindenmulch_grob;Name selbst gewählt
-Rindenmulch_fein;Name selbst gewählt
+material;note;category
+Kies_grob;Name selbst gewählt;Mineral Aggregates
+Muschelkalkstein_45-125mm;;Mineral Aggregates
+Jurasplitt_11-22mm;;Mineral Aggregates
+Juraschotter_63-120mm;;Mineral Aggregates
+Juraschotter_22-45mm;;Mineral Aggregates
+Lava_16-56mm;Name selbst gewählt;Mineral Aggregates
+Graureferenz;;Reference Targets
+HumusHaufenVonLinks1;;Soil and Earth Mixtures
+HumusHaufenVonLinks2;;Soil and Earth Mixtures
+Lava_56-120mm;;Mineral Aggregates
+Quarzsand;Name selbst gewählt;Mineral Aggregates
+Kies_sehrfein;Name selbst gewählt;Mineral Aggregates
+Mischgut;Spektren anschauen;Industrial / Construction Materials
+Splitt_2-8mm;;Mineral Aggregates
+Rheinsand_0-2mm;;Mineral Aggregates
+Rheinkies;Name selbst gewählt;Mineral Aggregates
+Granit_Bruchfindlinge_Grosse_Krotzen;;Mineral Aggregates
+Lava_8-16mm;Weißreferenz im Schatten;Mineral Aggregates
+Lava_3-8mm;Weißreferenz im Schatten;Mineral Aggregates
+Lava_0-3mm;Weißreferenz im Schatten;Mineral Aggregates
+Ziegelsplitt_0-16mm;;Industrial / Construction Materials
+SchwarzesZeug_Mischung;Name selbst gewählt;Industrial / Construction Materials
+Erdmischung;Name selbst gewählt;Soil and Earth Mixtures
+Vegetationssubstrat;;Soil and Earth Mixtures
+Lavasand_grob;Name selbst gewählt;Mineral Aggregates
+SchwarzesMulch;Name selbst gewählt;Organic and Mulch Materials
+Lavasand_fein;Name selbst gewählt;Mineral Aggregates
+Baumsubstrat_A;;Organic and Mulch Materials
+ZiegelsplittMischung;Name selbst gewählt;Industrial / Construction Materials
+Oberbodengemisch;;Soil and Earth Mixtures
+Kies_fein;Name selbst gewählt;Mineral Aggregates
+GranitSplitt_11-16mm;;Mineral Aggregates
+Granitschotter_16-32mm;;Mineral Aggregates
+GranitGabionen_56-80mm;;Mineral Aggregates
+TrennbloeckeBeton1;;Artificial Surfaces
+TrennbloeckeBeton2;;Artificial Surfaces
+HumusHaufenVonLinks3;;Soil and Earth Mixtures
+HumusHaufenVonLinks4;;Soil and Earth Mixtures
+HumusHaufenVonLinks5;;Soil and Earth Mixtures
+HumusHaufenVonLinks6;;Soil and Earth Mixtures
+HumusHaufenVonLinks7;;Soil and Earth Mixtures
+RindenMulchLangerHaufenRechts;Name selbst gewählt;Organic and Mulch Materials
+ZiegelSplittErdgemisch1;Name selbst gewählt;Industrial / Construction Materials
+ZiegelSplitt2;Name selbst gewählt;Industrial / Construction Materials
+SedimentErde;Name selbst gewählt;Soil and Earth Mixtures
+ZiegelSplittErdgemisch2;Name selbst gewählt;Industrial / Construction Materials
+AsphaltTrockenVerschmutzung1;;Artificial Surfaces
+Splitt_namenlos1;Name selbst gewählt;Mineral Aggregates
+Splitt_namenlos2;Name selbst gewählt;Mineral Aggregates
+BasaltGabionen_56-120mm;Weißreferenz im Schatten;Mineral Aggregates
+BasaltSplitt_1-3mm;Weißreferenz im Schatten;Mineral Aggregates
+Erdgemisch;Name selbst gewählt;Soil and Earth Mixtures
+AsphaltNassPfuetzen;;Artificial Surfaces
+AsphaltTrockenVerschmutzung2;;Artificial Surfaces
+SandsteinBlock;;Mineral Aggregates
+RindenmulchTonsand;Name selbst gewählt;Organic and Mulch Materials
+Rindenmulch_grob;Name selbst gewählt;Organic and Mulch Materials
+Rindenmulch_fein;Name selbst gewählt;Organic and Mulch Materials

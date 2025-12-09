@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Fügt Notizen aus der CSV-Dokumentation zur GeoJSON-Datei hinzu
+Fügt Notizen und Kategorien aus der CSV-Dokumentation zur GeoJSON-Datei hinzu
 """
 
 import json
 import csv
 from pathlib import Path
 
-def load_notes_from_csv(csv_file):
-    """Lädt Notizen aus der CSV-Datei in ein Dictionary"""
-    notes = {}
+def load_documentation_from_csv(csv_file):
+    """Lädt Notizen und Kategorien aus der CSV-Datei in ein Dictionary"""
+    documentation = {}
     
     with open(csv_file, 'r', encoding='utf-8') as f:
         # CSV mit Semikolon als Trennzeichen lesen
@@ -18,14 +18,18 @@ def load_notes_from_csv(csv_file):
         for row in reader:
             material = row.get('material', '').strip()
             note = row.get('note', '').strip()
+            category = row.get('category', '').strip()
             if material:
-                notes[material] = note
-                print(f"  {material}: '{note}'")
+                documentation[material] = {
+                    'note': note,
+                    'category': category
+                }
+                print(f"  {material}: note='{note}', category='{category}'")
     
-    return notes
+    return documentation
 
-def add_notes_to_geojson(geojson_file, notes_dict, output_file=None):
-    """Fügt Notizen zur GeoJSON-Datei hinzu"""
+def add_documentation_to_geojson(geojson_file, documentation_dict, output_file=None):
+    """Fügt Notizen und Kategorien zur GeoJSON-Datei hinzu"""
     
     if output_file is None:
         output_file = geojson_file
@@ -34,7 +38,7 @@ def add_notes_to_geojson(geojson_file, notes_dict, output_file=None):
     with open(geojson_file, 'r', encoding='utf-8') as f:
         geojson = json.load(f)
     
-    # Notizen zu jedem Feature hinzufügen
+    # Notizen und Kategorien zu jedem Feature hinzufügen
     updated_count = 0
     not_found = set()
     
@@ -42,8 +46,10 @@ def add_notes_to_geojson(geojson_file, notes_dict, output_file=None):
         material_name = feature.get('properties', {}).get('material')
         
         if material_name:
-            if material_name in notes_dict:
-                feature['properties']['note'] = notes_dict[material_name]
+            if material_name in documentation_dict:
+                doc = documentation_dict[material_name]
+                feature['properties']['note'] = doc['note']
+                feature['properties']['category'] = doc['category']
                 updated_count += 1
             else:
                 not_found.add(material_name)
@@ -51,12 +57,20 @@ def add_notes_to_geojson(geojson_file, notes_dict, output_file=None):
         # Fallback: Falls 'note' noch nicht vorhanden ist, setze leeren String
         if 'note' not in feature['properties']:
             feature['properties']['note'] = ''
+        if 'category' not in feature['properties']:
+            feature['properties']['category'] = ''
+    
+        # Fallback: Falls 'note' oder 'category' noch nicht vorhanden ist, setze leeren String
+        if 'note' not in feature['properties']:
+            feature['properties']['note'] = ''
+        if 'category' not in feature['properties']:
+            feature['properties']['category'] = ''
     
     # Aktualisierte GeoJSON speichern
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(geojson, f, indent=2, ensure_ascii=False)
     
-    print(f"Notizen hinzugefuegt!")
+    print(f"✓ Dokumentation hinzugefügt!")
     print(f"  Eingabe-CSV: {geojson_file}")
     print(f"  Eingabe-GeoJSON: {geojson_file}")
     print(f"  Ausgabe-GeoJSON: {output_file}")
@@ -73,9 +87,10 @@ if __name__ == "__main__":
     csv_file = base_path / "materials_documentation.csv"
     geojson_file = base_path / "geojson" / "materials_img_metadata.geojson"
     
-    # Notizen aus CSV laden
-    notes = load_notes_from_csv(csv_file)
-    print(f"Geladen: {len(notes)} Notizen aus CSV")
+    # Dokumentation aus CSV laden
+    documentation = load_documentation_from_csv(csv_file)
+    print(f"✓ Geladen: {len(documentation)} Einträge aus CSV\n")
     
-    # Notizen zur GeoJSON hinzufügen
-    add_notes_to_geojson(geojson_file, notes)
+    # Dokumentation zur GeoJSON hinzufügen
+    add_documentation_to_geojson(geojson_file, documentation)
+

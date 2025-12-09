@@ -25,6 +25,7 @@ function createPopup(material) {
     const materialName = material.material || material.name;
     const dateTime = material['Image DateTime'] || material['EXIF DateTimeOriginal'];
     const note = material.note || '';
+    const category = material.category || '';
     const imageName = materialName + '.jpg';
     const imagePath = `img/materials/${imageName}`;
 
@@ -32,13 +33,23 @@ function createPopup(material) {
         <div class="popup-header">
             <b>${materialName}</b>
             <button class="spectrum-details-button" onclick="openSpectrumModal(this)" title="Spektren anzeigen"><i class="bi bi-file-bar-graph-fill"></i></button>
-        </div>
-        <img src="${imagePath}" alt="${materialName}" style="max-width: 100%; height: auto;"><br>
-        <span class="date">Aufgenommen am ${formatDateTime(dateTime)} Uhr</span>`;
+        </div>`;
     
-    // Füge Notiz hinzu, wenn vorhanden
-    if (note) {
-        popupContent += `<br><span class="note" style="font-size: 12px; color: #666; margin-top: 8px; display: block;"><strong>Anmerkung:</strong> ${note}</span>`;
+    popupContent += `<img src="${imagePath}" alt="${materialName}" style="max-width: 100%; height: auto;">`;
+    
+    // Add category and date badge if available
+    if (category || dateTime || note) {
+        popupContent += `<div class="material-info-badge">`;
+        if (category) {
+            popupContent += `<div class="material-category"><span class="material-category-icon"><i class="bi bi-tag-fill"></i></span><strong>${category}</strong></div>`;
+        }
+        if (dateTime) {
+            popupContent += `<div class="material-datetime"><span class="material-datetime-icon"><i class="bi bi-calendar-event"></i></span>${formatDateTime(dateTime)} Uhr</div>`;
+        }
+        if (note) {
+            popupContent += `<div class="material-note"><span class="material-note-icon"><i class="bi bi-chat-left-text-fill"></i></span>${note}</div>`;
+        }
+        popupContent += `</div>`;
     }
     
     popupContent += `</div>`;
@@ -182,6 +193,9 @@ function updateNavigationButtons() {
 async function populateSpectrumModal(material) {
     // Get material name from GeoJSON structure
     const materialName = material.material || material.name;
+    const category = material.category || '';
+    const dateTime = material['Image DateTime'] || material['EXIF DateTimeOriginal'];
+    const note = material.note || '';
     
     // Set title in modal header
     document.getElementById('spectrum-modal-title').textContent = materialName;
@@ -197,6 +211,45 @@ async function populateSpectrumModal(material) {
     const imageName = materialName + '.jpg';
     const imagePath = `img/materials/${imageName}`;
     document.getElementById('spectrum-modal-img').src = imagePath;
+    
+    // Add badge to image tab
+    const imageTab = document.getElementById('image-tab');
+    let badgeHTML = '';
+    if (category || dateTime || note) {
+        badgeHTML = '<div class="modal-material-info-badge">';
+        if (category) {
+            badgeHTML += `<div class="material-category"><span class="material-category-icon"><i class="bi bi-tag-fill"></i></span><strong>${category}</strong></div>`;
+        }
+        if (dateTime) {
+            badgeHTML += `<div class="material-datetime"><span class="material-datetime-icon"><i class="bi bi-calendar-event"></i></span>${formatDateTime(dateTime)} Uhr</div>`;
+        }
+        if (note) {
+            badgeHTML += `<div class="material-note"><span class="material-note-icon"><i class="bi bi-chat-left-text-fill"></i></span>${note}</div>`;
+        }
+        badgeHTML += '</div>';
+    }
+    
+    // Update or create the badge container
+    let badgeContainer = imageTab.querySelector('.modal-material-info-badge');
+    if (badgeContainer) {
+        badgeContainer.remove();
+    }
+    
+    // Create wrapper for image and badge side by side
+    const imageWrapper = imageTab.querySelector('.image-badge-wrapper') || document.createElement('div');
+    if (!imageWrapper.classList.contains('image-badge-wrapper')) {
+        imageWrapper.classList.add('image-badge-wrapper');
+        const img = imageTab.querySelector('#spectrum-modal-img');
+        if (img) {
+            imageTab.innerHTML = '';
+            imageWrapper.appendChild(img);
+            imageTab.appendChild(imageWrapper);
+        }
+    }
+    
+    if (badgeHTML) {
+        imageWrapper.innerHTML += badgeHTML;
+    }
     
     // Load and plot spectra
     await loadAndPlotSpectra(materialName);

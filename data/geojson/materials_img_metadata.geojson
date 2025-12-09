@@ -6,7 +6,8 @@
       "properties": {
         "material": "Baumsubstrat_A",
         "note": "",
-        "Image DateTime": "2025:11:05 12:23:15"
+        "Image DateTime": "2025:11:05 12:23:15",
+        "category": "Organic and Mulch Materials"
       },
       "geometry": {
         "coordinates": [
@@ -21,7 +22,8 @@
       "properties": {
         "material": "ZiegelsplittMischung",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:24:20"
+        "Image DateTime": "2025:11:05 12:24:20",
+        "category": "Industrial / Construction Materials"
       },
       "geometry": {
         "coordinates": [
@@ -36,7 +38,8 @@
       "properties": {
         "material": "Lava_0-3mm",
         "note": "Weißreferenz im Schatten",
-        "Image DateTime": "2025:11:05 12:09:48"
+        "Image DateTime": "2025:11:05 12:09:48",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -51,7 +54,8 @@
       "properties": {
         "material": "Lava_3-8mm",
         "note": "Weißreferenz im Schatten",
-        "Image DateTime": "2025:11:05 12:08:22"
+        "Image DateTime": "2025:11:05 12:08:22",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -66,7 +70,8 @@
       "properties": {
         "material": "Lava_8-16mm",
         "note": "Weißreferenz im Schatten",
-        "Image DateTime": "2025:11:05 12:07:09"
+        "Image DateTime": "2025:11:05 12:07:09",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -81,7 +86,8 @@
       "properties": {
         "material": "SchwarzesZeug_Mischung",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:12:35"
+        "Image DateTime": "2025:11:05 12:12:35",
+        "category": "Industrial / Construction Materials"
       },
       "geometry": {
         "coordinates": [
@@ -96,7 +102,8 @@
       "properties": {
         "material": "Ziegelsplitt_0-16mm",
         "note": "",
-        "Image DateTime": "2025:11:05 12:10:11"
+        "Image DateTime": "2025:11:05 12:10:11",
+        "category": "Industrial / Construction Materials"
       },
       "geometry": {
         "coordinates": [
@@ -111,7 +118,8 @@
       "properties": {
         "material": "BasaltGabionen_56-120mm",
         "note": "Weißreferenz im Schatten",
-        "Image DateTime": "2025:11:05 12:57:40"
+        "Image DateTime": "2025:11:05 12:57:40",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -126,7 +134,8 @@
       "properties": {
         "material": "BasaltSplitt_1-3mm",
         "note": "Weißreferenz im Schatten",
-        "Image DateTime": "2025:11:05 12:58:53"
+        "Image DateTime": "2025:11:05 12:58:53",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -140,8 +149,9 @@
       "type": "Feature",
       "properties": {
         "material": "Erdgemisch",
-        "note": "Name selbst gewählt, Weißreferenz im Schatten",
-        "Image DateTime": "2025:11:05 13:00:17"
+        "note": "Name selbst gewählt",
+        "Image DateTime": "2025:11:05 13:00:17",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -156,7 +166,8 @@
       "properties": {
         "material": "Splitt_namenlos1",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:54:10"
+        "Image DateTime": "2025:11:05 12:54:10",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -170,8 +181,9 @@
       "type": "Feature",
       "properties": {
         "material": "Splitt_namenlos2",
-        "note": "Name selbst gewählt, Weißreferenz im Schatten",
-        "Image DateTime": "2025:11:05 12:56:26"
+        "note": "Name selbst gewählt",
+        "Image DateTime": "2025:11:05 12:56:26",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -186,7 +198,8 @@
       "properties": {
         "material": "HumusHaufenVonLinks4",
         "note": "",
-        "Image DateTime": "2025:11:05 12:38:30"
+        "Image DateTime": "2025:11:05 12:38:30",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -201,7 +214,8 @@
       "properties": {
         "material": "TrennbloeckeBeton2",
         "note": "",
-        "Image DateTime": "2025:11:05 12:36:50"
+        "Image DateTime": "2025:11:05 12:36:50",
+        "category": "Artificial Surfaces"
       },
       "geometry": {
         "coordinates": [
@@ -216,7 +230,8 @@
       "properties": {
         "material": "RindenmulchTonsand",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 13:06:01"
+        "Image DateTime": "2025:11:05 13:06:01",
+        "category": "Organic and Mulch Materials"
       },
       "geometry": {
         "coordinates": [
@@ -231,7 +246,8 @@
       "properties": {
         "material": "SandsteinBlock",
         "note": "",
-        "Image DateTime": "2025:11:05 13:05:17"
+        "Image DateTime": "2025:11:05 13:05:17",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -246,7 +262,8 @@
       "properties": {
         "material": "Rindenmulch_fein",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 13:07:43"
+        "Image DateTime": "2025:11:05 13:07:43",
+        "category": "Organic and Mulch Materials"
       },
       "geometry": {
         "coordinates": [
@@ -261,7 +278,8 @@
       "properties": {
         "material": "Rindenmulch_grob",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 13:06:38"
+        "Image DateTime": "2025:11:05 13:06:38",
+        "category": "Organic and Mulch Materials"
       },
       "geometry": {
         "coordinates": [
@@ -276,7 +294,8 @@
       "properties": {
         "material": "Lava_56-120mm",
         "note": "",
-        "Image DateTime": "2025:11:05 11:52:08"
+        "Image DateTime": "2025:11:05 11:52:08",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -291,7 +310,8 @@
       "properties": {
         "material": "Quarzsand",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 11:56:03"
+        "Image DateTime": "2025:11:05 11:56:03",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -306,7 +326,8 @@
       "properties": {
         "material": "TrennbloeckeBeton1",
         "note": "",
-        "Image DateTime": "2025:11:05 12:34:00"
+        "Image DateTime": "2025:11:05 12:34:00",
+        "category": "Artificial Surfaces"
       },
       "geometry": {
         "coordinates": [
@@ -321,7 +342,8 @@
       "properties": {
         "material": "Juraschotter_22-45mm",
         "note": "",
-        "Image DateTime": "2025:11:05 11:43:47"
+        "Image DateTime": "2025:11:05 11:43:47",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -336,7 +358,8 @@
       "properties": {
         "material": "Juraschotter_63-120mm",
         "note": "",
-        "Image DateTime": "2025:11:05 11:43:39"
+        "Image DateTime": "2025:11:05 11:43:39",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -351,7 +374,8 @@
       "properties": {
         "material": "Jurasplitt_11-22mm",
         "note": "",
-        "Image DateTime": "2025:11:05 11:43:32"
+        "Image DateTime": "2025:11:05 11:43:32",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -365,8 +389,9 @@
       "type": "Feature",
       "properties": {
         "material": "Lava_16-56mm",
-        "note": "Name selbst gewählt, rechter Lavahaufen vordere Boxen",
-        "Image DateTime": "2025:11:05 11:44:58"
+        "note": "Name selbst gewählt",
+        "Image DateTime": "2025:11:05 11:44:58",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -381,7 +406,8 @@
       "properties": {
         "material": "AsphaltNassPfuetzen",
         "note": "",
-        "Image DateTime": "2025:11:05 13:01:30"
+        "Image DateTime": "2025:11:05 13:01:30",
+        "category": "Artificial Surfaces"
       },
       "geometry": {
         "coordinates": [
@@ -396,7 +422,8 @@
       "properties": {
         "material": "AsphaltTrockenVerschmutzung2",
         "note": "",
-        "Image DateTime": "2025:11:05 13:03:08"
+        "Image DateTime": "2025:11:05 13:03:08",
+        "category": "Artificial Surfaces"
       },
       "geometry": {
         "coordinates": [
@@ -411,7 +438,8 @@
       "properties": {
         "material": "Muschelkalkstein_45-125mm",
         "note": "",
-        "Image DateTime": "2025:11:05 11:37:49"
+        "Image DateTime": "2025:11:05 11:37:49",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -426,7 +454,8 @@
       "properties": {
         "material": "Kies_grob",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 11:33:20"
+        "Image DateTime": "2025:11:05 11:33:20",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -441,7 +470,8 @@
       "properties": {
         "material": "AsphaltTrockenVerschmutzung1",
         "note": "",
-        "Image DateTime": "2025:11:05 12:52:00"
+        "Image DateTime": "2025:11:05 12:52:00",
+        "category": "Artificial Surfaces"
       },
       "geometry": {
         "coordinates": [
@@ -456,7 +486,8 @@
       "properties": {
         "material": "Erdmischung",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:15:01"
+        "Image DateTime": "2025:11:05 12:15:01",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -471,7 +502,8 @@
       "properties": {
         "material": "GranitGabionen_56-80mm",
         "note": "",
-        "Image DateTime": "2025:11:05 12:32:19"
+        "Image DateTime": "2025:11:05 12:32:19",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -486,7 +518,8 @@
       "properties": {
         "material": "Granitschotter_16-32mm",
         "note": "",
-        "Image DateTime": "2025:11:05 12:31:15"
+        "Image DateTime": "2025:11:05 12:31:15",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -501,7 +534,8 @@
       "properties": {
         "material": "GranitSplitt_11-16mm",
         "note": "",
-        "Image DateTime": "2025:11:05 12:30:04"
+        "Image DateTime": "2025:11:05 12:30:04",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -516,7 +550,8 @@
       "properties": {
         "material": "Granit_Bruchfindlinge_Grosse_Krotzen",
         "note": "",
-        "Image DateTime": "2025:11:05 12:05:59"
+        "Image DateTime": "2025:11:05 12:05:59",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -531,7 +566,8 @@
       "properties": {
         "material": "Graureferenz",
         "note": "",
-        "Image DateTime": "2025:11:05 11:46:23"
+        "Image DateTime": "2025:11:05 11:46:23",
+        "category": "Reference Targets"
       },
       "geometry": {
         "coordinates": [
@@ -546,7 +582,8 @@
       "properties": {
         "material": "HumusHaufenVonLinks1",
         "note": "",
-        "Image DateTime": "2025:11:05 11:47:48"
+        "Image DateTime": "2025:11:05 11:47:48",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -561,7 +598,8 @@
       "properties": {
         "material": "HumusHaufenVonLinks2",
         "note": "",
-        "Image DateTime": "2025:11:05 11:47:55"
+        "Image DateTime": "2025:11:05 11:47:55",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -576,7 +614,8 @@
       "properties": {
         "material": "HumusHaufenVonLinks3",
         "note": "",
-        "Image DateTime": "2025:11:05 12:37:17"
+        "Image DateTime": "2025:11:05 12:37:17",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -591,7 +630,8 @@
       "properties": {
         "material": "HumusHaufenVonLinks5",
         "note": "",
-        "Image DateTime": "2025:11:05 12:39:30"
+        "Image DateTime": "2025:11:05 12:39:30",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -606,7 +646,8 @@
       "properties": {
         "material": "HumusHaufenVonLinks6",
         "note": "",
-        "Image DateTime": "2025:11:05 12:40:49"
+        "Image DateTime": "2025:11:05 12:40:49",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -621,7 +662,8 @@
       "properties": {
         "material": "HumusHaufenVonLinks7",
         "note": "",
-        "Image DateTime": "2025:11:05 12:41:51"
+        "Image DateTime": "2025:11:05 12:41:51",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -636,7 +678,8 @@
       "properties": {
         "material": "Kies_fein",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:28:07"
+        "Image DateTime": "2025:11:05 12:28:07",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -651,7 +694,8 @@
       "properties": {
         "material": "Kies_sehrfein",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 11:57:20"
+        "Image DateTime": "2025:11:05 11:57:20",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -666,7 +710,8 @@
       "properties": {
         "material": "Lavasand_fein",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:21:24"
+        "Image DateTime": "2025:11:05 12:21:24",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -681,7 +726,8 @@
       "properties": {
         "material": "Lavasand_grob",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:18:18"
+        "Image DateTime": "2025:11:05 12:18:18",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -696,7 +742,8 @@
       "properties": {
         "material": "Mischgut",
         "note": "Spektren anschauen",
-        "Image DateTime": "2025:11:05 11:58:39"
+        "Image DateTime": "2025:11:05 11:58:39",
+        "category": "Industrial / Construction Materials"
       },
       "geometry": {
         "coordinates": [
@@ -711,7 +758,8 @@
       "properties": {
         "material": "Oberbodengemisch",
         "note": "",
-        "Image DateTime": "2025:11:05 12:25:43"
+        "Image DateTime": "2025:11:05 12:25:43",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -726,7 +774,8 @@
       "properties": {
         "material": "Rheinkies",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:02:12"
+        "Image DateTime": "2025:11:05 12:02:12",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -741,7 +790,8 @@
       "properties": {
         "material": "Rheinsand_0-2mm",
         "note": "",
-        "Image DateTime": "2025:11:05 12:01:02"
+        "Image DateTime": "2025:11:05 12:01:02",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -756,7 +806,8 @@
       "properties": {
         "material": "RindenMulchLangerHaufenRechts",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:43:53"
+        "Image DateTime": "2025:11:05 12:43:53",
+        "category": "Organic and Mulch Materials"
       },
       "geometry": {
         "coordinates": [
@@ -771,7 +822,8 @@
       "properties": {
         "material": "SchwarzesMulch",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:20:23"
+        "Image DateTime": "2025:11:05 12:20:23",
+        "category": "Organic and Mulch Materials"
       },
       "geometry": {
         "coordinates": [
@@ -786,7 +838,8 @@
       "properties": {
         "material": "SedimentErde",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:48:22"
+        "Image DateTime": "2025:11:05 12:48:22",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -801,7 +854,8 @@
       "properties": {
         "material": "Splitt_2-8mm",
         "note": "",
-        "Image DateTime": "2025:11:05 11:59:49"
+        "Image DateTime": "2025:11:05 11:59:49",
+        "category": "Mineral Aggregates"
       },
       "geometry": {
         "coordinates": [
@@ -816,7 +870,8 @@
       "properties": {
         "material": "Vegetationssubstrat",
         "note": "",
-        "Image DateTime": "2025:11:05 12:16:33"
+        "Image DateTime": "2025:11:05 12:16:33",
+        "category": "Soil and Earth Mixtures"
       },
       "geometry": {
         "coordinates": [
@@ -831,7 +886,8 @@
       "properties": {
         "material": "ZiegelSplitt2",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:47:13"
+        "Image DateTime": "2025:11:05 12:47:13",
+        "category": "Industrial / Construction Materials"
       },
       "geometry": {
         "coordinates": [
@@ -846,7 +902,8 @@
       "properties": {
         "material": "ZiegelSplittErdgemisch1",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:44:57"
+        "Image DateTime": "2025:11:05 12:44:57",
+        "category": "Industrial / Construction Materials"
       },
       "geometry": {
         "coordinates": [
@@ -861,7 +918,8 @@
       "properties": {
         "material": "ZiegelSplittErdgemisch2",
         "note": "Name selbst gewählt",
-        "Image DateTime": "2025:11:05 12:49:06"
+        "Image DateTime": "2025:11:05 12:49:06",
+        "category": "Industrial / Construction Materials"
       },
       "geometry": {
         "coordinates": [

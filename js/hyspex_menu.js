@@ -73,73 +73,11 @@
         });
     }
 
-    // Initialize group toggle state (stored in localStorage for persistence)
-    const spectralGroupState = localStorage.getItem('hyspex-spectral-expanded') !== 'false';
-    const spectralGroupState2 = localStorage.getItem('hyspex-spectral-expanded-2') !== 'false';
-
-    // Get group toggle button and content container (5.11.2025)
-    const spectralGroupToggle = document.getElementById('hyspex-spectral-group-toggle');
+    // Get spectral data containers (5.11.2025)
     const spectralGroupContent = document.getElementById('hyspex-spectral-group-content');
 
-    // Get group toggle button and content container (3.12.2025)
-    const spectralGroupToggle2 = document.getElementById('hyspex-spectral-group-toggle-2');
+    // Get spectral data containers (3.12.2025)
     const spectralGroupContent2 = document.getElementById('hyspex-spectral-group-content-2');
-
-    // Initialize group state (5.11.2025)
-    function initializeGroupState() {
-        if (!spectralGroupState && spectralGroupContent) {
-            spectralGroupContent.classList.add('collapsed');
-            // Update icon state
-            const icon = document.querySelector('#hyspex-spectral-group-toggle .hyspex-spectral-toggle-icon');
-            if (icon) icon.classList.add('collapsed');
-            // Update header state
-            if (spectralGroupToggle) spectralGroupToggle.classList.add('collapsed');
-        }
-    }
-
-    // Initialize group state (3.12.2025)
-    function initializeGroupState2() {
-        if (!spectralGroupState2 && spectralGroupContent2) {
-            spectralGroupContent2.classList.add('collapsed');
-            // Update icon state
-            const icon = document.querySelector('#hyspex-spectral-group-toggle-2 .hyspex-spectral-toggle-icon');
-            if (icon) icon.classList.add('collapsed');
-            // Update header state
-            if (spectralGroupToggle2) spectralGroupToggle2.classList.add('collapsed');
-        }
-    }
-
-    // Set up group toggle event listener (5.11.2025)
-    if (spectralGroupToggle) {
-        spectralGroupToggle.addEventListener('click', () => {
-            if (spectralGroupContent) {
-                spectralGroupContent.classList.toggle('collapsed');
-                spectralGroupToggle.classList.toggle('collapsed');
-                
-                // Toggle icon state
-                const icon = spectralGroupToggle.querySelector('.hyspex-spectral-toggle-icon');
-                if (icon) icon.classList.toggle('collapsed');
-
-                localStorage.setItem('hyspex-spectral-expanded', !spectralGroupContent.classList.contains('collapsed'));
-            }
-        });
-    }
-
-    // Set up group toggle event listener (3.12.2025)
-    if (spectralGroupToggle2) {
-        spectralGroupToggle2.addEventListener('click', () => {
-            if (spectralGroupContent2) {
-                spectralGroupContent2.classList.toggle('collapsed');
-                spectralGroupToggle2.classList.toggle('collapsed');
-                
-                // Toggle icon state
-                const icon = spectralGroupToggle2.querySelector('.hyspex-spectral-toggle-icon');
-                if (icon) icon.classList.toggle('collapsed');
-
-                localStorage.setItem('hyspex-spectral-expanded-2', !spectralGroupContent2.classList.contains('collapsed'));
-            }
-        });
-    }
 
     // Get existing checkbox elements from HTML (5.11.2025)
     const trajectoryVnirAllCheckbox = document.getElementById('hyspex-trajectory-vnir-all-checkbox');
@@ -380,12 +318,6 @@
             window.dispatchEvent(new Event('hyspexTrajectorySwirEventLoaded2'));
         })
         .catch(error => console.error('Error loading HySpex SWIR Event points GeoJSON data (20251203):', error));
-
-    // Initialize group state after DOM is ready
-    setTimeout(() => {
-        initializeGroupState();
-        initializeGroupState2();
-    }, 100);
 
     // Add event listener to toggle HySpex VNIR All trajectory visibility (5.11.2025)
     if (trajectoryVnirAllCheckbox) {

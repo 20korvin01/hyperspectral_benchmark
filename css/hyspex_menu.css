@@ -170,25 +170,6 @@
     pointer-events: none;
 }
 
-/* First trajectory item gets extra top margin */
-#hyspex-trajectory-realtime-checkbox-container {
-    margin-top: 8px;
-}
-
-/* HySpex RealTime Trajectory Container */
-#hyspex-trajectory-realtime-checkbox-container {
-    background: #fff8f0;
-    border: 1px solid #ffb366;
-    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
-}
-
-/* HySpex Post-Processed Trajectory Container */
-#hyspex-trajectory-postprocessed-checkbox-container {
-    background: #fff8f0;
-    border: 1px solid #ffb366;
-    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
-}
-
 /* HySpex VNIR All Trajectory Container */
 #hyspex-trajectory-vnir-all-checkbox-container {
     background: #fff8f0;
@@ -246,8 +227,6 @@
 }
 
 /* HySpex Checkboxes */
-#hyspex-trajectory-realtime-checkbox,
-#hyspex-trajectory-postprocessed-checkbox,
 #hyspex-trajectory-vnir-all-checkbox,
 #hyspex-trajectory-vnir-event-checkbox,
 #hyspex-trajectory-swir-all-checkbox,
@@ -338,8 +317,6 @@
 .hyspex-spectral-info-icon:hover + .hyspex-info-tooltip {
     display: block;
 }
-#hyspex-trajectory-realtime-checkbox-container,
-#hyspex-trajectory-postprocessed-checkbox-container,
 #hyspex-trajectory-vnir-all-checkbox-container,
 #hyspex-trajectory-vnir-event-checkbox-container,
 #hyspex-trajectory-swir-all-checkbox-container,
@@ -347,80 +324,43 @@
     position: relative;
 }
 
-/* HySpex Spectral Container - Single Collapsible */
+/* HySpex Spectral Container - Box Layout */
 .hyspex-spectral-container {
     margin: 6px 0;
     border-radius: 6px;
     background: #fff8f0;
     overflow: visible;
+    border: 1px solid #ffb366;
     box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
     position: relative;
     z-index: 10;
-    max-height: 1000px;
-    opacity: 1;
-    transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
 }
 
-.hyspex-spectral-container.collapsed {
-    max-height: 0;
-    opacity: 0;
-    margin: 0;
-    pointer-events: none;
-}
-
-/* HySpex Spectral Toggle Header */
-.hyspex-spectral-toggle-header {
-    width: 100%;
+/* HySpex Spectral Box Header */
+.hyspex-spectral-box-header {
     padding: 12px;
     background: #fff8f0;
-    border: 1px solid #ffb366;
-    border-bottom: none;
+    border-bottom: 1px solid #ffb366;
     border-radius: 6px 6px 0 0;
-    cursor: pointer;
-    font-weight: 600;
-    color: #333;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
-    transition: background-color 0.2s ease;
     position: relative;
 }
 
-.hyspex-spectral-toggle-header:hover {
-    background: #fff2e6;
+.hyspex-spectral-title {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+    flex: 1;
 }
 
-.hyspex-spectral-toggle-header.collapsed {
-    border-radius: 6px;
-    border-bottom: 1px solid #ffb366;
-}
-
-/* HySpex Spectral Info Icon - Positioned at right */
-.hyspex-spectral-info-icon {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0 !important;
-}
-
-/* Hide info icon when spectral container is collapsed */
-.hyspex-spectral-container.collapsed .hyspex-spectral-info-icon {
-    display: none;
-    pointer-events: none;
-}
-
-/* HySpex Spectral Toggle Icon */
-.hyspex-spectral-toggle-icon {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    font-size: 18px;
-}
-
-/* HySpex Spectral Toggle Icon Collapsed */
-.hyspex-spectral-toggle-icon.collapsed {
-    transform: rotate(-90deg);
+.hyspex-spectral-box-header .hyspex-spectral-info-icon {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin-left: auto;
 }
 
 /* HySpex Spectral Grid Container - Compact 2x2 Layout */
@@ -428,21 +368,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px;
-    padding: 8px;
-    max-height: 500px;
+    padding: 12px;
     overflow: visible;
-    border: 1px solid #ffb366;
-    border-top: none;
     border-radius: 0 0 6px 6px;
-    transition: max-height 0.3s ease, padding 0.3s ease;
     position: relative;
-}
-
-.hyspex-spectral-grid-container.collapsed {
-    max-height: 0;
-    padding: 0;
-    overflow: hidden;
-    border: none;
 }
 
 /* HySpex Spectral Group - Compact */

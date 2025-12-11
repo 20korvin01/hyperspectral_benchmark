@@ -213,40 +213,10 @@
 
 				<!-- HySpex Data Container (5.11.2025) -->
 				<div class="hyspex-data-wrapper" id="hyspex-data-wrapper">
-					<!-- HySpex Trajectory RealTime Checkbox -->
-					<div id="hyspex-trajectory-realtime-checkbox-container" class="hyspex-layer-checkbox-container">
-						<input type="checkbox" id="hyspex-trajectory-realtime-checkbox">
-						<label for="hyspex-trajectory-realtime-checkbox">Flugbahn | RealTime</label>
-						<span class="hyspex-info-icon">
-							<i class="bi bi-question-circle"></i>
-						</span>
-						<div class="hyspex-info-tooltip">
-							<strong>HySpex Flugbahn | RealTime</strong>
-							<p>Zeigt die RealTime (unprozessierte) Flugbahn der HySpex-Missionen auf dem Forschungsgelände.
-								Es wird nur jeder 100. Punkt dargestellt, um die Datenmenge zu reduzieren.</p>
-						</div>
-					</div>
-
-					<!-- HySpex Trajectory Post-Processed Checkbox -->
-					<div id="hyspex-trajectory-postprocessed-checkbox-container" class="hyspex-layer-checkbox-container">
-						<input type="checkbox" id="hyspex-trajectory-postprocessed-checkbox">
-						<label for="hyspex-trajectory-postprocessed-checkbox">Flugbahn | Post-Proc.</label>
-						<span class="hyspex-info-icon">
-							<i class="bi bi-question-circle"></i>
-						</span>
-						<div class="hyspex-info-tooltip">
-							<strong>HySpex Flugbahn | Post-Processed</strong>
-							<p>Zeigt die prozessierte Flugbahn der HySpex-Missionen auf dem
-								Forschungsgelände. Durch das Ausfallen der Basisstation während des Drohnenfluges, ist die Prozessierung
-								lediglich auf die Fusion von GNSS und IMU Daten beschränkt.</p>
-						</div>
-					</div>
-
-					<!-- HySpex Spectral Data - Collapsible Container -->
+					<!-- HySpex Spectral Data Box -->
 					<div class="hyspex-spectral-container">
-						<button class="hyspex-spectral-toggle-header" id="hyspex-spectral-group-toggle">
-							<i class="bi bi-chevron-down hyspex-spectral-toggle-icon"></i>
-							<span>Spektraldaten - Export</span>
+						<div class="hyspex-spectral-box-header">
+							<span class="hyspex-spectral-title">POSPac MMS - Export</span>
 							<span class="hyspex-info-icon hyspex-spectral-info-icon">
 								<i class="bi bi-question-circle"></i>
 							</span>
@@ -254,7 +224,7 @@
 								<strong>HySpex Spektraldaten</strong>
 								<p>Zeigt die Flugbahnen der VNIR (Visible and Near-Infrared) und SWIR (Shortwave Infrared) Hyperspektraldaten. Die Daten sind in "All" (gesamte Trajektorie) und "Event" (Positionen der HySpex-Aufnahmen) unterteilt.</p>
 							</div>
-						</button>
+						</div>
 						<div class="hyspex-spectral-grid-container" id="hyspex-spectral-group-content">
 							<!-- VNIR Group -->
 							<div class="hyspex-spectral-group">
@@ -300,19 +270,11 @@
 
 				<!-- HySpex Data Container (3.12.2025) -->
 				<div class="hyspex-data-wrapper" id="hyspex-data-wrapper-2">
-					<!-- HySpex Spectral Data - Collapsible Container (3.12.2025) -->
+					<!-- HySpex Spectral Data Box (3.12.2025) -->
 					<div class="hyspex-spectral-container">
-						<button class="hyspex-spectral-toggle-header" id="hyspex-spectral-group-toggle-2">
-							<i class="bi bi-chevron-down hyspex-spectral-toggle-icon"></i>
-							<span>Spektraldaten - Export</span>
-							<span class="hyspex-info-icon hyspex-spectral-info-icon">
-								<i class="bi bi-question-circle"></i>
-							</span>
-							<div class="hyspex-info-tooltip">
-								<strong>HySpex Spektraldaten</strong>
-								<p>Zeigt die Flugbahnen der VNIR (Visible and Near-Infrared) und SWIR (Shortwave Infrared) Hyperspektraldaten. Die Daten sind in "All" (gesamte Trajektorie) und "Event" (Positionen der HySpex-Aufnahmen) unterteilt.</p>
-							</div>
-						</button>
+						<div class="hyspex-spectral-box-header">
+							<span class="hyspex-spectral-title">POSPac MMS - Export</span>
+						</div>
 						<div class="hyspex-spectral-grid-container" id="hyspex-spectral-group-content-2">
 							<!-- VNIR Group -->
 							<div class="hyspex-spectral-group">

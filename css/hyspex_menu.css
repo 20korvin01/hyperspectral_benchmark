@@ -230,7 +230,11 @@
 #hyspex-trajectory-vnir-all-checkbox,
 #hyspex-trajectory-vnir-event-checkbox,
 #hyspex-trajectory-swir-all-checkbox,
-#hyspex-trajectory-swir-event-checkbox {
+#hyspex-trajectory-swir-event-checkbox,
+#hyspex-trajectory-vnir-all-checkbox-2,
+#hyspex-trajectory-vnir-event-checkbox-2,
+#hyspex-trajectory-swir-all-checkbox-2,
+#hyspex-trajectory-swir-event-checkbox-2 {
     margin: 0;
     cursor: pointer;
     width: 18px;

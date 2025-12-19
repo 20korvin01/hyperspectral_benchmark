@@ -31,6 +31,8 @@ Diese Anwendung ist Teil eines größeren Benchmarking-Projekts für hyperspektr
   - Spektrendaten
   - Gemittelte Spektren
 - **GeoJSON-basierte Metadaten** mit EXIF-Daten und Materialinformationen
+- **Drohne-Trajektorien** sowohl der DJI- als auch der HySpex-Flüge
+- **Orthophotos** und **Digitale Oberflöchenmodelle**
 
 ## Datenstruktur
 
@@ -39,6 +41,10 @@ Diese Anwendung ist Teil eines größeren Benchmarking-Projekts für hyperspektr
 - `data/spectra_ascii/` - Einzelne Spektrenmessungen
 - `data/spectra_binary/` - Binäre Spektrendaten (ASD-Format)
 - `img/materials/` - Materialfotos
+- `img/dsm_tiles/` - Digitale Oberflächenmodelle
+- `img/ortho_tiles/` - Orthophotos
+- `img/technologies/` - Verwendete Instrumente
+- `img/weather/` - Himmmel- und Sonnenstandsaufnahmen während der einzelnen Messkampagnen
 - `utils/` - Python-Scripts zur Datenverarbeitung
 
 ## Technologie

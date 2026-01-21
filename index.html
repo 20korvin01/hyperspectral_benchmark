@@ -472,7 +472,10 @@
 			<a href="https://github.com/20korvin01/hyperspectral_benchmark" target="_blank" title="GitHub Repository">
 				<i class="fab fa-github"></i>
 			</a>
-			<p>&copy; 2025 Korvin Brecht</p>
+			<p>&copy; <span id="current-year"></span> Korvin Brecht</p>
+			<script>
+				document.getElementById('current-year').textContent = new Date().getFullYear();
+			</script>
 		</div>
 	</footer>
 </body>

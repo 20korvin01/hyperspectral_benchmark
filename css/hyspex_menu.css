@@ -67,14 +67,16 @@
 }
 
 .hyspex-badge-chevron,
-.hyspex-badge-chevron-2 {
+.hyspex-badge-chevron-2,
+.hyspex-badge-chevron-3 {
     margin-left: auto;
     transition: transform 0.3s ease;
     font-size: 16px;
 }
 
 .hyspex-badge-chevron.rotated,
-.hyspex-badge-chevron-2.rotated {
+.hyspex-badge-chevron-2.rotated,
+.hyspex-badge-chevron-3.rotated {
     transform: rotate(180deg);
 }
 
@@ -139,6 +141,34 @@
 }
 
 #hyspex-data-wrapper-2.expanded {
+    border: 2px solid #9575cd;
+    background: linear-gradient(135deg, rgba(117, 117, 117, 0.08), rgba(158, 158, 158, 0.05));
+    box-shadow: 0 0 15px rgba(117, 117, 117, 0.2);
+    overflow: visible;
+    margin: 8px 12px 8px 12px;
+}
+
+/* HySpex Data Wrapper Secondary (3.12.2025) - Flug 2 (mirror of -2) */
+#hyspex-data-wrapper-3 {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 0 12px 8px 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 10000px;
+}
+
+/* Secondary collapsed spacing */
+#hyspex-data-wrapper-3:not(.expanded) {
+    max-height: 0;
+    margin: 0 12px 0 12px;
+    padding: 0;
+    border: none;
+}
+
+#hyspex-data-wrapper-3.expanded {
     border: 2px solid #9575cd;
     background: linear-gradient(135deg, rgba(117, 117, 117, 0.08), rgba(158, 158, 158, 0.05));
     box-shadow: 0 0 15px rgba(117, 117, 117, 0.2);
@@ -226,6 +256,31 @@
     box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
 }
 
+/* --- Mirror for Flug 2 (-3) --- */
+#hyspex-trajectory-vnir-all-checkbox-container-3 {
+    background: #fff8f0;
+    border: 1px solid #ffb366;
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
+}
+
+#hyspex-trajectory-vnir-event-checkbox-container-3 {
+    background: #fff8f0;
+    border: 1px solid #ffb366;
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
+}
+
+#hyspex-trajectory-swir-all-checkbox-container-3 {
+    background: #fff8f0;
+    border: 1px solid #ffb366;
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
+}
+
+#hyspex-trajectory-swir-event-checkbox-container-3 {
+    background: #fff8f0;
+    border: 1px solid #ffb366;
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
+}
+
 /* HySpex Checkboxes */
 #hyspex-trajectory-vnir-all-checkbox,
 #hyspex-trajectory-vnir-event-checkbox,
@@ -234,7 +289,11 @@
 #hyspex-trajectory-vnir-all-checkbox-2,
 #hyspex-trajectory-vnir-event-checkbox-2,
 #hyspex-trajectory-swir-all-checkbox-2,
-#hyspex-trajectory-swir-event-checkbox-2 {
+#hyspex-trajectory-swir-event-checkbox-2,
+#hyspex-trajectory-vnir-all-checkbox-3,
+#hyspex-trajectory-vnir-event-checkbox-3,
+#hyspex-trajectory-swir-all-checkbox-3,
+#hyspex-trajectory-swir-event-checkbox-3 {
     margin: 0;
     cursor: pointer;
     width: 18px;

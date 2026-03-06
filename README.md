@@ -6,7 +6,7 @@ Interaktive Webanwendung zur Visualisierung und Analyse von hyperspektralen Mess
 
 ## Über das Projekt
 
-Diese Anwendung ist Teil eines größeren Benchmarking-Projekts für hyperspektrale Daten. Die Daten wurden bei der corthum Nordschwarzwald GmbH - corthum Erdenwerk (Fertigbeton BETON2GO) aufgenommen.
+Diese Anwendung ist Teil eines größeren Benchmarking-Projekts für hyperspektrale Daten. Die Daten wurden bei der corthum Nordschwarzwald GmbH - corthum Erdenwerk aufgenommen.
 
 ### Ziele des Benchmarks
 - Bereitstellung standardisierter Datensätze für die Entwicklung und Evaluierung von Algorithmen
